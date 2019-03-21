@@ -23,13 +23,13 @@ public class DBConnection {
             e.printStackTrace();
 
         } catch (SQLException e) {
-            System.out.println("Connection Failed! Check output console");
+            System.out.println("Connection Failed!");
             e.printStackTrace();
 
         }
 
         if (connection != null) {
-            System.out.println("Connection made to DB!");
+            System.out.println("Connection Successful!");
         }
         return connection;
     }
