@@ -11,8 +11,8 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
+      <meta name="description" content="Java EE Group Assignment">
+      <meta name="author" content="Crazydude">
       <title>Driver's Association Colombo</title>
       <!-- Css -->
       <link href="css/bootstrap.css" rel="stylesheet">
