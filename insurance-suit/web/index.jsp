@@ -33,10 +33,9 @@
             </a>
             <div class="nav-content hideNav hidden">
                <ul class="nav-list vcenter">
-                  <li class="nav-item"><a class="item-anchor" href="index.html">Home</a></li>
                   <li class="nav-item"><a class="item-anchor" href="adminJsp/login.jsp">Admin Sign In</a></li>
                   <li class="nav-item"><a class="item-anchor" href="userJsp/login.jsp">Member Sign In</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="userJsp/registration.jsp">Member Sign Up</a></li>
+                  <li class="nav-item"><a class="item-anchor" href="userJsp/registration.jsp">Register</a></li>
                </ul>
             </div>
          </div>
