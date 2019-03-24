@@ -14,7 +14,7 @@
     </head>
     <body>
 
-        <form action="/action_page.php" style="border:1px solid #ccc">
+        <form action="Register" method="post" style="border:1px solid #ccc">
             <div class="container">
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
@@ -45,7 +45,7 @@
 
                 <div class="clearfix">
                     <button type="button" class="cancelbtn" onclick="window.location.href='../index.jsp'">Cancel</button>
-                    <button type="submit" class="signupbtn">Register</button>
+                    <button type="submit" class="signupbtn" >Register</button>
                 </div>
             </div>
         </form>
