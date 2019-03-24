@@ -16,7 +16,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
- #wrapper {
+#wrapper {
     width: 100%;
     background:#202020;
 }
@@ -66,7 +66,7 @@ p {
     background-color:#F8F8F8;
 
 }
-   .noti-box {
+.noti-box {
 min-height: 100px;
 padding: 20px;
 }
@@ -90,30 +90,30 @@ font-size: 40px;
     font-weight:600;
 }
 .set-icon {
-    -webkit-border-radius: 50px;
+-webkit-border-radius: 50px;
 -moz-border-radius: 50px;
 border-radius: 50px;
 
 }
-    .bg-color-green {
+.bg-color-green {
 background-color: #00CE6F;
 color: #fff;
 }
- .bg-color-blue {
+.bg-color-blue {
 background-color: #A95DF0;
 color: #fff;
 }
-  .bg-color-red {
+.bg-color-red {
 background-color: #DB0630;
 color: #fff;
 }
-  .bg-color-brown {
+.bg-color-brown {
 background-color: #B94A00;
 color: #fff;
 }
 
 
- .icon-box-right {
+.icon-box-right {
 display: block;
 float: right;
 margin: 0 15px 10px 0;
@@ -132,7 +132,7 @@ font-size: 16px;
 font-weight: 300;
 text-align: center;
 }
- .main-temp-back .text-temp {
+.main-temp-back .text-temp {
 font-size: 40px;
 }
 .back-dash {
@@ -339,7 +339,7 @@ background-color: #FFF;
 /*==============================================
     UI ELEMENTS STYLES     
     =============================================*/
-.btn-circle {
+.fa fa-dashboard fa-3-circle {
 width: 50px;
 height: 50px;
 padding: 6px 0;
