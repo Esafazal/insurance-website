@@ -109,7 +109,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM `member` WHERE member_id = ? ";
+            String query = "SELECT * FROM `Member` WHERE member_id = ? ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 

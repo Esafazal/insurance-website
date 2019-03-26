@@ -99,78 +99,110 @@
 
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="home">
-                                            <h4><b>Personal Details</b></h4>
-                                            <p><strong>Name:</strong>&nbsp; ${memberList.first_name}</p>
-                                            <p><strong>Username:</strong>&nbsp; ${memberList.username}</p>
-                                            <p><strong>Address:</strong>&nbsp; ${memberList.address}</p>
-                                            <p><strong>Date of Birth:</strong> ${memberList.dob}</p>
-                                            <p><strong>Date of Registration:</strong> ${memberList.date_of_registration}</p>
-                                            <p><strong>NIC:</strong>&nbsp; ${memberList.nic}</p>
-                                            <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
-                                            <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
+
+                                            <form action="MemberDetails" method="get" >
+                                                <!--<div class="container">-->
+                                                <c:forEach var="pro" items="${requestScope.memberList}">
+                                                    
+                                                <label><b>Full Name: </b></label>
+                                                <input type="text" value="${pro.first_name}" name="name"><br>
+
+                                                <label><b>Username: </b></label>
+                                                <input type="text" value="${pro.username}" name="username"><br>
+
+                                                <label><b>Address: </b></label>
+                                                <input type="text" value="${pro.address}" name="address"><br>
+                                                    
+                                                <label><b>Date of Birth: </b></label>
+                                                <input type="text" value="${pro.dob}" name="dob"><br>
+                                                    
+                                                <label><b>Date of Registration: </b></label>
+                                                <input type="text" value="${pro.date_of_registration}" name="date_of_registration"><br>
+                                                    
+                                                <label><b>NIC: </b></label>
+                                                <input type="text" value="${pro.nic}" name="nic"><br>
+                                                    
+                                                <label><b>Email: </b></label>
+                                                <input type="text" value="${pro.email}" name="email"><br>
+                                                 
+                                                <label><b>Phone No: </b></label>
+                                                <input type="text" value="${pro.phone_no}" name="phone_no"><br>
+
+                                                </div>
+                                                </c:forEach>
+                                                </form>    
+        <!--                                            <h4><b>Personal Details</b></h4>
+                                                    <p><strong>Name:</strong>&nbsp; ${memberList.first_name}</p>
+                                                    <p><strong>Username:</strong>&nbsp; ${memberList.username}</p>
+                                                    <p><strong>Address:</strong>&nbsp; ${memberList.address}</p>
+                                                    <p><strong>Date of Birth:</strong> ${memberList.dob}</p>
+                                                    <p><strong>Date of Registration:</strong> ${memberList.date_of_registration}</p>
+                                                    <p><strong>NIC:</strong>&nbsp; ${memberList.nic}</p>
+                                                    <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
+                                                    <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>-->
+                                       </div>
+                                                <div class="tab-pane fade" id="profile">
+                                                    <h4>Edit Details</h4>
+
+                                <!-- Form Elements -->
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form role="form">
+
+                                                <div class="form-group">
+                                                    <label>Username</label> 
+                                                    <input class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label> 
+                                                    <input class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label> 
+                                                    <input class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone</label> 
+                                                    <input class="form-control" />
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Save Changes</button>
+
                                         </div>
-                                        <div class="tab-pane fade" id="profile">
-                                            <h4>Edit Details</h4>
+                                    </div>
+                                </div>
+                                                </div>
 
-                                            <!-- Form Elements -->
+                                                <div class="tab-pane fade" id="messages">
+                                                    <h4>Change Password</h4>
+                                                    <!-- Form Elements -->
 
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <form role="form">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <form role="form">
 
-                                                            <div class="form-group">
-                                                                <label>Username</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Address</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Email</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Phone</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                                    <div class="form-group">
+                                                                        <label>Current Password</label> 
+                                                                        <input class="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>New Password</label> 
+                                                                        <input class="form-control" />
+                                                                    </div>
 
+                                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="messages">
-                                            <h4>Change Password</h4>
-                                            <!-- Form Elements -->
-
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <form role="form">
-
-                                                            <div class="form-group">
-                                                                <label>Current Password</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>New Password</label> 
-                                                                <input class="form-control" />
-                                                            </div>
-
-                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
 
-                                        <div class="tab-pane fade" id="settings">
-                                            <h4>History</h4>
-                                        </div>
+                                       <div class="tab-pane fade" id="settings">
+                                           <h4>History</h4>
+                                       </div>
                                     </div>
 
                                 </div>
