@@ -1,6 +1,6 @@
 <%-- 
-    Document   : success
-    Created on : Mar 21, 2019, 6:32:37 PM
+    Document   : error
+    Created on : Mar 24, 2019, 4:09:51 PM
     Author     : crazydude
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Successfully Registered</h1>
+        <h1>ERORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR</h1>
     </body>
 </html>
