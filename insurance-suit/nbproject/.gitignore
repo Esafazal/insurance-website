@@ -1,1 +1,5 @@
-*.properties
+/project.properties
+/build-impl.xml~
+/project.xml
+/ant-deploy.xml
+/build-impl.xml
