@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Member</a> 
+                    <a class="navbar-brand" href="index.html">Member</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -48,9 +48,6 @@
 
                         <li>
                             <a  href="../userJsp/home.jsp"> Home</a>
-                        </li>
-                        <li>
-                            <a href="../userJsp/userProfile.jsp"> Profile</a>
                         </li>
                         <li>
                             <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
@@ -80,46 +77,7 @@
                         </div>
                     </div>
                     <!-- /. ROW  -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Form Elements -->
-                            <div class="panel panel-default">
-
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <form role="form">
-
-                                                <div class="form-group">
-                                                    <label>Username</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Number of Claims Done</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Claim Amount</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Annual Fee</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Outstanding Payment</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-
-                                                <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Pay Amount</button>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <hr />
 
                 </div>
                 <!-- /. PAGE INNER  -->
