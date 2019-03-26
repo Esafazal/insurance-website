@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Member</a> 
+                    <a class="navbar-brand" href="#">Member</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -50,7 +50,10 @@
                             <a  href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a class="active-menu"  href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a  href="../userJsp/userProfile.jsp"> Profile</a>
+                        </li>
+                        <li>
+                            <a  class="active-menu" href="../userJsp/makeClaim.jsp"> Make Claim</a>
                         </li>
                         <li>
                             <a  href="../userJsp/makePayment.jsp"> Make Payment</a>
@@ -78,7 +81,31 @@
                     </div>
                     <!-- /. ROW  -->
                     <hr />
+                       <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form role="form">
+                                        <p>Eligibility Criteria</p>
 
+                                        <ul>
+                                            <li>Membership must be minimum 6 months old.</li>
+                                            <li>Claim quota is not exceeded.</li>
+                                            <li>No outstanding payments.</li>
+                                        </ul> 
+                                        <button type="button"  class="btn btn-primary" onclick="window.location.href='../userJsp/claimEligible.jsp'">Check Eligibility</button>
+
+                                        </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
                 </div>
                 <!-- /. PAGE INNER  -->
             </div>
