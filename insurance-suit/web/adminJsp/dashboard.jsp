@@ -82,6 +82,42 @@
                     </div>
                     <!-- /. ROW  -->
                     <hr />
+                     <div class="col-md-4 col-sm-6 col-xs-6">                   
+                    <div class="panel panel-primary text-center no-boder bg-color-green">
+                        <div class="panel-body">
+                            <i class="fa fa-edit fa-5x"></i>
+                            <h3>30 New</h3>
+                        </div>
+                        <div class="panel-footer back-footer-green">
+                           Registrations
+                        </div>    
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6"> 
+                    <div class="panel panel-primary text-center no-boder bg-color-red">
+                        <div class="panel-body">
+                            <i class="fa fa-crash fa-5x"></i>
+                            <h3>10 Claims</h3>
+                        </div>
+                        <div class="panel-footer back-footer-red">
+                            Pending
+                            
+                        </div>
+                    </div>                         
+                        </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6"> 
+                    <div class="panel panel-primary text-center no-boder bg-color-blue">
+                        <div class="panel-body">
+                            <i class="fa fa-money fa-5x"></i>
+                            <h3>25 Payments</h3>
+                        </div>
+                        <div class="panel-footer back-footer-blue">
+                            Pending
+                            
+                        </div>
+                    </div>                         
+                        </div>
+<!--      
 
                 </div>
                 <!-- /. PAGE INNER  -->
