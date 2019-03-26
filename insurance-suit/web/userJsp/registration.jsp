@@ -14,7 +14,7 @@
     </head>
     <body>
 
-        <form action="/action_page.php" style="border:1px solid #ccc">
+        <form action="Register" method="post" style="border:1px solid #ccc">
             <div class="container">
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
@@ -33,19 +33,19 @@
                 <input type="date" placeholder="Enter Date of Birth" name="dob" required><br><br>
 
                 <label for="nic"><b>NIC</b></label>
-                <input type="text" placeholder="Enter NIC" name="nic" required>
+                <input type="text" placeholder="Enter NIC" maxlength="10"  name="nic" required>
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
 
                 <label for="phone no"><b>Phone No</b></label>
-                <input type="text" placeholder="Enter Phone number" name="phoneno" required>
+                <input type="tel" placeholder="Enter Phone number" maxlength="10" minlength="10" name="phoneno" required>
 
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
                     <button type="button" class="cancelbtn" onclick="window.location.href='../index.jsp'">Cancel</button>
-                    <button type="submit" class="signupbtn">Register</button>
+                    <button type="submit" class="signupbtn" >Register</button>
                 </div>
             </div>
         </form>
