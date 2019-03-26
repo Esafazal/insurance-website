@@ -1336,3 +1336,7 @@
 .fa-plus-square-o:before {
   content: "\f196";
 }
+.fa-crash:before,
+.fa-wrench:before {
+  content: "\f0ad";
+}
