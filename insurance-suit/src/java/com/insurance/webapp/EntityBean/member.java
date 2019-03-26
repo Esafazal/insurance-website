@@ -5,13 +5,15 @@
  */
 package com.insurance.webapp.EntityBean;
 
-import java.sql.Date;
+import java.util.Date;
+
+
 
 /**
  *
  * @author crazydude
  */
-public class member {
+public class Member {
     
     private int member_id;
     private String first_name;
@@ -21,10 +23,22 @@ public class member {
     private String nic;
     private Date date_of_registration;
     private String email;
-    private int phone_no;
+    private String phone_no;
     private String username;
     private String password;
-    private String vehicle_number;
+
+//    public Member(String first_name, String last_name, String address, Date dob, String nic, Date date_of_registration, String email, String phone_no, String username, String password) {
+//        this.first_name = first_name;
+//        this.last_name = last_name;
+//        this.address = address;
+//        this.dob = dob;
+//        this.nic = nic;
+//        this.date_of_registration = date_of_registration;
+//        this.email = email;
+//        this.phone_no = phone_no;
+//        this.username = username;
+//        this.password = password;
+//    }
 
     public int getMember_id() {
         return member_id;
@@ -90,11 +104,11 @@ public class member {
         this.email = email;
     }
 
-    public int getPhone_no() {
+    public String getPhone_no() {
         return phone_no;
     }
 
-    public void setPhone_no(int phone_no) {
+    public void setPhone_no(String phone_no) {
         this.phone_no = phone_no;
     }
 
@@ -114,15 +128,6 @@ public class member {
         this.password = password;
     }
 
-    public String getVehicle_number() {
-        return vehicle_number;
-    }
-
-    public void setVehicle_number(String vehicle_number) {
-        this.vehicle_number = vehicle_number;
-    }
-    
-    
     
     
 }

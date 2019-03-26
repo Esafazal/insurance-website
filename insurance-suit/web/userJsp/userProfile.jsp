@@ -99,99 +99,99 @@
 
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="home">
-                                            <h4>Personal Details</h4>
-                                            <label>Name:</label><br>
-                                                <label>Username:</label><br>
-                                                    <label>Address:</label><br>
+                                            <h4><b>Personal Details</b></h4>
+                                            <p><strong>Name:</strong>&nbsp; ${memberList.first_name}</p>
+                                            <p><strong>Username:</strong>&nbsp; ${memberList.username}</p>
+                                            <p><strong>Address:</strong>&nbsp; ${memberList.address}</p>
+                                            <p><strong>Date of Birth:</strong> ${memberList.dob}</p>
+                                            <p><strong>Date of Registration:</strong> ${memberList.date_of_registration}</p>
+                                            <p><strong>NIC:</strong>&nbsp; ${memberList.nic}</p>
+                                            <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
+                                            <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile">
+                                            <h4>Edit Details</h4>
 
-                                                        <label>Date of Birth:</label><br>
-                                                            <label>NIC:</label><br>
-                                                                <label>Email:</label><br>
-                                                                    <label>Phone No: </label>
-                                                                    </div>
-                                                                    <div class="tab-pane fade" id="profile">
-                                                                        <h4>Edit Details</h4>
+                                            <!-- Form Elements -->
 
-                                                                        <!-- Form Elements -->
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <form role="form">
 
-                                                                        <div class="panel-body">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <form role="form">
+                                                            <div class="form-group">
+                                                                <label>Username</label> 
+                                                                <input class="form-control" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Address</label> 
+                                                                <input class="form-control" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label> 
+                                                                <input class="form-control" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Phone</label> 
+                                                                <input class="form-control" />
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
 
-                                                                                        <div class="form-group">
-                                                                                            <label>Username</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label>Address</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label>Email</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label>Phone</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
-                                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                        <div class="tab-pane fade" id="messages">
+                                            <h4>Change Password</h4>
+                                            <!-- Form Elements -->
 
-                                                                    <div class="tab-pane fade" id="messages">
-                                                                        <h4>Change Password</h4>
-                                                                        <!-- Form Elements -->
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <form role="form">
 
-                                                                        <div class="panel-body">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <form role="form">
+                                                            <div class="form-group">
+                                                                <label>Current Password</label> 
+                                                                <input class="form-control" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>New Password</label> 
+                                                                <input class="form-control" />
+                                                            </div>
 
-                                                                                        <div class="form-group">
-                                                                                            <label>Current Password</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label>New Password</label> 
-                                                                                            <input class="form-control" />
-                                                                                        </div>
+                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
 
-                                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                    <div class="tab-pane fade" id="settings">
-                                                                        <h4>History</h4>
-                                                                    </div>
-                                                                    </div>
-
-                                                                    </div>
-
-                                                                    </div>
-                                                                    <!-- /. PAGE INNER  -->
-                                                                    </div>
-                                                                    <!-- /. PAGE WRAPPER  -->
-                                                                    </div>
-                                                                    <!-- /. WRAPPER  -->
-                                                                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                                                                    <!-- JQUERY SCRIPTS -->
-                                                                    <script src="../css/assets/js/jquery-1.10.2.js"></script>
-                                                                    <!-- BOOTSTRAP SCRIPTS -->
-                                                                    <script src="../css/assets/js/bootstrap.min.js"></script>
-                                                                    <!-- METISMENU SCRIPTS -->
-                                                                    <script src="../css/assets/js/jquery.metisMenu.js"></script>
-                                                                    <!-- CUSTOM SCRIPTS -->
-                                                                    <script src="../css/assets/js/custom.js"></script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
-                                                                    </body>
-                                                                    </html>
+                                        <div class="tab-pane fade" id="settings">
+                                            <h4>History</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- /. PAGE INNER  -->
+                        </div>
+                        <!-- /. PAGE WRAPPER  -->
+                    </div>
+                    <!-- /. WRAPPER  -->
+                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                    <!-- JQUERY SCRIPTS -->
+                    <script src="../css/assets/js/jquery-1.10.2.js"></script>
+                    <!-- BOOTSTRAP SCRIPTS -->
+                    <script src="../css/assets/js/bootstrap.min.js"></script>
+                    <!-- METISMENU SCRIPTS -->
+                    <script src="../css/assets/js/jquery.metisMenu.js"></script>
+                    <!-- CUSTOM SCRIPTS -->
+                    <script src="../css/assets/js/custom.js"></script>
+
+
+                    </body>
+                    </html>
 
