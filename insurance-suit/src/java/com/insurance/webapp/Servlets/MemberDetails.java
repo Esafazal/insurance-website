@@ -31,7 +31,6 @@ public class MemberDetails extends HttpServlet {
         request.setAttribute("memberList",memberList);
         getServletContext().getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 //        response.sendRedirect("/userJsp/userProfile.jsp");
-                
 
     }
 
