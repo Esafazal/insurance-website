@@ -1,6 +1,6 @@
 <%-- 
-    Document   : makePayment
-    Created on : Mar 22, 2019, 12:03:42 AM
+    Document   : makeClaim
+    Created on : Mar 22, 2019, 12:02:46 AM
     Author     : crazydude
 --%>
 
@@ -50,13 +50,13 @@
                             <a  href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a href="../userJsp/userProfile.jsp"> Profile</a>
+                            <a  href="../userJsp/userProfile.jsp"> Profile</a>
                         </li>
                         <li>
-                            <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a  class="active-menu" href="../userJsp/makeClaim.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a  href="../userJsp/makePayment.jsp"> Make Payment</a>
                         </li>
                         <li>
                             <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
@@ -75,52 +75,37 @@
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Make Payment</h2>
+                            <h2>Make Claim</h2>
 
                         </div>
                     </div>
                     <!-- /. ROW  -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Form Elements -->
-                            <div class="panel panel-default">
+                    <hr />
+                       <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form role="form">
+                                        <p>Eligibility Criteria</p>
 
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <form role="form">
+                                        <ul>
+                                            <li>Membership must be minimum 6 months old.</li>
+                                            <li>Claim quota is not exceeded.</li>
+                                            <li>No outstanding payments.</li>
+                                        </ul> 
+                                        <button type="button"  class="btn btn-primary" onclick="window.location.href='../userJsp/claimEligible.jsp'">Check Eligibility</button>
 
-                                                <div class="form-group">
-                                                    <label>Username</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Number of Claims Done</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Claim Amount</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Annual Fee</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Outstanding Payment</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-
-                                                <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Pay Amount</button>
-
-                                            </form>
-                                        </div>
-                                    </div>
+                                        </form>
+                                </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                </div>
+                </div>
                 </div>
                 <!-- /. PAGE INNER  -->
             </div>
