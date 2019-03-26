@@ -39,7 +39,7 @@
                 <input type="text" placeholder="Enter Email" name="email" required>
 
                 <label for="phone no"><b>Phone No</b></label>
-                <input type="tel" placeholder="Enter Phone number" name="phoneno" required>
+                <input type="text" placeholder="Enter Phone number" name="phoneno" required>
 
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 

@@ -1,17 +1,16 @@
 <%-- 
-    Document   : dashboard
-    Created on : Mar 21, 2019, 6:18:14 PM
-    Author     : crazydude
+    Document   : claimEligible
+    Created on : Mar 24, 2019, 10:30:23 PM
+    Author     : DELL
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Driver's Association</title>
+        <title>Free Bootstrap Admin Template : Binary Admin</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -31,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Admin</a> 
+                    <a class="navbar-brand" href="#">Member</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -48,19 +47,19 @@
 
 
                         <li>
-                            <a class="active-menu" href="../adminJsp/dashboard.jsp"> Dashboard</a>
+                            <a  href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a  href="../userJsp/userProfile.jsp"> Profile</a>
                         </li>
                         <li>
-                            <a   href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a  class="active-menu" href="../userJsp/makeClaim.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
+                            <a  href="../userJsp/makePayment.jsp"> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../adminJsp/searchMember.jsp"> Search Member</a>
+                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
                         </li>
 
 
@@ -76,13 +75,55 @@
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Dashboard</h2>
+                            <h2>Make Claim</h2>
 
                         </div>
                     </div>
                     <!-- /. ROW  -->
                     <hr />
-
+                    <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>Select Vehicle</label> 
+                                            <select class="form-control">
+                                                <option>One Vale</option>
+                                                <option>Two Vale</option>
+                                                <option>Three Vale</option>
+                                                <option>Four Vale</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date of Incident</label> 
+                                            <input type=date class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label> 
+                                            <textarea class="form-control" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Place of Quotation</label> 
+                                            <input class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Claim Amount</label> 
+                                            <input class="form-control" />
+                                        </div>
+                                        
+                                        <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Request Claim</button>
+                                        </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>   
                 </div>
                 <!-- /. PAGE INNER  -->
             </div>
