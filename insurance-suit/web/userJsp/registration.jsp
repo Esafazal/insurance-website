@@ -33,13 +33,13 @@
                 <input type="date" placeholder="Enter Date of Birth" name="dob" required><br><br>
 
                 <label for="nic"><b>NIC</b></label>
-                <input type="text" placeholder="Enter NIC" name="nic" required>
+                <input type="text" placeholder="Enter NIC" maxlength="10"  name="nic" required>
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
 
                 <label for="phone no"><b>Phone No</b></label>
-                <input type="tel" placeholder="Enter Phone number" name="phoneno" required>
+                <input type="tel" placeholder="Enter Phone number" maxlength="10" minlength="10" name="phoneno" required>
 
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 

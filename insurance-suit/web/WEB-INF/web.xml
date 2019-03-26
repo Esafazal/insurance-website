@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>insurance-suit</display-name>
+    
     <context-param>
         <param-name>dbURL</param-name>
         <param-value>jdbc:mysql://localhost:3306/insurance_website</param-value>
     </context-param>
+    <!-- SMTP settings -->
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>dineshraman062@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>1esafazal1</param-value>
+    </context-param>
+<!--     <welcome-file-list>
+        <welcome-file>registration.jsp</welcome-file>
+    </welcome-file-list>-->
+    <!--smtp settings ends here-->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Login</servlet-class>

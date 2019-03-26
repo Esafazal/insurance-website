@@ -5,11 +5,15 @@
  */
 package com.insurance.webapp.Dao;
 
+import com.insurance.webapp.EntityBean.Admin;
 import com.insurance.webapp.EntityBean.Member;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -61,6 +65,52 @@ public class QueryDao {
         }
 
         return rowsAffected;
+    }
+    
+    public Admin adminSignIn(String username, String password){
+        
+        String DbUsername, DbPassword;
+        boolean match = false;
+        
+        try {
+            Connection connection = DBConnection.getConnection();
+            
+            String query = "SELECT * FROM `Admin` WHERE username = ? AND password = ?";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            
+            ResultSet resultSet = preparedStatement.getResultSet();
+            
+            while(resultSet.next()){
+                
+                DbUsername = resultSet.getString(username);
+                DbPassword = resultSet.getString(password);
+                
+                if(DbUsername.equals(username) && DbPassword.equals(password)){
+                    
+                    match = true;
+                }
+                else{
+                    System.out.println("MATCH "+match);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Member showMemberDetails(String userID){
+        
+        Connection connection = DBConnection.getConnection();
+        
+        String query = "SELECT * FROM Member WHERE ";
+        return null;
     }
 
 }
