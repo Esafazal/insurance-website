@@ -30,8 +30,7 @@ public class MemberDetails extends HttpServlet {
         List memberList = queryDao.getMemberDetails("1");
         
         request.setAttribute("memberList",memberList);
-        contextPath = request.getContextPath();
-        getServletContext().getRequestDispatcher(contextPath + "/userJsp/userProfile.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 //        response.sendRedirect("/userJsp/userProfile.jsp");
                 
 
