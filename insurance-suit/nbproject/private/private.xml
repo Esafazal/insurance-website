@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Dao/DBConnection.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/adminJsp/dashboard.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/adminJsp/login.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/index.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/login.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/makeClaim.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/makePayment.jsp</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/WEB-INF/web.xml</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/css/bootstrap.css</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/src/java/com/insurance/webapp/Dao/DBConnection.java</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/userJsp/success.jsp</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/userJsp/makeClaim.jsp</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/Register.java</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/userJsp/home.jsp</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/css/assets/css/custom.css</file>
+            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/css/style.css</file>
         </group>
     </open-files>
 </project-private>
