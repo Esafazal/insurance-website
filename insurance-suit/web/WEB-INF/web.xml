@@ -31,9 +31,9 @@
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MemberDetails</servlet-name>
-        <url-pattern>/userJsp/MemberDetails</url-pattern>
-    </servlet-mapping>
+<!--        <servlet-name>MemberDetails</servlet-name>
+        <url-pattern>/userJsp/userProfile.jsp</url-pattern>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>

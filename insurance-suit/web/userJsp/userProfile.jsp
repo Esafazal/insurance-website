@@ -4,8 +4,12 @@
     Author     : DELL
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
@@ -100,38 +104,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="home">
 
-                                            <form action="MemberDetails" method="get" >
-                                                <!--<div class="container">-->
-                                                <c:forEach var="pro" items="${requestScope.memberList}">
-                                                    
-                                                <label><b>Full Name: </b></label>
-                                                <input type="text" value="${pro.first_name}" name="name"><br>
-
-                                                <label><b>Username: </b></label>
-                                                <input type="text" value="${pro.username}" name="username"><br>
-
-                                                <label><b>Address: </b></label>
-                                                <input type="text" value="${pro.address}" name="address"><br>
-                                                    
-                                                <label><b>Date of Birth: </b></label>
-                                                <input type="text" value="${pro.dob}" name="dob"><br>
-                                                    
-                                                <label><b>Date of Registration: </b></label>
-                                                <input type="text" value="${pro.date_of_registration}" name="date_of_registration"><br>
-                                                    
-                                                <label><b>NIC: </b></label>
-                                                <input type="text" value="${pro.nic}" name="nic"><br>
-                                                    
-                                                <label><b>Email: </b></label>
-                                                <input type="text" value="${pro.email}" name="email"><br>
-                                                 
-                                                <label><b>Phone No: </b></label>
-                                                <input type="text" value="${pro.phone_no}" name="phone_no"><br>
-
-                                                </div>
-                                                </c:forEach>
-                                                </form>    
-        <!--                                            <h4><b>Personal Details</b></h4>
+<!--                                            
+-->                                                 <h4><b>Personal Details</b></h4>
                                                     <p><strong>Name:</strong>&nbsp; ${memberList.first_name}</p>
                                                     <p><strong>Username:</strong>&nbsp; ${memberList.username}</p>
                                                     <p><strong>Address:</strong>&nbsp; ${memberList.address}</p>
@@ -139,7 +113,9 @@
                                                     <p><strong>Date of Registration:</strong> ${memberList.date_of_registration}</p>
                                                     <p><strong>NIC:</strong>&nbsp; ${memberList.nic}</p>
                                                     <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
-                                                    <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>-->
+                                                    <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
+                                                 
+                                                </form>    -->
                                        </div>
                                                 <div class="tab-pane fade" id="profile">
                                                     <h4>Edit Details</h4>
