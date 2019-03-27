@@ -23,10 +23,6 @@
         <param-name>pass</param-name>
         <param-value>1esafazal1</param-value>
     </context-param>
-<!--     <welcome-file-list>
-        <welcome-file>registration.jsp</welcome-file>
-    </welcome-file-list>-->
-    <!--smtp settings ends here-->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Login</servlet-class>
