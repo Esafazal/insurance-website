@@ -1,0 +1,17 @@
+/README
+/db2_dd_datasource.xml
+/db2_jcc_datasource.xml
+/javadb_type4_datasource.xml
+/microsoft_dd_datasource.xml
+/microsoft_inet_datasource.xml
+/microsoft_jtds_datasource.xml
+/microsoft_sqlserver2000_datasource.xml
+/microsoft_sqlserver2005_datasource.xml
+/mysql_type4_datasource.xml
+/oracle_dd_datasource.xml
+/oracle_inet_datasource.xml
+/oracle_type4_datasource.xml
+/postgresql_type4_datasource.xml
+/sybase_dd_datasource.xml
+/sybase_inet_datasource.xml
+/sybase_jconn_datasource.xml

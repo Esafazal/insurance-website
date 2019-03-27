@@ -1,0 +1,15 @@
+/ejbtimer_db2.sql
+/ejbtimer_derby.sql
+/ejbtimer_mssqlserver.sql
+/ejbtimer_mysql.sql
+/ejbtimer_oracle.sql
+/ejbtimer_pointbase.sql
+/ejbtimer_sybase.sql
+/ejbtimer_symfoware.sql
+/jsr352-db2.sql
+/jsr352-derby.sql
+/jsr352-mssqlserver.sql
+/jsr352-mysql.sql
+/jsr352-oracle.sql
+/jsr352-postgresql.sql
+/jsr352-sybase-ace.sql
