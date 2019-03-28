@@ -23,17 +23,17 @@
         <param-value>1esafazal1</param-value>
     </context-param>
     <servlet>
-        <servlet-name>MemberDetails</servlet-name>
-        <servlet-class>com.insurance.webapp.Servlets.MemberDetails</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Register</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
-<!--        <servlet-name>MemberDetails</servlet-name>
-        <url-pattern>/userJsp/userProfile.jsp</url-pattern>
-    </servlet-mapping>-->
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/adminJsp/AdminLogin</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>

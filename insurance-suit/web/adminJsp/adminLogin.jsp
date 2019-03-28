@@ -13,19 +13,19 @@
         <link href="../css/style.css" rel="stylesheet">
     </head>
     <body>
-        <form>
+        <form action="AdminLogin" method="POST">
             <div class="imgcontainer">
                 <img src="../css/img/login.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="username" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit" onclick="window.location.href='dashboard.jsp'">Login</button>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <button type="submit">Login</button>
+                <!--<button type="submit" onclick="window.location.href='dashboard.jsp'">Login</button>-->
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>

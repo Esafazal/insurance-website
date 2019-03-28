@@ -5,10 +5,8 @@
  */
 package com.insurance.webapp.Dao;
 
-import com.insurance.webapp.EntityBean.Admin;
 import com.insurance.webapp.EntityBean.Member;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,40 +66,32 @@ public class QueryDao {
         return rowsAffected;
     }
 
-    public Admin adminSignIn(String username, String password) {
+    public boolean adminSignIn(String username, String password) {
 
-        String DbUsername, DbPassword;
         boolean match = false;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM `Admin` WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM `Admin` WHERE username=? AND password=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
 
-            ResultSet resultSet = preparedStatement.getResultSet();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-
-                DbUsername = resultSet.getString(username);
-                DbPassword = resultSet.getString(password);
-
-                if (DbUsername.equals(username) && DbPassword.equals(password)) {
-
-                    match = true;
-                } else {
-                    System.out.println("MATCH " + match);
-                }
+                match = true;
             }
 
         } catch (SQLException ex) {
+
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+
+        return match;
     }
 
     public ArrayList<Member> getMemberDetails(String memberId) {
