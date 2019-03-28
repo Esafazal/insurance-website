@@ -104,9 +104,8 @@ public class QueryDao {
         return null;
     }
 
-    public Member getMemberDetails(String memberId) {
-        
-        Member member = new Member();
+    public ArrayList<Member> getMemberDetails(String memberId) {
+
         try {
             Connection connection = DBConnection.getConnection();
 
@@ -115,10 +114,15 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, memberId);
-//            ArrayList<Member> memberList = new ArrayList();
+//            preparedStatement.executeQuery(query);
+
+            ArrayList<Member> memberList = new ArrayList();
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+
+                Member member = new Member();
 
                 member.setFirst_name(resultSet.getString("first_name"));
                 member.setLast_name(resultSet.getString("last_name"));
@@ -130,91 +134,16 @@ public class QueryDao {
                 member.setPhone_no(resultSet.getString("phone_no"));
                 member.setUsername(resultSet.getString("username"));
 
-//                memberList.add(member);
+                memberList.add(member);
 
-//                return memberList;
+                return memberList;
+
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return member;
-    }
-
-    public int editUserDetails(Member member) {
-
-        int rowsAffected = 0;
-
-        try {
-            Connection connection = DBConnection.getConnection();
-
-            String query = "INSERT INTO `claim`("
-                    + "`claim_date`,"
-                    + " `claim_amount`,"
-                    + " `description`, "
-                    + "`membership_id`,"
-                    + " `incident_date`,"
-                    + " `quotation_place`,"
-                    + " `vehicle_number`)"
-                    + " VALUES (?,?,?,?,?,?,?)";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setDate(1, (new java.sql.Date(member.getClaim_date().getTime())));
-            preparedStatement.setInt(2, member.getClaim_amount());
-            preparedStatement.setString(3, member.getClaim_description());
-            preparedStatement.setString(4, member.getMembership_id());
-            preparedStatement.setDate(5, (new java.sql.Date(member.getIncident_date().getTime())));
-            preparedStatement.setString(6, member.getQuotation_place());
-            preparedStatement.setString(7, member.getClaim_vehicle_number());
-
-            if (preparedStatement.execute()) {
-                rowsAffected++;
-            };
-
-        } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
-        }
-
-        return rowsAffected;
-    }
-    
-    public int requestClaim(Member member) {
-
-        int rowsAffected = 0;
-
-        try {
-            Connection connection = DBConnection.getConnection();
-
-            String query = "INSERT INTO `claim`("
-                    + "`claim_date`,"
-                    + " `claim_amount`,"
-                    + " `description`, "
-                    + "`membership_id`,"
-                    + " `incident_date`,"
-                    + " `quotation_place`,"
-                    + " `vehicle_number`)"
-                    + " VALUES (?,?,?,?,?,?,?)";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setDate(1, (new java.sql.Date(member.getClaim_date().getTime())));
-            preparedStatement.setInt(2, member.getClaim_amount());
-            preparedStatement.setString(3, member.getClaim_description());
-            preparedStatement.setString(4, member.getMembership_id());
-            preparedStatement.setDate(5, (new java.sql.Date(member.getIncident_date().getTime())));
-            preparedStatement.setString(6, member.getQuotation_place());
-            preparedStatement.setString(7, member.getClaim_vehicle_number());
-
-            if (preparedStatement.execute()) {
-                rowsAffected++;
-            };
-
-        } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
-        }
-
-        return rowsAffected;
+        return null;
     }
 
 }

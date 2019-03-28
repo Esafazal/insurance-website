@@ -4,7 +4,7 @@
     Author     : DELL
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -89,23 +89,25 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#home" data-toggle="tab">Details</a>
                                         </li>
-                                        <li class=""><a href="#profile" data-toggle="tab">Edit Details</a>
+                                        <li class=""><a href="#profile" data-toggle="tab">Edit</a>
                                         </li>
                                         <li class=""><a href="#messages" data-toggle="tab">Password</a>
+                                        </li>
+                                        <li class=""><a href="#settings" data-toggle="tab">History</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="home">
                                             <h4><b>Personal Details</b></h4>
-                                            <p><strong>Name :</strong>&nbsp; ${memberList.first_name}</p>
-                                            <p><strong>Username :</strong>&nbsp; ${memberList.username}</p>
-                                            <p><strong>Address :</strong>&nbsp; ${memberList.address}</p>
-                                            <p><strong>Date of Birth :</strong>&nbsp; ${memberList.dob}</p>
-                                            <p><strong>Date of Registration :</strong>&nbsp; ${memberList.date_of_registration}</p>
-                                            <p><strong>NIC :</strong>&nbsp; ${memberList.nic}</p>
+                                            <p><strong>Name:</strong>&nbsp; ${memberList.first_name}</p>
+                                            <p><strong>Username:</strong>&nbsp; ${memberList.username}</p>
+                                            <p><strong>Address:</strong>&nbsp; ${memberList.address}</p>
+                                            <p><strong>Date of Birth:</strong> ${memberList.dob}</p>
+                                            <p><strong>Date of Registration:</strong> ${memberList.date_of_registration}</p>
+                                            <p><strong>NIC:</strong>&nbsp; ${memberList.nic}</p>
                                             <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
-                                            <p><strong>Phone No :</strong>&nbsp; ${memberList.phone_no}</p>
+                                            <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
                                         </div>
                                         <div class="tab-pane fade" id="profile">
                                             <h4>Edit Details</h4>
@@ -115,23 +117,23 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <form role="form" action="MemberEditDetails" method="POST">
+                                                        <form role="form">
 
                                                             <div class="form-group">
                                                                 <label>Username</label> 
-                                                                <input class="form-control" placeholder="Enter New Username" name="username"/>
+                                                                <input class="form-control" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Address</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Address" name="address"/>
+                                                                <input class="form-control" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Email</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Email" name="email"/>
+                                                                <input class="form-control" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Phone</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Phone Number" name="phone"/>
+                                                                <input class="form-control" />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
 
@@ -151,11 +153,11 @@
 
                                                             <div class="form-group">
                                                                 <label>Current Password</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter Current Password" name="currentpassword"/>
+                                                                <input class="form-control" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>New Password</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Password" name="newpassword"/>
+                                                                <input class="form-control" />
                                                             </div>
 
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -165,6 +167,10 @@
                                             </div>
                                         </div>
 
+
+                                        <div class="tab-pane fade" id="settings">
+                                            <h4>History</h4>
+                                        </div>
                                     </div>
 
                                 </div>

@@ -50,7 +50,7 @@
                             <a  href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
+                            <a href="../userJsp/userProfile.jsp"> Profile</a>
                         </li>
                         <li>
                             <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
