@@ -6,6 +6,7 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
+import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -26,10 +27,11 @@ public class MemberDetails extends HttpServlet {
             throws ServletException, IOException {
         
         QueryDao queryDao = new QueryDao();
-        List memberList = queryDao.getMemberDetails("1");
+//        List memberList = queryDao.getMemberDetails("1");
+        Member memberList = queryDao.getMemberDetails("1");
         
         request.setAttribute("memberList",memberList);
-        getServletContext().getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 //        response.sendRedirect("/userJsp/userProfile.jsp");
 
     }
