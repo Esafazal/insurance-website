@@ -1,0 +1,6 @@
+/appclientlogin.conf
+/client.policy
+/javaee.client.policy
+/restrict.client.policy
+/wss-client-config-1.0.xml
+/wss-client-config-2.0.xml

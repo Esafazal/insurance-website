@@ -1,0 +1,16 @@
+/admin-keyfile
+/cacerts.jks
+/default-logging.properties
+/default-web.xml
+/domain-passwords
+/domain.xml
+/glassfish-acc.xml
+/javaee.server.policy
+/keyfile
+/keystore.jks
+/logging.properties
+/login.conf
+/restrict.server.policy
+/server.policy
+/wss-server-config-1.0.xml
+/wss-server-config-2.0.xml
