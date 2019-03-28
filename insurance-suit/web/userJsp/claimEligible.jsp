@@ -89,34 +89,33 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form">
+                                    <form role="form" action="MemberMakeClaim" method="POST">
                                         <div class="form-group">
                                             <label>Select Vehicle</label> 
-                                            <select class="form-control">
-                                                <option>One Vale</option>
-                                                <option>Two Vale</option>
-                                                <option>Three Vale</option>
-                                                <option>Four Vale</option>
+                                            <select class="form-control" name="vehiclenumber" required>
+                                                <option>Select Vehicle</option>
+                                                <option>ABC-1222</option>
+                                                <option>CAB-2211</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Date of Incident</label> 
-                                            <input type=date class="form-control" />
+                                            <input type=date class="form-control" placeholder="Enter Date of Incident" name="incidentdate" required/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Description</label> 
-                                            <textarea class="form-control" rows="5"></textarea>
+                                            <label>Claim Description</label> 
+                                            <textarea type="text" class="form-control" rows="5" placeholder="Enter Claim Description" name="claimdescription" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Place of Quotation</label> 
-                                            <input class="form-control" />
+                                            <input type="text" class="form-control" placeholder="Enter Place of Quotation" name="quoationplace" required/>
                                         </div>
                                         <div class="form-group">
                                             <label>Claim Amount</label> 
-                                            <input class="form-control" />
+                                            <input type="text" class="form-control" placeholder="Enter Claim Amount" name="claimamount" required/>
                                         </div>
                                         
-                                        <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Request Claim</button>
+                                        <button type="submit"  class="btn btn-primary">Request Claim</button>
                                         </form>
                                 </div>
                                 </div>

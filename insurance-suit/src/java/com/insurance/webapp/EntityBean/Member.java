@@ -26,6 +26,14 @@ public class Member {
     private String phone_no;
     private String username;
     private String password;
+    private int claim_id;
+    private Date claim_date;
+    private Date incident_date;
+    private int claim_amount;
+    private String claim_description;
+    private String quotation_place;
+    private String claim_vehicle_number;
+    private String membership_id;
 
 //    public Member(String first_name, String last_name, String address, Date dob, String nic, Date date_of_registration, String email, String phone_no, String username, String password) {
 //        this.first_name = first_name;
@@ -126,6 +134,70 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getClaim_id() {
+        return claim_id;
+    }
+
+    public void setClaim_id(int claim_id) {
+        this.claim_id = claim_id;
+    }
+
+    public Date getClaim_date() {
+        return claim_date;
+    }
+
+    public void setClaim_date(Date claim_date) {
+        this.claim_date = claim_date;
+    }
+
+    public Date getIncident_date() {
+        return incident_date;
+    }
+
+    public void setIncident_date(Date incident_date) {
+        this.incident_date = incident_date;
+    }
+
+    public int getClaim_amount() {
+        return claim_amount;
+    }
+
+    public void setClaim_amount(int claim_amount) {
+        this.claim_amount = claim_amount;
+    }
+
+    public String getClaim_description() {
+        return claim_description;
+    }
+
+    public void setClaim_description(String claim_description) {
+        this.claim_description = claim_description;
+    }
+
+    public String getQuotation_place() {
+        return quotation_place;
+    }
+
+    public void setQuotation_place(String quotation_place) {
+        this.quotation_place = quotation_place;
+    }
+
+    public String getClaim_vehicle_number() {
+        return claim_vehicle_number;
+    }
+
+    public void setClaim_vehicle_number(String claim_vehicle_number) {
+        this.claim_vehicle_number = claim_vehicle_number;
+    }
+
+    public String getMembership_id() {
+        return membership_id;
+    }
+
+    public void setMembership_id(String membership_id) {
+        this.membership_id = membership_id;
     }
 
     
