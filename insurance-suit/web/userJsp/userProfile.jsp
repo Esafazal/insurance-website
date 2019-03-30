@@ -50,7 +50,7 @@
                             <a href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a class="active-menu" href=""> Profile</a>
+                            <a class="active-menu" href="<%= response.encodeURL("MemberEditDetails")%>" > Profile</a>
                         </li>
                         <li>
                             <a href="../userJsp/makeClaim.jsp"> Make Claim</a>
@@ -131,7 +131,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Phone</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Phone Number" name="phone"/>
+                                                                <input type="tel" class="form-control" placeholder="Enter New Phone Number" maxlength="10"s name="phoneno"/>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
 
@@ -147,12 +147,12 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <form role="form">
+                                                        <form role="form" action="MemberEditPassword" method="POST">
 
-                                                            <div class="form-group">
+<!--                                                            <div class="form-group">
                                                                 <label>Current Password</label> 
                                                                 <input type="text" class="form-control" placeholder="Enter Current Password" name="currentpassword"/>
-                                                            </div>
+                                                            </div>-->
                                                             <div class="form-group">
                                                                 <label>New Password</label> 
                                                                 <input type="text" class="form-control" placeholder="Enter New Password" name="newpassword"/>

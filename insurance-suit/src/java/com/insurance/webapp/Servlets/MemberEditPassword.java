@@ -8,7 +8,6 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,25 +18,41 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "MemberDetails", urlPatterns = {"/MemberDetails"})
-public class MemberDetails extends HttpServlet {
+@WebServlet(name = "MemberEditPassword", urlPatterns = {"/MemberEditPassword"})
+public class MemberEditPassword extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        QueryDao queryDao = new QueryDao();
-        Member memberList = queryDao.getMemberDetails("1");
-        
-        request.setAttribute("memberList",memberList);
-        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
-
+        response.sendRedirect("/userJsp/userProfile.jsp");
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
+        Member member = new Member();
+
+//        String currentpassword = request.getParameter("currentpassword");
+        String newpassword = request.getParameter("newpassword");
+
+        member.setPassword(newpassword);
+
+        QueryDao dao = new QueryDao();
+        int rows = dao.editMemberPassword(member,"1");
+
+        String message = null;
+
+        if (rows == 0) {
+            message = "Couldn't change password. Something went wrong!";
+            
+            System.out.println("");
+        } else {
+            message = "Password changed Successfully!";
+        }
+        getServletContext().getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
+
+    
     }
 
     /**

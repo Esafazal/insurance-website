@@ -7,16 +7,7 @@ package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
-import com.insurance.webapp.Utils.AutoGenerate;
-import com.insurance.webapp.Utils.DateUtil;
-import com.insurance.webapp.Utils.EmailUtility;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +25,7 @@ public class MemberEditDetails extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-//        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+        response.sendRedirect("/userJsp/userProfile.jsp");
     }
 
     @Override
@@ -55,20 +46,22 @@ public class MemberEditDetails extends HttpServlet {
         member.setPhone_no(phone_no);
 
         QueryDao dao = new QueryDao();
-        int rows = dao.editUserDetails(member);
+        int rows = dao.editMemberDetails(member,"1");
 
         String message = null;
 
         if (rows == 0) {
-            message = "Couldn't Register. Something went wrong!";
+            message = "Couldn't update Details. Something went wrong!";
             
             System.out.println("");
         } else {
-            message = "Registered Successfully";
+            message = "Updated Successfully!";
         }
-        getServletContext().getRequestDispatcher("/userJsp/success.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
 
     }
+    
+    
 
     @Override
     public String getServletInfo() {

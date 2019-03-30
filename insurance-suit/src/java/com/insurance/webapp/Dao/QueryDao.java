@@ -141,32 +141,22 @@ public class QueryDao {
         return member;
     }
 
-    public int editUserDetails(Member member) {
+    public int editMemberDetails(Member member,String memberId) {
 
         int rowsAffected = 0;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "INSERT INTO `claim`("
-                    + "`claim_date`,"
-                    + " `claim_amount`,"
-                    + " `description`, "
-                    + "`membership_id`,"
-                    + " `incident_date`,"
-                    + " `quotation_place`,"
-                    + " `vehicle_number`)"
-                    + " VALUES (?,?,?,?,?,?,?)";
+            String query ="UPDATE member SET address = ?, email = ?, phone_no = ?, username = ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setDate(1, (new java.sql.Date(member.getClaim_date().getTime())));
-            preparedStatement.setInt(2, member.getClaim_amount());
-            preparedStatement.setString(3, member.getClaim_description());
-            preparedStatement.setString(4, member.getMembership_id());
-            preparedStatement.setDate(5, (new java.sql.Date(member.getIncident_date().getTime())));
-            preparedStatement.setString(6, member.getQuotation_place());
-            preparedStatement.setString(7, member.getClaim_vehicle_number());
+            preparedStatement.setString(1, member.getAddress());
+            preparedStatement.setString(2, member.getEmail());
+            preparedStatement.setString(3, member.getPhone_no());
+            preparedStatement.setString(4, member.getUsername());
+            preparedStatement.setString(5, memberId);
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -178,6 +168,33 @@ public class QueryDao {
 
         return rowsAffected;
     }
+    
+    public int editMemberPassword(Member member,String memberId) {
+
+        int rowsAffected = 0;
+
+        try {
+            Connection connection = DBConnection.getConnection();
+
+            String query ="UPDATE `member` SET `password`= ? WHERE member_id = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, member.getPassword());
+            preparedStatement.setString(2, memberId);
+
+            if (preparedStatement.execute()) {
+                rowsAffected++;
+            };
+
+        } catch (SQLException sQLException) {
+            sQLException.printStackTrace();
+        }
+
+        return rowsAffected;
+    }
+    
+    
     
     public int requestClaim(Member member) {
 
