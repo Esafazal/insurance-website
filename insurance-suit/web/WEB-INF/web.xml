@@ -27,6 +27,7 @@
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>AdminLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
     </servlet>
@@ -42,9 +43,34 @@
         <servlet-name>MemberLogin</servlet-name>
         <url-pattern>/userJsp/MemberLogin</url-pattern>
     </servlet-mapping>
+=======
+        <servlet-name>MemberLogin</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reviewClaims</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectClaims</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.RejectClaims</servlet-class>
+    </servlet>
+>>>>>>> backupbranchhome
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberLogin</servlet-name>
+        <url-pattern>/userJsp/MemberLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reviewClaims</servlet-name>
+        <url-pattern>/adminJsp/reviewClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectClaims</servlet-name>
+        <url-pattern>/adminJsp/RejectClaims</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

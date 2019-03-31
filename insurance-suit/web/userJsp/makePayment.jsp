@@ -4,7 +4,22 @@
     Author     : crazydude
 --%>
 
+<%@page import="com.insurance.webapp.Dao.QueryDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% 	
+    if ( session.getAttribute("username") == null) 
+	{
+		response.sendRedirect("memberLogin.jsp");
+	}
+        
+    String uname = session.getAttribute("username").toString();
+
+       QueryDao qd = new QueryDao();
+       String id = qd.getUserId(uname);
+
+%>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -19,6 +34,9 @@
         <link href="../css/assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        
+        
+        
     </head>
     <body>
         <div id="wrapper">
@@ -88,30 +106,25 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form role="form">
+                                            <form action="addPayment" method="post" role="form">
 
                                                 <div class="form-group">
-                                                    <label>Username</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Number of Claims Done</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Claim Amount</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Membership Fee</label> 
+                                                    <input type="text" id="mem" name="memFee" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Annual Fee</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <input type="text" id="ann" name="annualFee"  class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Total Outstanding Payment</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Total Outstanding</label> 
+                                                    <input type="text" id="out" name="totOutstanding" class="form-control" onclick="addNumbers()" />
+                                                    <input type="text" hidden name="memID" value="<%=id%>" />
                                                 </div>
+                                                
 
-                                                <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Pay Amount</button>
+                                                <button type="submit"  class="btn btn-primary" on
+                                                        ="window.location.href='#'">Pay Amount</button>
 
                                             </form>
                                         </div>
@@ -137,6 +150,22 @@
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
 
+         <script>
+            function addNumbers() {
+                var txtFirstNumberValue = document.getElementByName("memFee").value;
+                var txtSecondNumberValue = document.getElementBNam("annualFee").value;
+                if (txtFirstNumberValue == "")
+                    txtFirstNumberValue = 0;
+                if (txtSecondNumberValue == "")
+                    txtSecondNumberValue = 0;
+
+                
+                if (!isNaN(result)) {
+                       document.getElementByName("totOutstanding").value(txtFirstNumberValue + txtSecondNumberValue);
+                }
+            }
+        </script>
+        
 
     </body>
 </html>
