@@ -1,11 +1,28 @@
 <%-- 
-    Document   : reviewClaims
-    Created on : Mar 22, 2019, 12:05:26 AM
-    Author     : crazydude
+    Document   : home
+    Created on : Mar 21, 2019, 6:11:48 PM
+   
 --%>
-
+<%@page import="com.insurance.webapp.Dao.QueryDao"%>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>     
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+<%
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet res = null;
+
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/insurance_website", "root", "");
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
@@ -79,8 +96,143 @@
 
                         </div>
                     </div>
-                    <!-- /. ROW  -->
+
                     <hr />
+
+
+                    <style>
+                        table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+
+                        td, th {
+                            border: 1px solid #dddddd;
+                            text-align: left;
+                            padding: 8px;
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                        }
+                    </style>
+
+
+
+                        <table>
+                            <tr>
+                                <th>Claim Id</th>
+                                <th>Vehicle No</th>
+                                <th>Date of Incident</th>
+                                <th>Claim Date</th>
+                                <th>Description</th>
+                                <th>Quotation Place</th>
+                                <th>Quotation Amount</th>
+                                <th>Review</th>
+
+                            </tr>
+
+                            <%                try {
+
+                                    String query = "select * from claim";
+                                    stmt = conn.createStatement();
+                                    res = stmt.executeQuery(query);
+
+                                    while (res.next()) {
+
+                            %>
+                            <form action="reviewClaims?claimId=<%=res.getString("claim_id")%>" method="POST">
+                                <tr>
+                                    <td><%=res.getString("claim_id")%></td>
+                                    <td><%=res.getString("vehicle_number")%></td>
+                                    <td><%=res.getString("incident_date")%></td>
+                                    <td><%=res.getString("claim_date")%></td>
+                                    <td><%=res.getString("description")%></td>
+                                    <td><%=res.getString("quotation_place")%></td>
+                                    <td><%=res.getString("claim_amount")%></td>
+                                    <td><%=res.getString("review")%></td>
+                                    <td><center>                                    
+                                            <style>
+
+
+                                                .button {
+                                                    background-color: #4CAF50;
+                                                    border: none;
+                                                    color: white;
+                                                    padding: 15px 32px;
+                                                    text-align: center;
+                                                    text-decoration: none;
+                                                    display: inline-block;
+                                                    font-size: 16px;
+                                                    margin: 4px 2px;
+                                                    cursor: pointer;
+                                                    border-radius:10px;
+                                                }
+                                            </style>
+
+                                            <input type="submit" class="button" value="Accept">
+                                                </form>
+                                                <form  action="RejectClaims?claimId=<%=res.getString("claim_id")%>" method="POST">
+                                                    <input style="background-color: red" type="submit" class="button" value="Reject">
+                                                </form>
+                                        </center>
+                                    </td>
+                                </tr>
+
+
+                                <%                    }
+
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+
+                                %>
+
+                        </table>
+
+
+
+
+
+                        <!--                    <table border = "1">
+                                                <tr>
+                                                    <th>Vehicle No</th>
+                                                    <th>Date of Incident</th>
+                                                    <th>Claim Date</th>
+                                                    <th>Description</th>
+                                                    <th>Quotation Place</th>
+                                                    <th>Quotation Amt</th>
+                                                    <th></th>
+                                                </tr>
+                        
+                                                <tr>
+                                                    
+                                                        <th>Membership ID</th>
+                                                        <th>Vehicle No</th>
+                                                        <th>Date of Incident</th>
+                                                        <th>Claim Date</th>
+                                                        <th>Description</th>
+                                                        <th>Quotation Place</th>
+                                                        <th>Quotation Amount</th>
+                                                    </
+                                                        <th></th>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <b>
+                                                        <th>Membership ID</th>
+                                                        <th>Vehicle No</th>
+                                                        <th>Date of Incident</th>
+                                                        <th>Claim Date</th>
+                                                        <th>Description</th>
+                                                        <th>Quotation Place</th>
+                                                        <th>Quotation Amount</th>
+                                                    </b>
+                                                        <th></th>
+                                                </tr>
+                        
+                                            </table>-->
 
                 </div>
                 <!-- /. PAGE INNER  -->

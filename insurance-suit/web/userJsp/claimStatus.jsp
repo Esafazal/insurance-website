@@ -3,8 +3,27 @@
     Created on : Mar 22, 2019, 12:03:03 AM
     Author     : crazydude
 --%>
-
+<%@page import="com.insurance.webapp.Dao.DBConnection"%>
+<%@page import="com.insurance.webapp.Dao.QueryDao"%>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>     
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet res = null;
+
+    String uname = session.getAttribute("username").toString();
+    QueryDao queryDao = new QueryDao();
+    String userID = queryDao.getUserId(uname);
+
+    System.out.println(userID);
+
+%>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -80,6 +99,70 @@
                     </div>
                     <!-- /. ROW  -->
                     <hr />
+                    <style>
+                        table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+
+                        td, th {
+                            border: 1px solid #dddddd;
+                            text-align: left;
+                            padding: 8px;
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                        }
+                    </style>
+
+                    <table>
+                        <tr>
+                            <th>Claim Id</th>
+                            <th>Vehicle No</th>
+                            <th>Date of Incident</th>
+                            <th>Claim Date</th>
+                            <th>Description</th>
+                            <th>Quotation Place</th>
+                            <th>Quotation Amount</th>
+                            <th>Review</th>
+
+                        </tr>
+
+                        <%                try {
+                                conn = DBConnection.getConnection();
+
+                                String query = "select * from claim where membership_id = '" + userID + "' ";
+                                stmt = conn.createStatement();
+                                res = stmt.executeQuery(query);
+
+                                while (res.next()) {
+
+                        %>
+
+                        <tr>
+                            <td><%=res.getString("claim_id")%></td>
+                            <td><%=res.getString("vehicle_number")%></td>
+                            <td><%=res.getString("incident_date")%></td>
+                            <td><%=res.getString("claim_date")%></td>
+                            <td><%=res.getString("description")%></td>
+                            <td><%=res.getString("quotation_place")%></td>
+                            <td><%=res.getString("claim_amount")%></td>
+                            <td><%=res.getString("review")%></td>
+
+                        </tr>
+
+
+                        <%                    }
+
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+
+                        %>
+
+                    </table>
 
                 </div>
                 <!-- /. PAGE INNER  -->

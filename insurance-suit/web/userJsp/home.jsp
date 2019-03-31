@@ -1,20 +1,42 @@
 <%-- 
     Document   : home
     Created on : Mar 21, 2019, 6:11:48 PM
-   
---%>
-
+    Author:Nadee 
+--%>    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet res = null;
+                ResultSet res2 = null;
+		
+		String uname = session.getAttribute("username").toString();
+                QueryDao queryDao = new QueryDao();
+                String userID = queryDao.getUserId(uname);
+               
+                System.out.println(userID);
+	
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/insurance_website", "root", "");
+		}
+		
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	
+%>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
-        <title>Driver's Association</title>
-=======
+
         <title>Home page</title>
->>>>>>> Nadee/home
+
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -119,23 +141,34 @@
                                 services to members of Sanasa societies and other CBOs of whom majority are in the rural sector.</p>
 
 
-                            <div style="align-content: center" >
-                                <button style=" 
-                                        background-color: #4CAF50; 
-                                        border: none;
-                                        color: white ;
-                                        padding: 20px;
-                                        text-align: center;
-                                        text-decoration: none;
-                                        /*display: inline-block;*/
-                                        font-size: 16px;
-                                        margin: 4px 2px;
-                                        cursor: pointer;
-                                        border-radius: 12px;
-                                        align-self: center"
-
-                                        >Make a Payment</button>
-                            </div>
+                            <%
+				try { 
+					stmt=conn.createStatement();
+					String sql2 ="SELECT * FROM membership where member_id = '"+userID+"'";
+									
+					res = stmt.executeQuery(sql2);
+					while(res.next()){
+                                                     
+                                        double amt = 5000;
+                                        amt = amt - res.getDouble("amount");
+										
+                                  
+                            %>
+                               <h2 style="color:green;"><b>Outstanding Balance : <%=amt%></b></h2>--                            
+                            <%
+					}
+				}
+									
+				catch (Exception e) {
+										
+                                    e.printStackTrace();
+										
+				}
+							
+							
+							
+			%>
+							
 
                     </div>  
 

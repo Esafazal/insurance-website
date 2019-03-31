@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,6 +104,31 @@ public class QueryDao {
         }
         return null;
     }
+    
+    public Boolean MemberLogin(String username, String password){
+          boolean match = false;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT * FROM member WHERE username=? AND password=? ";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                
+                match = true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return match;
+    }
 
     public ArrayList<Member> getMemberDetails(String memberId) {
 
@@ -145,5 +171,34 @@ public class QueryDao {
         }
         return null;
     }
+    
+    public String getUserId(String username) {
+        
+        try{
+        
+        Connection conn = DBConnection.getConnection();
+        String query = "SELECT * FROM member where username = '"+username+"'";
+        Statement stmt = conn.createStatement();
+        
+        ResultSet res = stmt.executeQuery(query);
+        String uID = null;
+        
+        while(res.next()){
+            uID = res.getString("member_id");
+        }
+        
+        
+         return uID;
+        
+    }
+      
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+   
+    
 
 }

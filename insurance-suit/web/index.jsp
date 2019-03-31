@@ -34,7 +34,7 @@
             <div class="nav-content hideNav hidden">
                <ul class="nav-list vcenter">
                   <li class="nav-item"><a class="item-anchor" href="adminJsp/adminLogin.jsp">Admin Sign In</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="userJsp/memberLogin.jsp">Member Sign In</a></li>
+                  <li class="nav-item"><a class="item-anchor" href="<%=response.encodeURL("userJsp/MemberLogin")%>">Member Sign In</a></li>
                   <li class="nav-item"><a class="item-anchor" href="userJsp/registration.jsp">Register</a></li>
                </ul>
             </div>
