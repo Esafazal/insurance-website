@@ -18,39 +18,45 @@ import javax.servlet.http.HttpSession;
  *
  * @author crazydude
  */
-@WebServlet(name = "AdminLogin", urlPatterns = {"/AdminLogin"})
-public class AdminLogin extends HttpServlet {
+@WebServlet(name = "MemberLogin", urlPatterns = {"/MemberLogin"})
+public class MemberLogin extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-           request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
         QueryDao queryDao = new QueryDao();
-        boolean valid = queryDao.adminSignIn(username, password);
-
-        if (valid) {
-
+        boolean match = queryDao.MemberSignIn(username, password);
+        
+        if(match){
+            
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-
-            request.getRequestDispatcher("/adminJsp/dashboard.jsp").forward(request, response);
-
-        } else {
+            
+            request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
+        }
+        else{
             String errorMessage = "Invalid Credentials, please login again!";
             request.setAttribute("error", errorMessage);
-            request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
-
+            request.getRequestDispatcher("/userJsp/home.jsps").forward(request, response);
         }
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

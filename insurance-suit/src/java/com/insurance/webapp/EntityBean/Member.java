@@ -26,19 +26,10 @@ public class Member {
     private String phone_no;
     private String username;
     private String password;
-
-//    public Member(String first_name, String last_name, String address, Date dob, String nic, Date date_of_registration, String email, String phone_no, String username, String password) {
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.address = address;
-//        this.dob = dob;
-//        this.nic = nic;
-//        this.date_of_registration = date_of_registration;
-//        this.email = email;
-//        this.phone_no = phone_no;
-//        this.username = username;
-//        this.password = password;
-//    }
+    private String vehicle_type;
+    private String vehicle_number;
+    private String vehicle_model;
+    private String vehicle_condition;
 
     public int getMember_id() {
         return member_id;
@@ -126,6 +117,38 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getVehicle_type() {
+        return vehicle_type;
+    }
+
+    public void setVehicle_type(String vehicle_type) {
+        this.vehicle_type = vehicle_type;
+    }
+
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
+    }
+
+    public String getVehicle_model() {
+        return vehicle_model;
+    }
+
+    public void setVehicle_model(String vehicle_model) {
+        this.vehicle_model = vehicle_model;
+    }
+
+    public String getVehicle_condition() {
+        return vehicle_condition;
+    }
+
+    public void setVehicle_condition(String vehicle_condition) {
+        this.vehicle_condition = vehicle_condition;
     }
 
     

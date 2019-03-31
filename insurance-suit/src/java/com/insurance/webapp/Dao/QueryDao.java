@@ -55,6 +55,11 @@ public class QueryDao {
             preparedStatement.setString(9, member.getUsername());
             preparedStatement.setString(10, member.getPassword());
 
+            preparedStatement.setString(11, member.getVehicle_type());
+            preparedStatement.setString(12, member.getVehicle_number());
+            preparedStatement.setString(12, member.getVehicle_model());
+            preparedStatement.setString(12, member.getVehicle_condition());
+
             if (preparedStatement.execute()) {
                 rowsAffected++;
             };
@@ -91,6 +96,30 @@ public class QueryDao {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        return match;
+    }
+
+    public Boolean MemberSignIn(String username, String password) {
+        boolean match = false;
+
+        try {
+            Connection connection = DBConnection.getConnection();
+
+            String query = "SELECT * FROM Member WHERE username=? AND password=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                match = true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return match;
     }
 

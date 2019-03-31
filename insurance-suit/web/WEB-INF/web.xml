@@ -30,9 +30,17 @@
         <servlet-name>AdminLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MemberLogin</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminJsp/AdminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberLogin</servlet-name>
+        <url-pattern>/userJsp/MemberLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>

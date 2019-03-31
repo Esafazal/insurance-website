@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
 
         Member member = new Member();
-
+        //member details
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String address = request.getParameter("address");
@@ -67,6 +67,11 @@ public class Register extends HttpServlet {
         String phone_no = request.getParameter("phoneno");
         String username = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS);
         String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
+        //vehicle details
+        String vehicle_type = request.getParameter("vehicle_type");
+        String vehicle_number = request.getParameter("vehicle_number");
+        String vehicle_model = request.getParameter("vehicle_model");
+        String vehicle_condition = request.getParameter("vehicle_condition");
 
         Date dob = null;
         Date date_of_registration = null;
@@ -77,8 +82,7 @@ public class Register extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-//        Member member = new Member(firstName, lastName, address, dob, nic, date_of_registration, email, phone_no, username, password);
+        //member
         member.setFirst_name(firstName);
         member.setLast_name(lastName);
         member.setAddress(address);
@@ -89,6 +93,11 @@ public class Register extends HttpServlet {
         member.setPhone_no(phone_no);
         member.setUsername(username);
         member.setPassword(password);
+        //vehice
+        member.setVehicle_type(vehicle_type);
+        member.setVehicle_number(vehicle_number);
+        member.setVehicle_model(vehicle_model);
+        member.setVehicle_condition(vehicle_model);
 
         QueryDao dao = new QueryDao();
         int rows = dao.registerMember(member);

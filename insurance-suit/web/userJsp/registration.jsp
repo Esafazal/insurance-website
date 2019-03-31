@@ -44,7 +44,7 @@
                 <hr><h3><b>Register Vehicle</b></h3><hr>
                 
                 <label for="vehicle type"><b>Vehicle Type</b></label>
-                <select>
+                <select name="vehicle_type">
                     <option>Car</option>
                     <option>Van</option>
                     <option>Motorcycle</option>
@@ -52,13 +52,13 @@
                 </select>
 
                 <label for="vehicle number"><b>Vehicle Number</b></label>
-                <input type="text" placeholder="Ex: ABC-1234" maxlength="8" minlength="8" name="vehiclenumber" required>
+                <input type="text" placeholder="Ex: ABC-1234" maxlength="8" minlength="8" name="vehicle_number" required>
 
                 <label for="vehcle model"><b>Vehicle Model</b></label>
-                <input type="text" placeholder="Enter Vehicle Model" name="vehicle model" required>
+                <input type="text" placeholder="Ex: Mercedes S class" name="vehicle_model" required>
 
                 <label for="vehicle condition"><b>Vehicle Condition</b></label>
-                <textarea type="text" placeholder="Enter Vehicle Condition" name="vehiclecondition" required></textarea>
+                <textarea type="text" placeholder="Enter Vehicle Condition" name="vehicle_condition" required></textarea>
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
