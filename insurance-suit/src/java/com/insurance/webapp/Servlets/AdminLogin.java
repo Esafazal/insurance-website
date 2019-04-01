@@ -42,12 +42,13 @@ public class AdminLogin extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
+            session.setMaxInactiveInterval(120);
 
             request.getRequestDispatcher("/adminJsp/dashboard.jsp").forward(request, response);
 
         } else {
             String errorMessage = "Invalid Credentials, please login again!";
-            request.setAttribute("error", errorMessage);
+            request.setAttribute("loginError", errorMessage);
             request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
 
         }

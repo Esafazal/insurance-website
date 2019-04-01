@@ -27,7 +27,23 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "INSERT INTO `Member`\n"
+            String query = "INSERT INTO Vehicle"
+                    + "(vehicle_number,"
+                    + "vehicle_type,"
+                    + "model, "
+                    + "description) "
+                    + "VALUES (?, ?, ?, ?);";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, member.getVehicle_number());
+            preparedStatement.setString(2, member.getVehicle_type());
+            preparedStatement.setString(3, member.getVehicle_model());
+            preparedStatement.setString(4, member.getVehicle_condition());
+
+            preparedStatement.execute();
+
+            String query2 = "INSERT INTO `Member`\n"
                     + "("
                     + "`first_name`,\n"
                     + "`last_name`,\n"
@@ -38,11 +54,12 @@ public class QueryDao {
                     + "`email`,\n"
                     + "`phone_no`,\n"
                     + "`username`,\n"
-                    + "`password`)\n"
+                    + "`password`, "
+                    + "`vehicle_number`)"
                     + "VALUES\n"
-                    + "(?,?,?,?,?,?,?,?,?,?)";
+                    + "(?,?,?,?,?,?,?,?,?,?,?)";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query2);
 
             preparedStatement.setString(1, member.getFirst_name());
             preparedStatement.setString(2, member.getLast_name());
@@ -54,11 +71,7 @@ public class QueryDao {
             preparedStatement.setString(8, member.getPhone_no());
             preparedStatement.setString(9, member.getUsername());
             preparedStatement.setString(10, member.getPassword());
-
-            preparedStatement.setString(11, member.getVehicle_type());
-            preparedStatement.setString(12, member.getVehicle_number());
-            preparedStatement.setString(12, member.getVehicle_model());
-            preparedStatement.setString(12, member.getVehicle_condition());
+            preparedStatement.setString(11, member.getVehicle_number());
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -69,6 +82,25 @@ public class QueryDao {
         }
 
         return rowsAffected;
+    }
+
+    public boolean isDuplicateVehicle(String vehicle_number) {
+        boolean validate = false;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT * FROM Vehicle WHERE vehicle_number=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, vehicle_number);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                validate = true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return validate;
     }
 
     public boolean adminSignIn(String username, String password) {
@@ -110,13 +142,13 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
-            
-            while(resultSet.next()){
+
+            while (resultSet.next()) {
                 match = true;
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }

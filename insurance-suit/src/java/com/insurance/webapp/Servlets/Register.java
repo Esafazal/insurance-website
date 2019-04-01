@@ -11,6 +11,8 @@ import com.insurance.webapp.Utils.AutoGenerate;
 import com.insurance.webapp.Utils.DateUtil;
 import com.insurance.webapp.Utils.EmailUtility;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -68,8 +70,8 @@ public class Register extends HttpServlet {
         String username = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS);
         String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
         //vehicle details
-        String vehicle_type = request.getParameter("vehicle_type");
         String vehicle_number = request.getParameter("vehicle_number");
+        String vehicle_type = request.getParameter("vehicle_type");
         String vehicle_model = request.getParameter("vehicle_model");
         String vehicle_condition = request.getParameter("vehicle_condition");
 
@@ -82,50 +84,57 @@ public class Register extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //member
-        member.setFirst_name(firstName);
-        member.setLast_name(lastName);
-        member.setAddress(address);
-        member.setDob(dob);
-        member.setNic(nic);
-        member.setDate_of_registration(date_of_registration);
-        member.setEmail(email);
-        member.setPhone_no(phone_no);
-        member.setUsername(username);
-        member.setPassword(password);
-        //vehice
-        member.setVehicle_type(vehicle_type);
-        member.setVehicle_number(vehicle_number);
-        member.setVehicle_model(vehicle_model);
-        member.setVehicle_condition(vehicle_model);
-
         QueryDao dao = new QueryDao();
-        int rows = dao.registerMember(member);
+        boolean match = dao.isDuplicateVehicle(vehicle_number);
 
-        String message = null;
+        if (!match) {
+            //vehice
+            member.setVehicle_type(vehicle_type);
+            member.setVehicle_number(vehicle_number);
+            member.setVehicle_model(vehicle_model);
+            member.setVehicle_condition(vehicle_condition);
+            //member
+            member.setFirst_name(firstName);
+            member.setLast_name(lastName);
+            member.setAddress(address);
+            member.setDob(dob);
+            member.setNic(nic);
+            member.setDate_of_registration(date_of_registration);
+            member.setEmail(email);
+            member.setPhone_no(phone_no);
+            member.setUsername(username);
+            member.setPassword(password);
 
-        if (rows == 0) {
-            message = "Couldn't Register. Something went wrong!";
+            int rows = dao.registerMember(member);
+            String message = null;
+
+            if (rows == 0) {
+                message = "Couldn't Register. Something went wrong!";
+            } else {
+                message = "Registered Successfully";
+            }
+
+            String subject = "Drivers Association Srilanka Registration";
+            String content = "Hi, " + lastName + ".\n\nWe warmly welcome you to our association to have you protected."
+                    + " Please note that the following credentials can be used to login to your account."
+                    + " Further more, please change the username and password since it was system generated."
+                    + " Thank You \n\n" + "Username: " + username + "\n" + "Password: " + password + "\n\n"
+                    + "Kind Regards, \n\n" + "Team Group B.";
+
+            try {
+                EmailUtility.sendEmail(host, port, user, pass, email, subject, content);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                request.setAttribute("email", email);
+                getServletContext().getRequestDispatcher("/userJsp/success.jsp").forward(request, response);
+
+            }
+
         } else {
-            message = "Registered Successfully";
-        }
-
-        String subject = "Drivers Association Srilanka Registration";
-        String content = "Hi, " + lastName + ".\n\nWe warmly welcome you to our association to have you protected."
-                + " Please note that the following credentials can be used to login to your account."
-                + " Further more, please change the username and password since it was system generated."
-                + " Thank You \n\n" + "Username: " + username + "\n" + "Password: " + password + "\n\n"
-                + "Kind Regards, \n\n" + "Team Group A.";
-
-        try {
-            EmailUtility.sendEmail(host, port, user, pass, email, subject, content);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            request.setAttribute("email", email);
-            getServletContext().getRequestDispatcher("/userJsp/success.jsp").forward(request, response);
-
+            PrintWriter out = response.getWriter();
+            out.println("The vehicle '"+vehicle_number+"' already exists!");
         }
     }
 

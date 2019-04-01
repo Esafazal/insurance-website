@@ -48,7 +48,7 @@
                      Registration Successful.<br>
                      We've Emailed your Username and Password.
                   </h1>
-                   <h4><%= request.getAttribute("email") %></h4>
+                   <h4>${email}</h4>
                </div>
             </div>
             </div>

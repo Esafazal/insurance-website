@@ -40,9 +40,9 @@
 
                 <label for="phone no"><b>Phone No</b></label>
                 <input type="tel" placeholder="Enter Phone number" maxlength="10" minlength="10" name="phoneno" required>
-                
+
                 <hr><h3><b>Register Vehicle</b></h3><hr>
-                
+
                 <label for="vehicle type"><b>Vehicle Type</b></label>
                 <select name="vehicle_type">
                     <option>Car</option>
@@ -52,7 +52,7 @@
                 </select>
 
                 <label for="vehicle number"><b>Vehicle Number</b></label>
-                <input type="text" placeholder="Ex: ABC-1234" maxlength="8" minlength="8" name="vehicle_number" required>
+                <input type="text" placeholder="Ex: ABC-1234" maxlength="8" minlength="7" name="vehicle_number" required>
 
                 <label for="vehcle model"><b>Vehicle Model</b></label>
                 <input type="text" placeholder="Ex: Mercedes S class" name="vehicle_model" required>

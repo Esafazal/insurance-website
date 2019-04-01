@@ -44,6 +44,7 @@ public class MemberLogin extends HttpServlet {
             
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
+            session.setMaxInactiveInterval(120);
             
             request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
         }
