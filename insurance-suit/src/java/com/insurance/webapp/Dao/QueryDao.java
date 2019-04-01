@@ -110,7 +110,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM `member` WHERE member_id = ? ";
+            String query = "SELECT * FROM `Member` WHERE member_id = ? ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -148,7 +148,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query ="UPDATE member SET address = ?, email = ?, phone_no = ?, username = ? WHERE member_id = ?";
+            String query ="UPDATE Member SET address = ?, email = ?, phone_no = ?, username = ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -176,7 +176,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query ="UPDATE `member` SET `password`= ? WHERE member_id = ?";
+            String query ="UPDATE `Member` SET `password`= ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -203,7 +203,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "INSERT INTO `claim`("
+            String query = "INSERT INTO `Claim`("
                     + "`claim_date`,"
                     + " `claim_amount`,"
                     + " `description`, "
