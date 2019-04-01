@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jboss.weld.servlet.SessionHolder;
 
 /**
  *
@@ -26,17 +27,12 @@ public class MemberDetails extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String username = (String) request.getSession().getAttribute("username");
         QueryDao queryDao = new QueryDao();
-        Member memberList = queryDao.getMemberDetails("1");
+        Member memberList = queryDao.getMemberDetails(username);
         
         request.setAttribute("memberList",memberList);
         request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
-<<<<<<< HEAD
-//        response.sendRedirect("/userJsp/userProfile.jsp");
-                
-=======
->>>>>>> Pathum-makePayment_makeClaim
-
     }
 
     @Override
@@ -44,12 +40,7 @@ public class MemberDetails extends HttpServlet {
             throws ServletException, IOException {
          
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

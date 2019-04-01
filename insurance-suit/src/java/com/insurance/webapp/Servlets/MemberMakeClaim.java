@@ -27,11 +27,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "MemberMakeClaim", urlPatterns = {"/MemberMakeClaim"})
 public class MemberMakeClaim extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
+        QueryDao dao = new QueryDao();
+        String username = (String) request.getSession().getAttribute("username");
+        int memberID = dao.getMemberID(username);
+        String vehicleNumber = dao.getVehicle(memberID);
+        request.setAttribute("vehicleNO", vehicleNumber);
         request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
     }
 
@@ -39,13 +43,15 @@ public class MemberMakeClaim extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Member member = new Member();
+        QueryDao dao = new QueryDao();
+        String username = (String) request.getSession().getAttribute("username");
 
         String incidentDate = request.getParameter("incidentdate");
         int claimAmount = Integer.parseInt(request.getParameter("claimamount"));
-        String vehicleNumber = request.getParameter("vehiclenumber");
         String claimDescription = request.getParameter("claimdescription");
         String quotationPlace = request.getParameter("quoationplace");
         String claimDate = LocalDate.now().toString();
+        int memberID = dao.getMemberID(username);
 
         Date incident_Date = null;
         Date claim_date = null;
@@ -59,13 +65,11 @@ public class MemberMakeClaim extends HttpServlet {
 
         member.setIncident_date(incident_Date);
         member.setClaim_amount(claimAmount);
-        member.setClaim_vehicle_number(vehicleNumber);
         member.setClaim_description(claimDescription);
         member.setQuotation_place(quotationPlace);
         member.setClaim_date(claim_date);
-        member.setMembership_id("1");
+        member.setMember_id(memberID);
 
-        QueryDao dao = new QueryDao();
         int rows = dao.requestClaim(member);
 
         String message = null;
@@ -77,9 +81,10 @@ public class MemberMakeClaim extends HttpServlet {
             message = "Claim Request Failed";
             System.out.println(message);
         }
-         request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
+        request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
 
     }
+
     @Override
     public String getServletInfo() {
         return "Please request claim for approval.";

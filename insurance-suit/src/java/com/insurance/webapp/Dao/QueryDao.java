@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,23 +26,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "INSERT INTO Vehicle"
-                    + "(vehicle_number,"
-                    + "vehicle_type,"
-                    + "model, "
-                    + "description) "
-                    + "VALUES (?, ?, ?, ?);";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setString(1, member.getVehicle_number());
-            preparedStatement.setString(2, member.getVehicle_type());
-            preparedStatement.setString(3, member.getVehicle_model());
-            preparedStatement.setString(4, member.getVehicle_condition());
-
-            preparedStatement.execute();
-
-            String query2 = "INSERT INTO `Member`\n"
+            String query = "INSERT INTO `Member`\n"
                     + "("
                     + "`first_name`,\n"
                     + "`last_name`,\n"
@@ -54,12 +37,11 @@ public class QueryDao {
                     + "`email`,\n"
                     + "`phone_no`,\n"
                     + "`username`,\n"
-                    + "`password`, "
-                    + "`vehicle_number`)"
+                    + "`password`)"
                     + "VALUES\n"
-                    + "(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "(?,?,?,?,?,?,?,?,?,?)";
 
-            preparedStatement = connection.prepareStatement(query2);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, member.getFirst_name());
             preparedStatement.setString(2, member.getLast_name());
@@ -71,17 +53,61 @@ public class QueryDao {
             preparedStatement.setString(8, member.getPhone_no());
             preparedStatement.setString(9, member.getUsername());
             preparedStatement.setString(10, member.getPassword());
-            preparedStatement.setString(11, member.getVehicle_number());
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
-            };
+            }
 
         } catch (SQLException sQLException) {
             sQLException.printStackTrace();
         }
 
         return rowsAffected;
+    }
+
+    public int registeVehicle(Member member) {
+        int rowsAffected = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "INSERT INTO Vehicle"
+                    + "(vehicle_number,"
+                    + "vehicle_type,"
+                    + "model, "
+                    + "description,"
+                    + "member_id)"
+                    + "VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, member.getVehicle_number());
+            preparedStatement.setString(2, member.getVehicle_type());
+            preparedStatement.setString(3, member.getVehicle_model());
+            preparedStatement.setString(4, member.getVehicle_condition());
+            preparedStatement.setInt(5, member.getMember_id());
+
+            if (preparedStatement.execute()) {
+                rowsAffected++;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rowsAffected;
+    }
+
+    public int getMemberID(String username) {
+        int id = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT member_id FROM Member WHERE username=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("member_id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+
     }
 
     public boolean isDuplicateVehicle(String vehicle_number) {
@@ -156,17 +182,16 @@ public class QueryDao {
     }
 
     public Member getMemberDetails(String memberId) {
-        
+
         Member member = new Member();
         try {
             Connection connection = DBConnection.getConnection();
-
-            String query = "SELECT * FROM `Member` WHERE member_id = ? ";
+            String query = "SELECT * FROM `Member` WHERE username = ? ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, memberId);
-//            ArrayList<Member> memberList = new ArrayList();
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -181,9 +206,6 @@ public class QueryDao {
                 member.setPhone_no(resultSet.getString("phone_no"));
                 member.setUsername(resultSet.getString("username"));
 
-//                memberList.add(member);
-
-//                return memberList;
             }
 
         } catch (SQLException ex) {
@@ -192,14 +214,14 @@ public class QueryDao {
         return member;
     }
 
-    public int editMemberDetails(Member member,String memberId) {
+    public int editMemberDetails(Member member, String username) {
 
         int rowsAffected = 0;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query ="UPDATE Member SET address = ?, email = ?, phone_no = ?, username = ? WHERE member_id = ?";
+            String query = "UPDATE Member SET address = ?, email = ?, phone_no = ?, username = ? WHERE username = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -207,7 +229,7 @@ public class QueryDao {
             preparedStatement.setString(2, member.getEmail());
             preparedStatement.setString(3, member.getPhone_no());
             preparedStatement.setString(4, member.getUsername());
-            preparedStatement.setString(5, memberId);
+            preparedStatement.setString(5, username);
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -219,15 +241,15 @@ public class QueryDao {
 
         return rowsAffected;
     }
-    
-    public int editMemberPassword(Member member,String memberId) {
+
+    public int editMemberPassword(Member member, String memberId) {
 
         int rowsAffected = 0;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query ="UPDATE `Member` SET `password`= ? WHERE member_id = ?";
+            String query = "UPDATE `Member` SET `password`= ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -244,9 +266,7 @@ public class QueryDao {
 
         return rowsAffected;
     }
-    
-    
-    
+
     public int requestClaim(Member member) {
 
         int rowsAffected = 0;
@@ -258,21 +278,19 @@ public class QueryDao {
                     + "`claim_date`,"
                     + " `claim_amount`,"
                     + " `description`, "
-                    + "`membership_id`,"
                     + " `incident_date`,"
                     + " `quotation_place`,"
-                    + " `vehicle_number`)"
-                    + " VALUES (?,?,?,?,?,?,?)";
+                    + " `member_id`)"
+                    + " VALUES (?,?,?,?,?,?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setDate(1, (new java.sql.Date(member.getClaim_date().getTime())));
             preparedStatement.setInt(2, member.getClaim_amount());
             preparedStatement.setString(3, member.getClaim_description());
-            preparedStatement.setString(4, member.getMembership_id());
-            preparedStatement.setDate(5, (new java.sql.Date(member.getIncident_date().getTime())));
-            preparedStatement.setString(6, member.getQuotation_place());
-            preparedStatement.setString(7, member.getClaim_vehicle_number());
+            preparedStatement.setDate(4, (new java.sql.Date(member.getIncident_date().getTime())));
+            preparedStatement.setString(5, member.getQuotation_place());
+            preparedStatement.setInt(6, member.getMember_id());
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -283,6 +301,24 @@ public class QueryDao {
         }
 
         return rowsAffected;
+    }
+
+    public String getVehicle(int memberID) {
+        String vehicleNumber = null;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT vehicle_number FROM Vehicle WHERE member_id =?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, memberID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                vehicleNumber = resultSet.getString("vehicle_number");
+            }
+        } catch (SQLException sQLException) {
+            sQLException.printStackTrace();
+        }
+        return vehicleNumber;
     }
 
 }

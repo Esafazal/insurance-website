@@ -94,8 +94,7 @@
                                             <label>Select Vehicle</label> 
                                             <select class="form-control" name="vehiclenumber" required>
                                                 <option>Select Vehicle</option>
-                                                <option>ABC-1222</option>
-                                                <option>CAB-2211</option>
+                                                <option>${vehicleNO}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

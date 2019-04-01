@@ -26,12 +26,10 @@ public class Member {
     private String phone_no;
     private String username;
     private String password;
-<<<<<<< HEAD
     private String vehicle_type;
     private String vehicle_number;
     private String vehicle_model;
     private String vehicle_condition;
-=======
     private int claim_id;
     private Date claim_date;
     private Date incident_date;
@@ -40,20 +38,6 @@ public class Member {
     private String quotation_place;
     private String claim_vehicle_number;
     private String membership_id;
-
-//    public Member(String first_name, String last_name, String address, Date dob, String nic, Date date_of_registration, String email, String phone_no, String username, String password) {
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.address = address;
-//        this.dob = dob;
-//        this.nic = nic;
-//        this.date_of_registration = date_of_registration;
-//        this.email = email;
-//        this.phone_no = phone_no;
-//        this.username = username;
-//        this.password = password;
-//    }
->>>>>>> Pathum-makePayment_makeClaim
 
     public int getMember_id() {
         return member_id;
@@ -143,7 +127,6 @@ public class Member {
         this.password = password;
     }
 
-<<<<<<< HEAD
     public String getVehicle_type() {
         return vehicle_type;
     }
@@ -174,7 +157,8 @@ public class Member {
 
     public void setVehicle_condition(String vehicle_condition) {
         this.vehicle_condition = vehicle_condition;
-=======
+    }
+    
     public int getClaim_id() {
         return claim_id;
     }
@@ -237,7 +221,6 @@ public class Member {
 
     public void setMembership_id(String membership_id) {
         this.membership_id = membership_id;
->>>>>>> Pathum-makePayment_makeClaim
     }
 
     

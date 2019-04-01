@@ -100,20 +100,16 @@
                                             <form action="MemberDetails" method="get">
                                                 
                                             <h4><b>Personal Details</b></h4>
-                                            <p><strong>Name :</strong>&nbsp; ${memberList.first_name}</p>
+                                            <p><strong>Name :</strong>&nbsp; ${memberList.first_name} ${memberList.last_name}</p>
                                             <p><strong>Username :</strong>&nbsp; ${memberList.username}</p>
                                             <p><strong>Address :</strong>&nbsp; ${memberList.address}</p>
                                             <p><strong>Date of Birth :</strong>&nbsp; ${memberList.dob}</p>
                                             <p><strong>Date of Registration :</strong>&nbsp; ${memberList.date_of_registration}</p>
                                             <p><strong>NIC :</strong>&nbsp; ${memberList.nic}</p>
                                             <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
-<<<<<<< HEAD
                                             <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
                                             
                                             </form>
-=======
-                                            <p><strong>Phone No :</strong>&nbsp; ${memberList.phone_no}</p>
->>>>>>> Pathum-makePayment_makeClaim
                                         </div>
                                         <div class="tab-pane fade" id="profile">
                                             <h4>Edit Details</h4>

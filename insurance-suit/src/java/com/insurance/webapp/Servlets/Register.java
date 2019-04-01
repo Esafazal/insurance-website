@@ -12,7 +12,6 @@ import com.insurance.webapp.Utils.DateUtil;
 import com.insurance.webapp.Utils.EmailUtility;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -88,11 +87,6 @@ public class Register extends HttpServlet {
         boolean match = dao.isDuplicateVehicle(vehicle_number);
 
         if (!match) {
-            //vehice
-            member.setVehicle_type(vehicle_type);
-            member.setVehicle_number(vehicle_number);
-            member.setVehicle_model(vehicle_model);
-            member.setVehicle_condition(vehicle_condition);
             //member
             member.setFirst_name(firstName);
             member.setLast_name(lastName);
@@ -104,8 +98,19 @@ public class Register extends HttpServlet {
             member.setPhone_no(phone_no);
             member.setUsername(username);
             member.setPassword(password);
-
+            
             int rows = dao.registerMember(member);
+            //vehice
+            int memberID = dao.getMemberID(username);
+
+            member.setVehicle_type(vehicle_type);
+            member.setVehicle_number(vehicle_number);
+            member.setVehicle_model(vehicle_model);
+            member.setVehicle_condition(vehicle_condition);
+            member.setMember_id(memberID);
+            
+            dao.registeVehicle(member);
+
             String message = null;
 
             if (rows == 0) {
@@ -134,7 +139,7 @@ public class Register extends HttpServlet {
 
         } else {
             PrintWriter out = response.getWriter();
-            out.println("The vehicle '"+vehicle_number+"' already exists!");
+            out.println("The vehicle '" + vehicle_number + "' already exists!");
         }
     }
 

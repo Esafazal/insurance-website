@@ -38,15 +38,14 @@ public class MemberEditDetails extends HttpServlet {
         String email = request.getParameter("email");
         String phone_no = request.getParameter("phoneno");
 
-
-//        Member member = new Member(firstName, lastName, address, dob, nic, date_of_registration, email, phone_no, username, password);
         member.setUsername(username);
         member.setAddress(address);
         member.setEmail(email);
         member.setPhone_no(phone_no);
 
+        String sesName = (String) request.getSession().getAttribute("username");
         QueryDao dao = new QueryDao();
-        int rows = dao.editMemberDetails(member,"1");
+        int rows = dao.editMemberDetails(member, sesName);
 
         String message = null;
 
