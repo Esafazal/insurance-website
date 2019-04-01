@@ -27,6 +27,7 @@
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>AdminLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
     </servlet>
@@ -38,6 +39,19 @@
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminJsp/AdminLogin</url-pattern>
     </servlet-mapping>
+=======
+        <servlet-name>MemberMakeClaim</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MemberMakeClaim</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MemberEditDetails</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MemberEditDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MemberDetails</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MemberDetails</servlet-class>
+    </servlet>
+>>>>>>> Pathum-makePayment_makeClaim
     <servlet-mapping>
         <servlet-name>MemberLogin</servlet-name>
         <url-pattern>/userJsp/MemberLogin</url-pattern>
@@ -45,6 +59,18 @@
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberMakeClaim</servlet-name>
+        <url-pattern>/userJsp/MemberMakeClaim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberEditDetails</servlet-name>
+        <url-pattern>/userJsp/MemberEditDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberDetails</servlet-name>
+        <url-pattern>/userJsp/MemberDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
