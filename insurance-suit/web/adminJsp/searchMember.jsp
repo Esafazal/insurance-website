@@ -50,10 +50,10 @@
                             <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a   href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
                             <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>

@@ -1,0 +1,8 @@
+/ejbtimer_upgrade_db2.sql
+/ejbtimer_upgrade_derby.sql
+/ejbtimer_upgrade_mssqlserver.sql
+/ejbtimer_upgrade_mysql.sql
+/ejbtimer_upgrade_oracle.sql
+/ejbtimer_upgrade_pointbase.sql
+/ejbtimer_upgrade_sybase.sql
+/ejbtimer_upgrade_symfoware.sql

@@ -6,8 +6,8 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
+import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,28 +24,21 @@ public class MemberDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        QueryDao queryDao = new QueryDao();
-        List memberList = queryDao.getMemberDetails("1");
-        
-        request.setAttribute("memberList",memberList);
-        getServletContext().getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
-//        response.sendRedirect("/userJsp/userProfile.jsp");
-                
 
+        String username = (String) request.getSession().getAttribute("username");
+        QueryDao queryDao = new QueryDao();
+        int memberID = queryDao.getMemberID(username);
+        Member memberList = queryDao.getMemberDetails(memberID);
+
+        request.setAttribute("memberList", memberList);
+        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
