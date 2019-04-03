@@ -67,7 +67,7 @@ public class PaymentStatus extends HttpServlet {
         //creating subject and message to send emaiil
         String subject = "Drivers Association Srilanka(Payment Reminder)";
         String message = "Hi, " + lastName + ". \n\n This is to inform you to settle your outstanding balances of sum: "
-                + amount + ", Inorder to avoid your acount being suspended temporarily. \n\n Thanks and Regards, \n Team B.";
+                + amount + ", Inorder to avoid your acount being suspended temporarily within 7 days. \n\n Thanks and Regards, \n Team B.";
         try {
             //calling the email utility method
             EmailUtility.sendEmail(host, port, user, pass, toAddress, subject, message);
