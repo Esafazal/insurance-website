@@ -50,7 +50,7 @@
                             <a  href="../userJsp/home.jsp"> Home</a>
                         </li>
                         <li>
-                            <a  href="../userJsp/userProfile.jsp"> Profile</a>
+                            <a  href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
                             <a  class="active-menu" href="../userJsp/makeClaim.jsp"> Make Claim</a>
@@ -89,7 +89,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form">
+                                    <form role="form" action="MemberMakeClaim" method="GET">
                                         <p>Eligibility Criteria</p>
 
                                         <ul>
@@ -97,7 +97,7 @@
                                             <li>Claim quota is not exceeded.</li>
                                             <li>No outstanding payments.</li>
                                         </ul> 
-                                        <button type="button"  class="btn btn-primary" onclick="window.location.href='../userJsp/claimEligible.jsp'">Check Eligibility</button>
+                                        <button type="submit"  class="btn btn-primary">Check Eligibility</button>
 
                                         </form>
                                 </div>

@@ -4,6 +4,8 @@
     Author     : crazydude
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50,10 +52,10 @@
                             <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a class="active-menu" href=""> Pending Approvals</a>
                         </li>
                         <li>
                             <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
@@ -76,16 +78,52 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Pending Approvals</h2>
+                            <c:if test="${requestScope.member!=null}">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>NIC</th>
+                                                <th>Registration Date</th>
+                                                <th>Email</th>
+                                                <th>Phone No</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            <form action="PendingApprovals" method="POST">
+                                        <tbody>
+                                            <c:forEach items="${requestScope.member}" var="member" varStatus="loop">
+                                            <tr class="odd gradeX">
+                                                <td>${member.first_name} ${member.last_name}</td>
+                                                <td>${member.address}</td>
+                                                <td>${member.nic}</td>
+                                                <td class="center">${member.date_of_registration}</td>
+                                                <td class="center">${member.email}</td>
+                                                <td class="center">${member.phone_no}</td>
+                                                <td> <button type="submit" name="accept" value="${member.member_id}" class="btn btn-success btn-xs">Accept</button> <br>
+                                                     <button type="submit" name="reject" formaction="RejectMember" value="${member.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
+                                                
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                            </form>
+                                    </table>
+                                </div>
 
-                        </div>
-                    </div>
-                    <!-- /. ROW  -->
-                    <hr />
+                            </div>
+                         </c:if>
+                      </div>
 
                 </div>
-                <!-- /. PAGE INNER  -->
+                <!-- /. ROW  -->
+                <hr />
+
             </div>
-            <!-- /. PAGE WRAPPER  -->
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
         </div>
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

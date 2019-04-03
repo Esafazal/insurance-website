@@ -50,10 +50,10 @@
                             <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a  href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
                             <a class="active-menu" href="../adminJsp/reviewClaims.jsp">Review Claims</a>
@@ -76,7 +76,43 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Review Claims </h2>
+                            <c:if test="${requestScope.claims!=null}">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Claim Date</th>
+                                                <th>Description</th>
+                                                <th>Incident Date</th>
+                                                <th>Claim Amount</th>
+                                                <th>Quotation Place</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            <form action="ReviewClaim" method="POST">
+                                        <tbody>
+                                            <c:forEach items="${requestScope.claims}" var="claim" varStatus="loop">
+                                            <tr class="odd gradeX">
+                                                <td>${claim.first_name} ${claim.last_name}</td>
+                                                <td>${claim.claim_date}</td>
+                                                <td>${claim.description}</td>
+                                                <td class="center">${claim.incident_date}</td>
+                                                <td class="center">${claim.claim_amount}</td>
+                                                <td class="center">${claim.quotation_place}</td>
+                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Approve</button> <br>
+                                                     <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Decline</button> </td>
+                                                
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                            </form>
+                                    </table>
+                                </div>
 
+                            </div>
+                         </c:if>
+                            
                         </div>
                     </div>
                     <!-- /. ROW  -->

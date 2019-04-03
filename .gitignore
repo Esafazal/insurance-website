@@ -106,3 +106,5 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/git,java,linux,windows,database,netbeans,java-web
 
 genfiles.properties
+/insurance-suit/nbproject/private/private.properties
+/insurance-suit/nbproject/private/private.xml
