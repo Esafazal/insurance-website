@@ -16,7 +16,7 @@
     </context-param>
     <context-param>
         <param-name>user</param-name>
-        <param-value>dineshraman062@gmail.com</param-value>
+        <param-value>flickiviki@gmail.com</param-value>
     </context-param>
     <context-param>
         <param-name>pass</param-name>
@@ -33,6 +33,22 @@
     <servlet>
         <servlet-name>MemberLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PendingApprovals</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.PendingApprovals</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentStatus</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.PaymentStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectMember</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.RejectMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SuspendMember</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.SuspendMember</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminLogin</servlet-name>
@@ -70,6 +86,25 @@
         <servlet-name>MemberDetails</servlet-name>
         <url-pattern>/userJsp/MemberDetails</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+=======
+    <servlet-mapping>
+        <servlet-name>PendingApprovals</servlet-name>
+        <url-pattern>/adminJsp/PendingApprovals</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentStatus</servlet-name>
+        <url-pattern>/adminJsp/PaymentStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectMember</servlet-name>
+        <url-pattern>/adminJsp/RejectMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SuspendMember</servlet-name>
+        <url-pattern>/adminJsp/SuspendMember</url-pattern>
+    </servlet-mapping>
+>>>>>>> origin/esa/pathum_branchMerge
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
