@@ -38,6 +38,7 @@ public class Member {
     private String quotation_place;
     private String claim_vehicle_number;
     private String membership_id;
+    private int amount;
 
     public int getMember_id() {
         return member_id;
@@ -221,6 +222,14 @@ public class Member {
 
     public void setMembership_id(String membership_id) {
         this.membership_id = membership_id;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     
