@@ -25,7 +25,7 @@ public class AdminLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-           request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
     }
 
     @Override
@@ -34,15 +34,23 @@ public class AdminLogin extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         QueryDao queryDao = new QueryDao();
         boolean valid = queryDao.adminSignIn(username, password);
 
         if (valid) {
-
+            //creation a session for the admin
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
             session.setMaxInactiveInterval(120);
+            //getting pending member registrations, claims and payments
+            QueryDao dao = new QueryDao();
+            int approvalCount = dao.getPendingApprovals();
+            int claimCount = dao.getPendingClaims();
+            int paymentCount = dao.getPendingPayments();
+            request.setAttribute("approvalCount", approvalCount);
+            request.setAttribute("claimCount", claimCount);
+            request.setAttribute("paymentCount", paymentCount);
 
             request.getRequestDispatcher("/adminJsp/dashboard.jsp").forward(request, response);
 
