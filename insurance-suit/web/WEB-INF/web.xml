@@ -86,8 +86,6 @@
         <servlet-name>MemberDetails</servlet-name>
         <url-pattern>/userJsp/MemberDetails</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-=======
     <servlet-mapping>
         <servlet-name>PendingApprovals</servlet-name>
         <url-pattern>/adminJsp/PendingApprovals</url-pattern>
@@ -104,7 +102,6 @@
         <servlet-name>SuspendMember</servlet-name>
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
     </servlet-mapping>
->>>>>>> origin/esa/pathum_branchMerge
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
