@@ -28,7 +28,7 @@ public class UserHome extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         QueryDao queryDao = new QueryDao();
         int memberID = queryDao.getUserId(username);
-        int payAmount = queryDao.Amount(memberID);
+        int payAmount = queryDao.getPayableAmount(memberID);
         request.setAttribute("payAmount", payAmount);
         
         request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);

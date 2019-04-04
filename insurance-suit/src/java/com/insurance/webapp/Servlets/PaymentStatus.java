@@ -58,7 +58,7 @@ public class PaymentStatus extends HttpServlet {
         //creating an object of the dao class
         QueryDao dao = new QueryDao();
         //getting payable amount for the member using the member id
-        int amount = dao.getMemberPayableAmount(memberID);
+        int amount = dao.getPayableAmount(Integer.parseInt(memberID));
         //getting member details and assigning them to inidividual variables
         Member member = dao.getMemberDetails(Integer.parseInt(memberID));
         

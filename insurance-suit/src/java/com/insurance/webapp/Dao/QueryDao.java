@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -415,7 +414,6 @@ public class QueryDao {
         return rowsAffected;
     }
 
-<<<<<<< HEAD
     public int ifRejectMember(String memberID) {
         int rowsAffected = 0;
         try {
@@ -461,7 +459,14 @@ public class QueryDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 amount = resultSet.getInt("charge_amount");
-=======
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return amount;
+    }
+
     public int getUserId(String username) {
         int id = 0;
         try {
@@ -472,13 +477,11 @@ public class QueryDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 id = resultSet.getInt("member_id");
->>>>>>> nadee_test_merge
             }
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-        return amount;
+        return id;
     }
 
     public String getVehicleType(String memberID) {
@@ -491,11 +494,15 @@ public class QueryDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 type = resultSet.getString("vehicle_type");
-=======
-        return id;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return type;
     }
 
-    public int Amount(int memberID) {
+    public int getPayableAmount(int memberID) {
         int amount = 0;
         try {
             Connection connection = DBConnection.getConnection();
@@ -505,13 +512,11 @@ public class QueryDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 amount = resultSet.getInt("amount");
->>>>>>> nadee_test_merge
             }
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-        return type;
+        return amount;
     }
 
     public List<Member> getNotPayedMembers() {
@@ -540,37 +545,6 @@ public class QueryDao {
         return payments;
     }
 
-    public int getMemberPayableAmount(String memberID) {
-=======
-
-        return amount;
-    }
-    
-    public int getPaymentAmount(int memberID){
->>>>>>> nadee_test_merge
-        int amount = 0;
-        try {
-            Connection connection = DBConnection.getConnection();
-            String query = "SELECT amount FROM payment WHERE member_id=?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-<<<<<<< HEAD
-            preparedStatement.setString(1, memberID);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-=======
-            preparedStatement.setInt(1, memberID);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
->>>>>>> nadee_test_merge
-                amount = resultSet.getInt("amount");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return amount;
-    }
-<<<<<<< HEAD
-
     public int ifSuspendMember(String memberID) {
         int rowsAffected = 0;
         try {
@@ -587,8 +561,4 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-=======
- 
-    
->>>>>>> nadee_test_merge
 }

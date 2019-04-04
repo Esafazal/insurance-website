@@ -19,15 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MakePayment extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,7 +26,7 @@ public class MakePayment extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         QueryDao Dao = new QueryDao();
         int memberID = Dao.getUserId(username);
-        int memberFee = Dao.getPaymentAmount(memberID);
+        int memberFee = Dao.getPayableAmount(memberID);
         int annualFee = 25000;
         request.setAttribute("memberFee", memberFee);
         request.setAttribute("annualFee", annualFee);
@@ -44,14 +35,7 @@ public class MakePayment extends HttpServlet {
         request.getRequestDispatcher("/userJsp/MakePayment").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
