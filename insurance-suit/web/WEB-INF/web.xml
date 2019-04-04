@@ -39,10 +39,15 @@
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UserHome</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.UserHome</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>MemberLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>PendingApprovals</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.PendingApprovals</servlet-class>
     </servlet>
@@ -58,6 +63,15 @@
         <servlet-name>SuspendMember</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.SuspendMember</servlet-class>
     </servlet>
+=======
+        <servlet-name>MakePayment</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MakePayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberLogin</servlet-name>
+        <url-pattern>/userJsp/MemberLogin</url-pattern>
+    </servlet-mapping>
+>>>>>>> nadee_test_merge
     <servlet-mapping>
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminJsp/AdminLogin</url-pattern>
@@ -75,14 +89,23 @@
         <servlet-class>com.insurance.webapp.Servlets.MemberDetails</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MemberLogin</servlet-name>
-        <url-pattern>/userJsp/MemberLogin</url-pattern>
+        <servlet-name>UserHome</servlet-name>
+        <url-pattern>/userJsp/UserHome</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>reviewClaims</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RejectClaims</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.RejectClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>MemberMakeClaim</servlet-name>
         <url-pattern>/userJsp/MemberMakeClaim</url-pattern>
     </servlet-mapping>
@@ -109,6 +132,18 @@
     <servlet-mapping>
         <servlet-name>SuspendMember</servlet-name>
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
+=======
+        <servlet-name>reviewClaims</servlet-name>
+        <url-pattern>/adminJsp/reviewClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RejectClaims</servlet-name>
+        <url-pattern>/adminJsp/RejectClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakePayment</servlet-name>
+        <url-pattern>/userJsp/MakePayment</url-pattern>
+>>>>>>> nadee_test_merge
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

@@ -5,12 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Free Bootstrap Admin Template : Binary Admin</title>
+        <title>Make Payment</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -19,6 +22,9 @@
         <link href="../css/assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        
+        
+        
     </head>
     <body>
         <div id="wrapper">
@@ -88,30 +94,24 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form role="form">
+                                            <form action="addPayment" method="POST" role="form">
 
                                                 <div class="form-group">
-                                                    <label>Username</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Number of Claims Done</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Claim Amount</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Membership Fee</label> 
+                                                    <input disabled type="text" value="${amount}" name="memFee" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Annual Fee</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <input disabled type="text" value="${annualFee}" name="annualFee"  class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Total Outstanding Payment</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Total Outstanding</label> 
+<!--                                                    <input type="text" id="out" name="totOutstanding" class="form-control" onclick="addNumbers()" />-->
+                                                        <input disabled type="text" value="${outstanding}" name="outstanding"  class="form-control" />
                                                 </div>
+                                                
 
-                                                <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Pay Amount</button>
+                                                <button type="submit" class="btn btn-primary">Pay Amount</button>
 
                                             </form>
                                         </div>
@@ -137,6 +137,22 @@
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
 
+<!--         <script>
+            function addNumbers() {
+                var txtFirstNumberValue = document.getElementByName("memFee").value;
+                var txtSecondNumberValue = document.getElementBNam("annualFee").value;
+                if (txtFirstNumberValue == "")
+                    txtFirstNumberValue = 0;
+                if (txtSecondNumberValue == "")
+                    txtSecondNumberValue = 0;
+
+                
+                if (!isNaN(result)) {
+                       document.getElementByName("totOutstanding").value(txtFirstNumberValue + txtSecondNumberValue);
+                }
+            }
+        </script>-->
+        
 
     </body>
 </html>
