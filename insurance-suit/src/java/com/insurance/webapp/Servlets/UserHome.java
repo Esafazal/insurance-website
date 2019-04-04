@@ -5,8 +5,9 @@
  */
 package com.insurance.webapp.Servlets;
 
+import com.insurance.webapp.Dao.QueryDao;
+import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,22 +24,24 @@ public class UserHome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-       
+        
+        String username = (String) request.getSession().getAttribute("username");
+        QueryDao queryDao = new QueryDao();
+        int memberID = queryDao.getUserId(username);
+        int payAmount = queryDao.Amount(memberID);
+        request.setAttribute("payAmount", payAmount);
+        
+        request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
+        
     }
 
- 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         
+        }
     }
 
-  
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
-}
+

@@ -111,38 +111,13 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
-            
-            while(resultSet.next()){
+
+            while (resultSet.next()) {
                 match = true;
             }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return match;
-    }
-    
-    public Boolean MemberLogin(String username, String password){
-          boolean match = false;
-        try {
-            Connection connection = DBConnection.getConnection();
-            String query = "SELECT * FROM member WHERE username=? AND password=? ";
-            
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            
-            ResultSet resultSet = preparedStatement.executeQuery();
-            
-            while(resultSet.next()){
-                
-                match = true;
-            }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -190,34 +165,58 @@ public class QueryDao {
         }
         return null;
     }
-    
-    public String getUserId(String username) {
-        
-        try{
-        
-        Connection conn = DBConnection.getConnection();
-        String query = "SELECT * FROM member where username = '"+username+"'";
-        Statement stmt = conn.createStatement();
-        
-        ResultSet res = stmt.executeQuery(query);
-        String uID = null;
-        
-        while(res.next()){
-            uID = res.getString("member_id");
-        }
-        
-        
-         return uID;
-        
-    }
-      
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return null;
-    }
-    
-   
-    
 
+    public int getUserId(String username) {
+        int id = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT member_id FROM Member WHERE username=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("member_id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
+    public int Amount(int memberID) {
+        int amount = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT amount FROM payment WHERE member_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, memberID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                amount = resultSet.getInt("amount");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return amount;
+    }
+    
+    public int getPaymentAmount(int memberID){
+        int amount = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT amount FROM payment WHERE member_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, memberID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                amount = resultSet.getInt("amount");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return amount;
+    }
+ 
+    
 }

@@ -27,26 +27,33 @@
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>AdminLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserHome</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.UserHome</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MemberLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MakePayment</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.MakePayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberLogin</servlet-name>
+        <url-pattern>/userJsp/MemberLogin</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminJsp/AdminLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MemberLogin</servlet-name>
-        <url-pattern>/userJsp/MemberLogin</url-pattern>
+        <servlet-name>UserHome</servlet-name>
+        <url-pattern>/userJsp/UserHome</url-pattern>
     </servlet-mapping>
-=======
-        <servlet-name>MemberLogin</servlet-name>
-        <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
-    </servlet>
     <servlet>
         <servlet-name>reviewClaims</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
@@ -55,14 +62,9 @@
         <servlet-name>RejectClaims</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.RejectClaims</servlet-class>
     </servlet>
->>>>>>> backupbranchhome
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MemberLogin</servlet-name>
-        <url-pattern>/userJsp/MemberLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>reviewClaims</servlet-name>
@@ -71,6 +73,10 @@
     <servlet-mapping>
         <servlet-name>RejectClaims</servlet-name>
         <url-pattern>/adminJsp/RejectClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakePayment</servlet-name>
+        <url-pattern>/userJsp/MakePayment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

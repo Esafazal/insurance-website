@@ -4,28 +4,16 @@
     Author     : crazydude
 --%>
 
-<%@page import="com.insurance.webapp.Dao.QueryDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% 	
-    if ( session.getAttribute("username") == null) 
-	{
-		response.sendRedirect("memberLogin.jsp");
-	}
-        
-    String uname = session.getAttribute("username").toString();
 
-       QueryDao qd = new QueryDao();
-       String id = qd.getUserId(uname);
-
-%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Free Bootstrap Admin Template : Binary Admin</title>
+        <title>Make Payment</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -106,25 +94,24 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form action="addPayment" method="post" role="form">
+                                            <form action="addPayment" method="POST" role="form">
 
                                                 <div class="form-group">
                                                     <label>Membership Fee</label> 
-                                                    <input type="text" id="mem" name="memFee" class="form-control" />
+                                                    <input disabled type="text" value="${amount}" name="memFee" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Annual Fee</label> 
-                                                    <input type="text" id="ann" name="annualFee"  class="form-control" />
+                                                    <input disabled type="text" value="${annualFee}" name="annualFee"  class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Total Outstanding</label> 
-                                                    <input type="text" id="out" name="totOutstanding" class="form-control" onclick="addNumbers()" />
-                                                    <input type="text" hidden name="memID" value="<%=id%>" />
+<!--                                                    <input type="text" id="out" name="totOutstanding" class="form-control" onclick="addNumbers()" />-->
+                                                        <input disabled type="text" value="${outstanding}" name="outstanding"  class="form-control" />
                                                 </div>
                                                 
 
-                                                <button type="submit"  class="btn btn-primary" on
-                                                        ="window.location.href='#'">Pay Amount</button>
+                                                <button type="submit" class="btn btn-primary">Pay Amount</button>
 
                                             </form>
                                         </div>
@@ -150,7 +137,7 @@
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
 
-         <script>
+<!--         <script>
             function addNumbers() {
                 var txtFirstNumberValue = document.getElementByName("memFee").value;
                 var txtSecondNumberValue = document.getElementBNam("annualFee").value;
@@ -164,7 +151,7 @@
                        document.getElementByName("totOutstanding").value(txtFirstNumberValue + txtSecondNumberValue);
                 }
             }
-        </script>
+        </script>-->
         
 
     </body>

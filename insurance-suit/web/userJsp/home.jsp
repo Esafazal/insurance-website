@@ -5,30 +5,6 @@
 --%>    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet res = null;
-                ResultSet res2 = null;
-		
-		String uname = session.getAttribute("username").toString();
-                QueryDao queryDao = new QueryDao();
-                String userID = queryDao.getUserId(uname);
-               
-                System.out.println(userID);
-	
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/insurance_website", "root", "");
-		}
-		
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	
-%>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -83,7 +59,7 @@
                             <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a  href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
                         <li>
                             <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
@@ -140,35 +116,7 @@
                                 conditions and secure economic development”. Hence it mainly focuses on providing insurance 
                                 services to members of Sanasa societies and other CBOs of whom majority are in the rural sector.</p>
 
-
-                            <%
-				try { 
-					stmt=conn.createStatement();
-					String sql2 ="SELECT * FROM membership where member_id = '"+userID+"'";
-									
-					res = stmt.executeQuery(sql2);
-					while(res.next()){
-                                                     
-                                        double amt = 5000;
-                                        amt = amt - res.getDouble("amount");
-										
-                                  
-                            %>
-                               <h2 style="color:green;"><b>Outstanding Balance : <%=amt%></b></h2>--                            
-                            <%
-					}
-				}
-									
-				catch (Exception e) {
-										
-                                    e.printStackTrace();
-										
-				}
-							
-							
-							
-			%>
-							
+                            <h2 style="color:green;"><b>Outstanding Balance : ${payAmount}</b></h2>--                            
 
                     </div>  
 
