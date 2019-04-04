@@ -22,6 +22,14 @@
         <param-name>pass</param-name>
         <param-value>1esafazal1</param-value>
     </context-param>
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.insurance.webapp.Filters.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/insurance-suit</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Register</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
