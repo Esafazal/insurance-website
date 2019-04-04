@@ -47,19 +47,19 @@
 
 
                         <li>
-                            <a href="../userJsp/home.jsp"> Home</a>
+                            <a href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
                             <a class="active-menu" href="<%= response.encodeURL("MemberEditDetails")%>" > Profile</a>
                         </li>
                         <li>
-                            <a href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
                         </li>
 
 

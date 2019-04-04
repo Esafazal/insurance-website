@@ -24,7 +24,16 @@ public class SuspendMember extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //to access dashboard from any menu
+        QueryDao dao = new QueryDao();
+        int approvalCount = dao.getPendingApprovals();
+        int claimCount = dao.getPendingClaims();
+        int paymentCount = dao.getPendingPayments();
+        request.setAttribute("approvalCount", approvalCount);
+        request.setAttribute("claimCount", claimCount);
+        request.setAttribute("paymentCount", paymentCount);
 
+        request.getRequestDispatcher("/adminJsp/dashboard.jsp").forward(request, response);
     }
 
     @Override

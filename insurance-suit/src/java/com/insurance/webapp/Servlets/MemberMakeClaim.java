@@ -36,7 +36,7 @@ public class MemberMakeClaim extends HttpServlet {
         int memberID = dao.getMemberID(username);
         String vehicleNumber = dao.getVehicle(memberID);
         request.setAttribute("vehicleNO", vehicleNumber);
-        request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
+        request.getRequestDispatcher("/userJsp/makeClaim.jsp").forward(request, response);
     }
 
     @Override

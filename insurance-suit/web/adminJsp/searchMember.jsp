@@ -47,7 +47,7 @@
 
 
                         <li>
-                            <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
+                            <a  href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
@@ -56,7 +56,7 @@
                             <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
+                            <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
                             <a class="active-menu" href="../adminJsp/searchMember.jsp"> Search Member</a>

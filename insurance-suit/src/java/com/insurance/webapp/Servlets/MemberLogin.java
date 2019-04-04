@@ -46,7 +46,7 @@ public class MemberLogin extends HttpServlet {
             session.setAttribute("username", username);
             session.setMaxInactiveInterval(120);
             
-                   response.sendRedirect("UserHome");
+              response.sendRedirect("UserHome");
         }
         else{
             String errorMessage = "Invalid Credentials, please login again!";

@@ -22,9 +22,9 @@
         <link href="../css/assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-        
-        
-        
+
+
+
     </head>
     <body>
         <div id="wrapper">
@@ -53,19 +53,19 @@
 
 
                         <li>
-                            <a  href="../userJsp/home.jsp"> Home</a>
+                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
-                            <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a   href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a class="active-menu" href=""> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
                         </li>
 
 
@@ -94,11 +94,11 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form action="addPayment" method="POST" role="form">
+                                            <form action="PaymentGateway" target="_blank" method="GET" role="form">
 
                                                 <div class="form-group">
                                                     <label>Membership Fee</label> 
-                                                    <input disabled type="text" value="${amount}" name="memFee" class="form-control" />
+                                                    <input disabled type="text" value="${memberFee}" name="memberFee" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Annual Fee</label> 
@@ -106,10 +106,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Total Outstanding</label> 
-<!--                                                    <input type="text" id="out" name="totOutstanding" class="form-control" onclick="addNumbers()" />-->
-                                                        <input disabled type="text" value="${outstanding}" name="outstanding"  class="form-control" />
+                                                    <input disabled type="text" value="${outstanding}" name="outstanding"  class="form-control" />
                                                 </div>
-                                                
+
 
                                                 <button type="submit" class="btn btn-primary">Pay Amount</button>
 
@@ -136,23 +135,6 @@
         <script src="../css/assets/js/jquery.metisMenu.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
-
-<!--         <script>
-            function addNumbers() {
-                var txtFirstNumberValue = document.getElementByName("memFee").value;
-                var txtSecondNumberValue = document.getElementBNam("annualFee").value;
-                if (txtFirstNumberValue == "")
-                    txtFirstNumberValue = 0;
-                if (txtSecondNumberValue == "")
-                    txtSecondNumberValue = 0;
-
-                
-                if (!isNaN(result)) {
-                       document.getElementByName("totOutstanding").value(txtFirstNumberValue + txtSecondNumberValue);
-                }
-            }
-        </script>-->
-        
 
     </body>
 </html>

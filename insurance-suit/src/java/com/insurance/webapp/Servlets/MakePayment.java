@@ -32,7 +32,7 @@ public class MakePayment extends HttpServlet {
         request.setAttribute("annualFee", annualFee);
         request.setAttribute("outstanding", memberFee+annualFee);
         
-        request.getRequestDispatcher("/userJsp/MakePayment").forward(request, response);
+        request.getRequestDispatcher("/userJsp/makePayment.jsp").forward(request, response);
     }
 
     

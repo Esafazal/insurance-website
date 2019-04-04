@@ -39,6 +39,7 @@ public class Member {
     private String claim_vehicle_number;
     private String membership_id;
     private int amount;
+    private String status;
 
     public int getMember_id() {
         return member_id;
@@ -230,6 +231,14 @@ public class Member {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     

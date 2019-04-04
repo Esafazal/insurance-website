@@ -29,15 +29,15 @@ public class AuthenticationFilter implements Filter{
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         
-        HttpServletRequest servletRequest = (HttpServletRequest) request;
-        if(servletRequest.getRequestURI().startsWith("/insurance-suit/userJsp") || 
-                servletRequest.getRequestURI().startsWith("/insurance-suit/adminJsp")){
-            HttpSession session = servletRequest.getSession();
-           if(session.getAttribute("username") == null){
-               request.getRequestDispatcher("/index.jsp").forward(servletRequest, response);
-           }
-           chain.doFilter(servletRequest, response);
-        }
+//        HttpServletRequest servletRequest = (HttpServletRequest) request;
+//        if(servletRequest.getRequestURI().startsWith("/insurance-suit/userJsp") || 
+//                servletRequest.getRequestURI().startsWith("/insurance-suit/adminJsp")){
+//            HttpSession session = servletRequest.getSession();
+//           if(session.getAttribute("username") == null){
+//               request.getRequestDispatcher("/index.jsp").forward(servletRequest, response);
+//           }
+//           chain.doFilter(servletRequest, response);
+//        }
     
     }
 
