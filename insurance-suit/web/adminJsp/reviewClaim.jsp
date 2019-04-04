@@ -1,17 +1,15 @@
 <%-- 
-    Document   : claimStatus
-    Created on : Mar 22, 2019, 12:04:03 AM
-    Author     : Nadee
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+    Document   : home
+    Created on : Mar 21, 2019, 6:11:48 PM
+    Author     : Nadee 
+--%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Driver's Association</title>
+        <title>Review Claim</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -31,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Member</a> 
+                    <a class="navbar-brand" href="index.html">Admin</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -46,62 +44,56 @@
                             <img src="../css/assets/img/find_user.png" class="user-image img-responsive"/>
                         </li>
 
-
                         <li>
-                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
+                            <a  href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a  href=""> Make Claim</a>
+                            <a  href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
+                            <a class="active-menu" href="">Review Claims</a>
                         </li>
                         <li>
-                            <a class="active-menu" href=""> Claim Status</a>
+                            <a href="../adminJsp/searchMember.jsp"> Search Member</a>
                         </li>
-
-
-
-
                     </ul>
-
                 </div>
-
             </nav>  
             <!-- /. NAV SIDE  -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Claim Request Status</h2>
-                            <c:if test="${requestScope.status!=null}">
+                            <h2>Review Claims </h2>
+                            <c:if test="${requestScope.claim!=null}">
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead
                                             <tr>
-                                                <th>Username</th>
+                                                <th>Name</th>
                                                 <th>Claim Date</th>
                                                 <th>Claim Amount</th>
-                                                <th>Description</th>
+                                                <th>Claim Note</th>
                                                 <th>Incident Date</th>
-                                                <th>Quotation Place</th>
+                                                <th>Quotation From</th>
+                                                <th>Action</th>
                                             </tr>
-                                            <form action="ClaimStatus" method="POST">
+                                            <form action="ReviewClaim" method="POST">
                                         <tbody>
-                                            <!--issues starts from here i feel-->
-                                            <c:forEach items="${requestScope.status}" var="status" varStatus="loop">
+                                            <c:forEach items="${requestScope.claim}" var="claim" varStatus="loop">
                                             <tr class="odd gradeX">
-                                                <td>${username} </td>
-                                                <td>${status.claim_date}</td>
-                                                <td>${status.claim_amount}</td>
-                                                <td class="center">${status.description}</td>
-                                                <td class="center">${status.incident_date}</td>
-                                                <td class="center">${status.quotation_place}</td>
-                                                <td> <button type="submit" name="cancel" value="${status.member_id}" class="btn btn-danger btn-xs">cancel</button> <br></td>
+                                                <td>${claim.first_name} ${claim.last_name}</td>
+                                                <td>${claim.claim_date}</td>
+                                                <td>${claim.claim_amount}</td>
+                                                <td class="center">${claim.description}</td>
+                                                <td class="center">${claim.incident_date}</td>
+                                                <td class="center">${claim.quotation_place}</td>
+                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Accept</button> <br>
+                                                     <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
                                                 
                                             </tr>
                                             </c:forEach>
@@ -112,16 +104,15 @@
 
                             </div>
                          </c:if>
-                      </div>
+                            
+                        </div>
+                    </div>
 
+                    <hr />
                 </div>
-                <!-- /. ROW  -->
-                <hr />
-
+                <!-- /. PAGE INNER  -->
             </div>
-            <!-- /. PAGE INNER  -->
-        </div>
-        <!-- /. PAGE WRAPPER  -->
+            <!-- /. PAGE WRAPPER  -->
         </div>
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

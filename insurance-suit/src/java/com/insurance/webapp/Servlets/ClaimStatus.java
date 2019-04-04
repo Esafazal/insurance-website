@@ -17,34 +17,47 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author crazydude
+ * @author Nadee
  */
-public class ReviewClaim extends HttpServlet {
+public class ClaimStatus extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String username = (String) request.getSession().getAttribute("username");
         QueryDao dao = new QueryDao();
-        List<Member> claim = dao.getNewClaims();
-        request.setAttribute("claim", claim);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
+        int member = dao.getUserId(username);
+        String memberID = Integer.toString(member);
+        List<Member> status = dao.getClaimStatus(memberID);
+        request.setAttribute("status", status);
+        request.setAttribute("username", username);
+
+        request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String memberID = request.getParameter("accept");
-        System.out.println("MEMBER IDDDDDDDDDDDDDDDD"+memberID);
+        String username = (String) request.getSession().getAttribute("username");
+        String memberID = request.getParameter("cancel");
         QueryDao dao = new QueryDao();
-        dao.ApproveClaim(memberID);
+        dao.cancelRequestedClaim(memberID);
 
-        List<Member> claims = dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+        List<Member> status = dao.getClaimStatus(memberID);
+        request.setAttribute("status", status);
+        request.setAttribute("username", username);
+
+        request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
+
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
