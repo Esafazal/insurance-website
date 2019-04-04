@@ -50,19 +50,19 @@
 
 
                         <li>
-                            <a class="active-menu" href="../userJsp/home.jsp"> Home</a>
+                            <a class="active-menu" href=""> Home</a>
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
-                            <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a   href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
                         </li>
 
                     </ul>
@@ -82,15 +82,16 @@
                         </div>
                         <style>
                             .aboutimg{
-                                width: 80%;
-                                height: 20%;
-                                margin: 0px 0px 0px 130px;  /*top right bottom left*/
+                                width: 100%;
+                                height: 10%;
+                                margin: 0px 0px 0px 0px;  /*top right bottom left*/
+                                
                             }
                             ;
                         </style>
 
 
-                        <img src="https://img.blesk.cz/img/1/normal620/1788957-img-auto-ridic-bouracka-nehoda-v0.jpg?v=0" class="aboutimg">
+                        <img src="http://elderinsuranceagency.com/wp-content/uploads/2015/12/SUBHEADER-auto-insurance.jpg" class="aboutimg">
                             <!-- /. ROW  -->
 
                             <style>h1{
@@ -100,7 +101,7 @@
                                     text-align: center
                                 }
                             </style>
-                            <h1>Welcome to Insurance Suit</h1>
+                            <h1>Welcome to Drivers Association Srilanka</h1>
                             <p>Insurance Suit Association Ltd (ISAL) registered under 
                                 the name of Insurance suit
                                 as a public limited liability company, incorporated 
@@ -108,13 +109,7 @@
                                 re- registered under the companies act No 11 of 2008. 
                                 SICL is authorized to carry on Drivers Association, 
                                 under the Regulation of Association Industry Act No 43 of 2000. ISAL is an Drivers Association  
-                                affiliated to Sanasa movement and therefore it vision is 
-                                “To become a strong assurance company operating with a large customer base as 
-                                a global tendency pavior of Micro assurance” whilst the mission in particular 
-                                to Sanasa Insurance Company is “To give our clients an excellent service on all 
-                                occasions and at all stages to mitigate their risk in order to improve their living 
-                                conditions and secure economic development”. Hence it mainly focuses on providing insurance 
-                                services to members of Sanasa societies and other CBOs of whom majority are in the rural sector.</p>
+                                affiliated to Sanasa movement.</p>
 
                             <h2 style="color:green;"><b>Outstanding Balance : ${payAmount}</b></h2>--                            
 

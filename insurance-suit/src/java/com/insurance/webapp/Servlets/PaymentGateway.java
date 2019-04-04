@@ -6,11 +6,10 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
-import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,32 +18,35 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author crazydude
  */
-public class ReviewClaim extends HttpServlet {
+public class PaymentGateway extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        QueryDao dao = new QueryDao();
-        List<Member> claim = dao.getNewClaims();
-        request.setAttribute("claim", claim);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
+        request.getRequestDispatcher("/userJsp/paymentGateway.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String memberID = request.getParameter("accept");
-        System.out.println("MEMBER IDDDDDDDDDDDDDDDD"+memberID);
+        String username = (String) request.getSession().getAttribute("username");
         QueryDao dao = new QueryDao();
-        dao.ApproveClaim(memberID);
+        int memberID = dao.getMemberID(username);
+        dao.paymentGateway(memberID);
 
-        List<Member> claims = dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+        int payAmount = dao.getPayableAmount(memberID);
+        request.setAttribute("payAmount", payAmount);
+        request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
