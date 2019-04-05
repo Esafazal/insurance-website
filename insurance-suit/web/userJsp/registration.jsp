@@ -45,10 +45,10 @@
 
                 <label for="vehicle type"><b>Vehicle Type</b></label>
                 <select name="vehicle_type">
-                    <option>Car</option>
-                    <option>Van</option>
-                    <option>Motorcycle</option>
-                    <option>Three Wheeler</option>
+                    <option value="car">Car</option>
+                    <option value="van">Van</option>
+                    <option value="bike">motorcycle</option>
+                    <option value="threewheeler">Three Wheeler</option>
                 </select>
 
                 <label for="vehicle number"><b>Vehicle Number</b></label>

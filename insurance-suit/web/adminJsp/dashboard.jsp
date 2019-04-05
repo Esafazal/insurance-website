@@ -48,16 +48,16 @@
 
 
                         <li>
-                            <a class="active-menu" href="../adminJsp/dashboard.jsp"> Dashboard</a>
+                            <a class="active-menu" href=""> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a   href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
+                            <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
                             <a href="../adminJsp/searchMember.jsp"> Search Member</a>
@@ -86,10 +86,10 @@
                     <div class="panel panel-primary text-center no-boder bg-color-green">
                         <div class="panel-body">
                             <i class="fa fa-edit fa-5x"></i>
-                            <h3>30 New</h3>
+                            <h3>${approvalCount} Registrations</h3>
                         </div>
                         <div class="panel-footer back-footer-green">
-                           Registrations
+                           Pending
                         </div>    
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="panel panel-primary text-center no-boder bg-color-red">
                         <div class="panel-body">
                             <i class="fa fa-crash fa-5x"></i>
-                            <h3>10 Claims</h3>
+                            <h3>${claimCount} Claims</h3>
                         </div>
                         <div class="panel-footer back-footer-red">
                             Pending
@@ -109,7 +109,7 @@
                     <div class="panel panel-primary text-center no-boder bg-color-blue">
                         <div class="panel-body">
                             <i class="fa fa-money fa-5x"></i>
-                            <h3>25 Payments</h3>
+                            <h3>${paymentCount} Payments</h3>
                         </div>
                         <div class="panel-footer back-footer-blue">
                             Pending

@@ -6,48 +6,48 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
-import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author DELL
+ * @author nadee
  */
-@WebServlet(name = "MemberDetails", urlPatterns = {"/MemberDetails"})
-public class MemberDetails extends HttpServlet {
+public class MakePayment extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String username = (String) request.getSession().getAttribute("username");
-        QueryDao queryDao = new QueryDao();
-        int memberID = queryDao.getMemberID(username);
-        Member memberList = queryDao.getMemberDetails(memberID);
-
-        request.setAttribute("memberList", memberList);
-        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+        QueryDao Dao = new QueryDao();
+        int memberID = Dao.getUserId(username);
+        int memberFee = Dao.getPayableAmount(memberID);
+        int annualFee = 25000;
+        request.setAttribute("memberFee", memberFee);
+        request.setAttribute("annualFee", annualFee);
+        request.setAttribute("outstanding", memberFee+annualFee);
+        
+        request.getRequestDispatcher("/userJsp/makePayment.jsp").forward(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String memberID = request.getParameter("reject");
-        QueryDao dao = new QueryDao();
-        dao.RejectClaim(Integer.parseInt(memberID));
-
-        List<Member> claims = dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+        
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

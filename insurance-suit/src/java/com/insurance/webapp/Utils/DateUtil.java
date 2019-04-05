@@ -43,24 +43,4 @@ public class DateUtil {
         return format1;
     }
 
-    public static Date getStartTimeOfTheDay(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.set(Calendar.HOUR_OF_DAY, 0); // set hour to midnight
-        cal.set(Calendar.MINUTE, 0); // set minute in hour
-        cal.set(Calendar.SECOND, 0); // set second in minute
-
-        return new Date(cal.getTimeInMillis());
-    }
-
-    public static Date getEndTimeOfTheDay(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.set(Calendar.HOUR_OF_DAY, 23); // set hour to midnight
-        cal.set(Calendar.MINUTE, 59); // set minute in hour
-        cal.set(Calendar.SECOND, 59); // set second in minute
-
-        return new Date(cal.getTimeInMillis());
-    }
-
 }

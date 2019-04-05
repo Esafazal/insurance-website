@@ -8,44 +8,46 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author DELL
+ * @author sachi keragala
  */
-@WebServlet(name = "MemberDetails", urlPatterns = {"/MemberDetails"})
-public class MemberDetails extends HttpServlet {
+public class SuspendMember extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //to access dashboard from any menu
+        QueryDao dao = new QueryDao();
+        int approvalCount = dao.getPendingApprovals();
+        int claimCount = dao.getPendingClaims();
+        int paymentCount = dao.getPendingPayments();
+        request.setAttribute("approvalCount", approvalCount);
+        request.setAttribute("claimCount", claimCount);
+        request.setAttribute("paymentCount", paymentCount);
 
-        String username = (String) request.getSession().getAttribute("username");
-        QueryDao queryDao = new QueryDao();
-        int memberID = queryDao.getMemberID(username);
-        Member memberList = queryDao.getMemberDetails(memberID);
-
-        request.setAttribute("memberList", memberList);
-        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminJsp/dashboard.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String memberID = request.getParameter("reject");
-        QueryDao dao = new QueryDao();
-        dao.RejectClaim(Integer.parseInt(memberID));
 
-        List<Member> claims = dao.getNewClaims();
-        request.setAttribute("claims", claims);
+        String memberId = request.getParameter("suspend");
+        QueryDao Dao = new QueryDao();
+        Dao.ifSuspendMember(memberId);
+
+        List<Member> payment = Dao.getNotPayedMembers();
+        request.setAttribute("payment", payment);
         request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+
     }
 
     @Override
