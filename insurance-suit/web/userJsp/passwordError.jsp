@@ -1,10 +1,10 @@
 <%-- 
-    Document   : registerVehicle
-    Created on : Mar 24, 2019, 2:45:27 PM
+    Document   : passwordError
+    Created on : Apr 5, 2019, 10:50:27 AM
     Author     : DELL
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -87,16 +87,16 @@
 
                                 <div class="panel-body">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#home" data-toggle="tab">Details</a>
+                                        <li class=""><a href="#home" data-toggle="tab">Details</a>
                                         </li>
                                         <li class=""><a href="#profile" data-toggle="tab">Edit Details</a>
                                         </li>
-                                        <li class=""><a href="#messages" data-toggle="tab">Password</a>
+                                        <li class="active"><a href="#messages" data-toggle="tab">Password</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content">
-                                        <div class="tab-pane fade active in" id="home">
+                                        <div class="tab-pane fade" id="home">
                                             <form action="MemberDetails" method="get">
 
                                                 <h4><b>Personal Details</b></h4>
@@ -144,8 +144,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="tab-pane fade" id="messages">
+                                        <div class="tab-pane fade active in" id="messages">
                                             <h4>Change Password</h4>
+                                            <p>Could not Change Password Please Try Again!</p>
                                             <!-- Form Elements -->
 
                                             <div class="panel-body">
@@ -192,4 +193,5 @@
 
                     </body>
                     </html>
+
 

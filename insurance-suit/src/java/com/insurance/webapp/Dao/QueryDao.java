@@ -242,19 +242,19 @@ public class QueryDao {
         return rowsAffected;
     }
 
-    public int editMemberPassword(Member member, String memberId) {
+    public int editMemberPassword(String newPassword, int memberId) {
 
         int rowsAffected = 0;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "UPDATE `Member` SET `password`= ? WHERE member_id = ?";
+            String query = "UPDATE member SET password= ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, member.getPassword());
-            preparedStatement.setString(2, memberId);
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, memberId);
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -265,6 +265,31 @@ public class QueryDao {
         }
 
         return rowsAffected;
+    }
+    
+    public boolean checkPassword(int memberId, String password){
+        
+        boolean match = false;
+
+        try {
+            Connection connection = DBConnection.getConnection();
+
+            String query = "SELECT * FROM Member WHERE member_id=? AND password=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, memberId);
+            preparedStatement.setString(2, password);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                match = true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return match;
     }
 
     public int requestClaim(Member member) {
@@ -320,5 +345,5 @@ public class QueryDao {
         }
         return vehicleNumber;
     }
-
+    
 }

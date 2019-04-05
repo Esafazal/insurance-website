@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Dao/QueryDao.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/EntityBean/Member.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/web/WEB-INF/web.xml</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/Register.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/web/userJsp/registration.jsp</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/web/userJsp/memberLogin.jsp</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberLogin.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/web/index.jsp</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/AdminLogin.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberDetails.java</file>
-            <file>file:/home/crazydude/insurance-website/insurance-suit/web/userJsp/userProfile.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/Register.java</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberEditPassword.java</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/makePayment.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Dao/QueryDao.java</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberDetails.java</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberEditDetails.java</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/userProfile.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/CalculateAnnualFee.java</file>
         </group>
     </open-files>
 </project-private>
