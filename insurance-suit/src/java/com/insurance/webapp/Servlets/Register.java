@@ -12,6 +12,9 @@ import com.insurance.webapp.Utils.DateUtil;
 import com.insurance.webapp.Utils.EmailUtility;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -23,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -68,6 +72,16 @@ public class Register extends HttpServlet {
         String phone_no = request.getParameter("phoneno");
         String username = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS);
         String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
+
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] digest = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        String mdpassword = DatatypeConverter.printHexBinary(digest);
+        
         //vehicle details
         String vehicle_number = request.getParameter("vehicle_number");
         String vehicle_type = request.getParameter("vehicle_type");
@@ -97,8 +111,8 @@ public class Register extends HttpServlet {
             member.setEmail(email);
             member.setPhone_no(phone_no);
             member.setUsername(username);
-            member.setPassword(password);
-            
+            member.setPassword(mdpassword);
+
             int rows = dao.registerMember(member);
             //vehice
             int memberID = dao.getMemberID(username);
@@ -108,7 +122,7 @@ public class Register extends HttpServlet {
             member.setVehicle_model(vehicle_model);
             member.setVehicle_condition(vehicle_condition);
             member.setMember_id(memberID);
-            
+
             dao.registeVehicle(member);
 
             String message = null;

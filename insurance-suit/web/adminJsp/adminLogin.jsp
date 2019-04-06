@@ -36,7 +36,6 @@
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
-
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" class="cancelbtn" onclick="window.location.href='../index.jsp'">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>

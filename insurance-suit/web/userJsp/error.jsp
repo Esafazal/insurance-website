@@ -44,7 +44,7 @@
             <div class="row">
                <div class="col-md-12">
                   <h1>
-                     Error Occured.<br>
+                     Error Occurred.<br>
                      Please Try Logging In Again.
                   </h1>
                </div>
