@@ -51,7 +51,7 @@ public class MemberLogin extends HttpServlet {
         else{
             String errorMessage = "Invalid Credentials, please login again!";
             request.setAttribute("error", errorMessage);
-            request.getRequestDispatcher("/userJsp/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
         }
     }
 

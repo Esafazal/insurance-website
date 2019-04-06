@@ -20,6 +20,13 @@
             <div class="imgcontainer">
                 <img src="../css/img/login.png" alt="Avatar" class="avatar">
             </div>
+            
+            <c:if test="${requestScope.error!=null}">
+                <div class="alert alert-info alert-dismissable">
+                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
+                    <a href="#" class="alert-link">${error}</a>.
+                </div>
+            </c:if>
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
