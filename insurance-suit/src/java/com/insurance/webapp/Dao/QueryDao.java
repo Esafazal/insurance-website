@@ -349,8 +349,6 @@ public class QueryDao {
         }
         return vehicleNumber;
     }
-<<<<<<< HEAD
-=======
 
     public int getPendingApprovals() {
         int count = 0;
@@ -714,8 +712,5 @@ public class QueryDao {
         return rowsAffected;
     }
     
-    
-    
->>>>>>> origin/esa/pathum_branchMerge
     
 }
