@@ -60,7 +60,10 @@
                             <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
                         </li>
                         <li>
-                            <a href="../adminJsp/searchMember.jsp"> Search Member</a>
+                            <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
+                        </li>
+                        <li>
+                            <a href="<%= response.encodeURL("SetConfigureFee") %>"> Configure Fee</a>
                         </li>
 
 
