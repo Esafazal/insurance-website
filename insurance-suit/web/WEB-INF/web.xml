@@ -107,8 +107,8 @@
         <url-pattern>/userJsp/UserHome</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>reviewClaims</servlet-name>
-        <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
+        <servlet-name>ReviewClaim</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.ReviewClaim</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RejectClaims</servlet-name>
@@ -151,10 +151,6 @@
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reviewClaims</servlet-name>
-        <url-pattern>/adminJsp/reviewClaims</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>RejectClaims</servlet-name>
         <url-pattern>/adminJsp/RejectClaims</url-pattern>
     </servlet-mapping>
@@ -173,6 +169,10 @@
     <servlet-mapping>
         <servlet-name>ClaimEligible</servlet-name>
         <url-pattern>/userJsp/ClaimEligible</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewClaim</servlet-name>
+        <url-pattern>/adminJsp/ReviewClaim</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

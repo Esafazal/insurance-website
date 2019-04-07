@@ -3,6 +3,7 @@
     Created on : Mar 21, 2019, 6:11:48 PM
     Author     : Nadee 
 --%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -68,8 +69,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Review Claims </h2>
-                            <c:if test="${requestScope.claim!=null}">
+                            
                             <div class="panel-body">
+                                <c:if test="${requestScope.claims != null}">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead
@@ -84,15 +86,15 @@
                                             </tr>
                                             <form action="ReviewClaim" method="POST">
                                         <tbody>
-                                            <c:forEach items="${requestScope.claim}" var="claim" varStatus="loop">
+                                            <c:forEach items="${requestScope.claims}" var="claim" varStatus="loop">
                                             <tr class="odd gradeX">
                                                 <td>${claim.first_name} ${claim.last_name}</td>
                                                 <td>${claim.claim_date}</td>
                                                 <td>${claim.claim_amount}</td>
-                                                <td class="center">${claim.description}</td>
+                                                <td class="center">${claim.claim_description}</td>
                                                 <td class="center">${claim.incident_date}</td>
                                                 <td class="center">${claim.quotation_place}</td>
-                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Accept</button> <br>
+                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Approve</button> <br>
                                                      <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
                                                 
                                             </tr>
@@ -101,9 +103,9 @@
                                             </form>
                                     </table>
                                 </div>
-
+                               </c:if>
                             </div>
-                         </c:if>
+                         
                             
                         </div>
                     </div>

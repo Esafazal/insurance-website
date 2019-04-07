@@ -8,9 +8,9 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author crazydude
  */
+@WebServlet(name = "ReviewClaim", urlPatterns = {"/ReviewClaim"})
 public class ReviewClaim extends HttpServlet {
 
     @Override
@@ -27,7 +28,7 @@ public class ReviewClaim extends HttpServlet {
 
         QueryDao dao = new QueryDao();
         List<Member> claim = dao.getNewClaims();
-        request.setAttribute("claim", claim);
+        request.setAttribute("claims", claim);
         request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
     }
 
@@ -42,7 +43,7 @@ public class ReviewClaim extends HttpServlet {
 
         List<Member> claims = dao.getNewClaims();
         request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
     }
 
     @Override

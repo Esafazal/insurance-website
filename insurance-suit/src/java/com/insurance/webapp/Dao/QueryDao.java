@@ -270,9 +270,9 @@ public class QueryDao {
 
         return rowsAffected;
     }
-    
-    public boolean checkPassword(int memberId, String password){
-        
+
+    public boolean checkPassword(int memberId, String password) {
+
         boolean match = false;
 
         try {
@@ -283,7 +283,7 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, memberId);
             preparedStatement.setString(2, password);
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -445,7 +445,7 @@ public class QueryDao {
         int rowsAffected = 0;
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "UPDATE Member SET status='rejected' WHERE member_id=?";
+            String query = "UPDATE Claim SET status='rejected' WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, memberID);
             if (preparedStatement.execute()) {
@@ -672,9 +672,8 @@ public class QueryDao {
         List<Member> status = new ArrayList<>();
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "SELECT claim_date, claim_amount, description, incident_date,"
-                    + " quotation_place, member_id, status\n"
-                    + "FROM Claim WHERE status='pending' and member_id=?";
+            String query = "SELECT claim_date, claim_amount, description, incident_date, quotation_place, member_id, status\n"
+                    + "FROM Claim WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, memberID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -694,7 +693,7 @@ public class QueryDao {
         }
         return status;
     }
-    
+
     public int cancelRequestedClaim(String memberID) {
         int rowsAffected = 0;
         try {
@@ -711,6 +710,5 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-    
-    
+
 }
