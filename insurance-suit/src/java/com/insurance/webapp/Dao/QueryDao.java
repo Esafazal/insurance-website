@@ -710,14 +710,4 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-<<<<<<< HEAD
-
-=======
-    
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> origin/esa/pathum_branchMerge
->>>>>>> origin/esa/pathum_branchMerge
 }

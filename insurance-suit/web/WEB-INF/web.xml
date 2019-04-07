@@ -151,13 +151,10 @@
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
-=======
         <servlet-name>ReviewClaim</servlet-name>
         <url-pattern>/adminJsp/ReviewClaim</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
->>>>>>> origin/esa/pathum_branchMerge
         <servlet-name>RejectClaims</servlet-name>
         <url-pattern>/adminJsp/RejectClaims</url-pattern>
     </servlet-mapping>
@@ -172,13 +169,10 @@
     <servlet-mapping>
         <servlet-name>ClaimStatus</servlet-name>
         <url-pattern>/userJsp/ClaimStatus</url-pattern>
-<<<<<<< HEAD
-=======
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClaimEligible</servlet-name>
         <url-pattern>/userJsp/ClaimEligible</url-pattern>
->>>>>>> origin/esa/pathum_branchMerge
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReviewClaim</servlet-name>
