@@ -47,11 +47,10 @@
         <servlet-class>com.insurance.webapp.Servlets.MemberLogin</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>MemberEditPassword</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberEditPassword</servlet-class>
     </servlet>
-=======
+    <servlet>
         <servlet-name>PendingApprovals</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.PendingApprovals</servlet-class>
     </servlet>
@@ -83,7 +82,6 @@
         <servlet-name>MemberLogin</servlet-name>
         <url-pattern>/userJsp/MemberLogin</url-pattern>
     </servlet-mapping>
->>>>>>> origin/esa/pathum_branchMerge
     <servlet-mapping>
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminJsp/AdminLogin</url-pattern>
@@ -104,17 +102,14 @@
         <servlet-name>UserHome</servlet-name>
         <url-pattern>/userJsp/UserHome</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-=======
     <servlet>
-        <servlet-name>reviewClaims</servlet-name>
-        <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
+        <servlet-name>ReviewClaim</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.ReviewClaim</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RejectClaims</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.RejectClaims</servlet-class>
     </servlet>
->>>>>>> origin/esa/pathum_branchMerge
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
@@ -132,10 +127,10 @@
         <url-pattern>/userJsp/MemberDetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>MemberEditPassword</servlet-name>
         <url-pattern>/userJsp/MemberEditPassword</url-pattern>
-=======
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PendingApprovals</servlet-name>
         <url-pattern>/adminJsp/PendingApprovals</url-pattern>
     </servlet-mapping>
@@ -152,8 +147,8 @@
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reviewClaims</servlet-name>
-        <url-pattern>/adminJsp/reviewClaims</url-pattern>
+        <servlet-name>ReviewClaim</servlet-name>
+        <url-pattern>/adminJsp/ReviewClaim</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RejectClaims</servlet-name>
@@ -170,7 +165,6 @@
     <servlet-mapping>
         <servlet-name>ClaimStatus</servlet-name>
         <url-pattern>/userJsp/ClaimStatus</url-pattern>
->>>>>>> origin/esa/pathum_branchMerge
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
@@ -178,9 +172,5 @@
     <error-page>
         <error-code>404</error-code>
         <location>/userJsp/error.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/userJsp/error500.jsp</location>
     </error-page>
 </web-app>

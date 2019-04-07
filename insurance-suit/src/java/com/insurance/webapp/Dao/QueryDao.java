@@ -270,9 +270,9 @@ public class QueryDao {
 
         return rowsAffected;
     }
-    
-    public boolean checkPassword(int memberId, String password){
-        
+
+    public boolean checkPassword(int memberId, String password) {
+
         boolean match = false;
 
         try {
@@ -283,7 +283,7 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, memberId);
             preparedStatement.setString(2, password);
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -349,8 +349,6 @@ public class QueryDao {
         }
         return vehicleNumber;
     }
-<<<<<<< HEAD
-=======
 
     public int getPendingApprovals() {
         int count = 0;
@@ -513,13 +511,13 @@ public class QueryDao {
         return id;
     }
 
-    public String getVehicleType(String memberID) {
+    public String getVehicleType(int memberID) {
         String type = null;
         try {
             Connection connection = DBConnection.getConnection();
             String query = "SELECT vehicle_type FROM Vehicle WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, memberID);
+            preparedStatement.setInt(1, memberID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 type = resultSet.getString("vehicle_type");
@@ -696,7 +694,7 @@ public class QueryDao {
         }
         return status;
     }
-    
+
     public int cancelRequestedClaim(String memberID) {
         int rowsAffected = 0;
         try {
@@ -715,7 +713,5 @@ public class QueryDao {
     }
     
     
-    
->>>>>>> origin/esa/pathum_branchMerge
     
 }
