@@ -511,13 +511,13 @@ public class QueryDao {
         return id;
     }
 
-    public String getVehicleType(String memberID) {
+    public String getVehicleType(int memberID) {
         String type = null;
         try {
             Connection connection = DBConnection.getConnection();
             String query = "SELECT vehicle_type FROM Vehicle WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, memberID);
+            preparedStatement.setInt(1, memberID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 type = resultSet.getString("vehicle_type");
@@ -710,5 +710,14 @@ public class QueryDao {
         }
         return rowsAffected;
     }
+<<<<<<< HEAD
 
+=======
+    
+    
+<<<<<<< HEAD
+    
+=======
+>>>>>>> origin/esa/pathum_branchMerge
+>>>>>>> origin/esa/pathum_branchMerge
 }
