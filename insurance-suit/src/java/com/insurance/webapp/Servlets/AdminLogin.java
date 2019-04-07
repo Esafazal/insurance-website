@@ -56,7 +56,7 @@ public class AdminLogin extends HttpServlet {
 
         } else {
             String errorMessage = "Invalid Credentials, please login again!";
-            request.setAttribute("loginError", errorMessage);
+            request.setAttribute("error", errorMessage);
             request.getRequestDispatcher("/adminJsp/adminLogin.jsp").forward(request, response);
 
         }

@@ -60,12 +60,14 @@ public class MemberLogin extends HttpServlet {
             session.setAttribute("username", username);
             session.setMaxInactiveInterval(120);
 
+
             request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
-        } else {
-            
+        } 
+        else{
+                
             String errorMessage = "Invalid Credentials, please login again!";
             request.setAttribute("error", errorMessage);
-            request.getRequestDispatcher("/userJsp/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
         }
 }
 

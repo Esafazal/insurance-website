@@ -4,6 +4,7 @@
     Author     : crazydude
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -76,7 +77,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Make Claim</h2>
-
+                            <c:if test="${requestScope.error!=null}">
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <a href="#" class="alert-link">${error}</a>.
+                            </div>
+                            </c:if>
                         </div>
                     </div>
                     <!-- /. ROW  -->
@@ -89,7 +95,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form" action="MemberMakeClaim" method="GET">
+                                    <form role="form" action="ClaimEligible" method="GET">
                                         <p>Eligibility Criteria</p>
 
                                         <ul>
@@ -97,8 +103,15 @@
                                             <li>Claim quota is not exceeded.</li>
                                             <li>No outstanding payments.</li>
                                         </ul> 
+                                        
+                                         <c:if test="${requestScope.error == null}">
                                         <button type="submit"  class="btn btn-primary">Check Eligibility</button>
-
+                                        </c:if>
+                                        
+                                        <c:if test="${requestScope.error != null}">
+                                        <fieldset disabled="disabled">
+                                            <button type="submit" class="btn btn-primary">Check Eligibility</button>
+                                        </fieldset></c:if>
                                         </form>
                                 </div>
                                 </div>

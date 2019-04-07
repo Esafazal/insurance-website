@@ -78,6 +78,10 @@
         <servlet-name>ClaimStatus</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.ClaimStatus</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClaimEligible</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.ClaimEligible</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MemberLogin</servlet-name>
         <url-pattern>/userJsp/MemberLogin</url-pattern>
@@ -165,6 +169,13 @@
     <servlet-mapping>
         <servlet-name>ClaimStatus</servlet-name>
         <url-pattern>/userJsp/ClaimStatus</url-pattern>
+<<<<<<< HEAD
+=======
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClaimEligible</servlet-name>
+        <url-pattern>/userJsp/ClaimEligible</url-pattern>
+>>>>>>> origin/esa/pathum_branchMerge
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
