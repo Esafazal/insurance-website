@@ -1,7 +1,7 @@
 <%-- 
-    Document   : makeClaim
-    Created on : Mar 22, 2019, 12:02:46 AM
-    Author     : crazydude
+    Document   : configureFee
+    Created on : Mar 29, 2019, 3:40:47 AM
+    Author     : SINGER
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Claim Eligibility</title>
+        <title>Driver's Association</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -31,13 +31,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Member</a> 
+                    <a class="navbar-brand" href="index.html">Admin</a> 
                 </div>
+
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
                      font-size: 16px;"><script> document.write(new Date().toLocaleDateString());</script>&nbsp;<a href="#" class="btn btn-danger square-btn-adjust" onclick="window.location.href = '../index.jsp'">Logout</a> </div>
-            </nav>   
+            </nav> 
+
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -48,26 +50,22 @@
 
 
                         <li>
-                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
+                            <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
+                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
                         </li>
                         <li>
-                            <a  class="active-menu" href=""> Make Claim</a>
+                            <a   href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
+                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
                         <li>
-<<<<<<< HEAD:insurance-suit/web/userJsp/claimEligible.jsp
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
-=======
-                            <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
->>>>>>> Shivorn-SearchMembers_configureFee:insurance-suit/web/adminJsp/reviewClaims.jsp
+                            <a class="active-menu" href="../adminJsp/configureFee.jsp"> Configure Fee</a>
                         </li>
 
 
@@ -83,53 +81,65 @@
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Make Claim</h2>
-                            <c:if test="${requestScope.error!=null}">
-                            <div class="alert alert-info alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <a href="#" class="alert-link">${error}</a>.
-                            </div>
+                            <h2>Configure Fee</h2>
+                            <c:if test="${requestScope.done != null}">
+                                <div class="alert alert-info">
+                                <a class="alert-link">${done}</a>.
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.error2 != null}">
+                                <div class="alert alert-info">
+                                <a class="alert-link">${error2}</a>.
+                                </div>
                             </c:if>
                         </div>
                     </div>
-                    <!-- /. ROW  -->
-                    <hr />
-                       <div class="row">
-                <div class="col-md-12">
-                    <!-- Form Elements -->
-                    <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <form role="form" action="ClaimEligible" method="GET">
-                                        <p>Eligibility Criteria</p>
 
-                                        <ul>
-                                            <li>Membership must be minimum 6 months old.</li>
-                                            <li>Claim quota is not exceeded.</li>
-                                            <li>No outstanding payments.</li>
-                                        </ul> 
-                                        
-                                         <c:if test="${requestScope.error == null}">
-                                        <button type="submit"  class="btn btn-primary">Check Eligibility</button>
-                                        </c:if>
-                                        
-                                        <c:if test="${requestScope.error != null}">
-                                        <fieldset disabled="disabled">
-                                            <button type="submit" class="btn btn-primary">Check Eligibility</button>
-                                        </fieldset></c:if>
-                                        </form>
-                                </div>
-                                </div>
+                    <!-- /. ROW  -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <form role="form" action="SetConfigureFee" method="POST">
+
+                                    <div class="form-group">
+                                        <label>Membership Fee - Car</label> 
+                                        <input class="form-control" name="car" placeholder="Enter desired amount eg: 25500" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Membership Fee - Van</label> 
+                                        <input class="form-control" name="van" placeholder="Enter desired amount eg: 25500"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Membership Fee - MotorCycle</label> 
+                                        <input class="form-control" name="bike" placeholder="Enter desired amount eg: 25500"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Membership Fee - ThreeWheeler</label> 
+                                        <input class="form-control" name="threewheeler" placeholder="Enter desired amount eg: 25500"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+
                             </div>
                         </div>
+
+
+                    </div>
                 </div>
-                </div>
-                </div>
-                <!-- /. PAGE INNER  -->
             </div>
-            <!-- /. PAGE WRAPPER  -->
+
+
+            </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+        </div>
         </div>
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

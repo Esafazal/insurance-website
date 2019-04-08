@@ -31,6 +31,10 @@
         <url-pattern>/insurance-suit</url-pattern>
     </filter-mapping>
     <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.Login</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Register</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
@@ -102,6 +106,22 @@
         <servlet-name>MemberDetails</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowMembers</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.ShowMembers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetConfigureFee</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.SetConfigureFee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/userJsp/Register</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserHome</servlet-name>
         <url-pattern>/userJsp/UserHome</url-pattern>
@@ -115,8 +135,16 @@
         <servlet-class>com.insurance.webapp.Servlets.RejectClaims</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Register</servlet-name>
-        <url-pattern>/userJsp/Register</url-pattern>
+        <servlet-name>ShowMembers</servlet-name>
+        <url-pattern>/adminJsp/ShowMembers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/adminJsp/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetConfigureFee</servlet-name>
+        <url-pattern>/adminJsp/SetConfigureFee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MemberMakeClaim</servlet-name>
