@@ -490,7 +490,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM `member` ";
+            String query = "SELECT * FROM `Member` ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -757,11 +757,11 @@ public class QueryDao {
     public List<Member> lookForMembers(String firstname) {
         List<Member> member = new ArrayList<>();
         try {
-
             Connection connection = DBConnection.getConnection();
-            String query = "SELECT * FROM member WHERE first_name LIKE '?%'";
+
+            String query = "SELECT * FROM Member WHERE first_name LIKE '"+firstname+"%'";
+
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, firstname);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Member memberData = new Member();
@@ -776,7 +776,6 @@ public class QueryDao {
                 memberData.setPhone_no(rs.getString("phone_no"));
                 memberData.setUsername(rs.getString("username"));
                 member.add(memberData);
-
             }
             rs.close();
 
@@ -787,7 +786,7 @@ public class QueryDao {
 
     }
 
-    public int updateAllMembershipFee(int car, int van, int bike, int threewheeler) {
+    public int updateAllMembershipFee(String car, String van, String bike, String threewheeler) {
 
         int rowsAffected = 0;
 
@@ -807,10 +806,10 @@ public class QueryDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setInt(1, bike);
-            preparedStatement.setInt(2, car);
-            preparedStatement.setInt(3, threewheeler);
-            preparedStatement.setInt(4, van);
+            preparedStatement.setString(1, bike);
+            preparedStatement.setString(2, car);
+            preparedStatement.setString(3, threewheeler);
+            preparedStatement.setString(4, van);
 
             if (preparedStatement.execute()) {
                 rowsAffected++;

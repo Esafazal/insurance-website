@@ -1,5 +1,5 @@
 <%-- 
-    Document   : claimEligible
+    Document   : Make Claim
     Created on : Mar 24, 2019, 10:30:23 PM
     Author     : Pathum
 --%>
@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Free Bootstrap Admin Template : Binary Admin</title>
+        <title>Make Claim</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
