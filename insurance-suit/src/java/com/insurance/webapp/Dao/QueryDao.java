@@ -754,6 +754,7 @@ public class QueryDao {
         return rowsAffected;
     }
 
+<<<<<<< HEAD
     public List<Member> lookForMembers(String firstname) {
         List<Member> member = new ArrayList<>();
         try {
@@ -820,4 +821,70 @@ public class QueryDao {
         }
         return rowsAffected;
     }
+=======
+    public int calculateAnnualFee(String vehicleType) {
+        int sum = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT SUM(claim_amount) AS sum FROM claim c ,vehicle v, member m\n"
+                    + "WHERE c.member_id = v.member_id AND c.member_id = m.member_id AND v.vehicle_type = ? \n"
+                    + "AND m.date_of_registration <= (now() - interval 12 month)\n"
+                    + "AND c.status = 'approved'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, vehicleType);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                sum = resultSet.getInt("sum");
+            }
+        } catch (SQLException sQLException) {
+            sQLException.printStackTrace();
+        }
+        return sum;
+
+    }
+
+    public int memberCount(String vehicleType) {
+        int membercount = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT COUNT(*) AS rowcount FROM claim c ,vehicle v, member m "
+                    + "WHERE c.member_id = v.member_id AND c.member_id = m.member_id AND m.date_of_registration <= (now() - interval 12 month) "
+                    + "AND v.vehicle_type = ? AND c.status = 'approved'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, vehicleType);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                membercount = resultSet.getInt("rowcount");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return membercount;
+
+    }
+    
+    public int memberCountAll(String vehicleType) {
+        int membercount = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "SELECT COUNT(*) AS rowcount FROM claim c ,vehicle v, member m "
+                    + "WHERE c.member_id = v.member_id AND c.member_id = m.member_id AND m.date_of_registration <= (now() - interval 12 month) "
+                    + "AND v.vehicle_type = ? AND c.status = 'approved'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, vehicleType);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                membercount = resultSet.getInt("rowcount");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return membercount;
+
+    }
+    
+>>>>>>> esa/pathum_branchMerge
 }
