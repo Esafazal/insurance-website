@@ -65,24 +65,21 @@ public class MemberEditPassword extends HttpServlet {
             String newmdpassword = DatatypeConverter.printHexBinary(digest);
 
             int rows = dao.editMemberPassword(newmdpassword, memberID);
+            
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
 
-            String message = null;
-
-            if (rows == 0) {
-                message = "Couldn't change password. Something went wrong!";
-
-                System.out.println("");
-            } else {
-                message = "Password changed Successfully!";
-            }
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 
         } else {
-//            JOptionPane.showMessageDialog(null, "Cant change password huththo", "Error", JOptionPane.ERROR_MESSAGE);
-           getServletContext().getRequestDispatcher("/userJsp/passwordError.jsp").forward(request, response);
-//            response.sendRedirect("/userJsp/userProfile.jsp");
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
+            
+            String errorMessage = "Current password is incorrect!";
+            request.setAttribute("passworderror", errorMessage);
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 
         }
-//        getServletContext().getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
 
     }
 
