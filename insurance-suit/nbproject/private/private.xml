@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/userJsp/claimStatus.jsp</file>
-            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/ClaimStatus.java</file>
-            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/src/java/com/insurance/webapp/Dao/QueryDao.java</file>
-            <file>file:/home/nadee/Documents/insurance-website/insurance-suit/web/userJsp/home.jsp</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/ClaimEligible.java</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/web/WEB-INF/web.xml</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/web/adminJsp/pendingApprovals.jsp</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/ReviewClaim.java</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/web/userJsp/memberLogin.jsp</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberLogin.java</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/src/java/com/insurance/webapp/Servlets/AdminLogin.java</file>
+            <file>file:/home/crazydude/insurance-website/insurance-suit/web/userJsp/claimEligible.jsp</file>
         </group>
     </open-files>
 </project-private>
