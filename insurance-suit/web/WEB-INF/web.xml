@@ -107,8 +107,8 @@
         <url-pattern>/userJsp/UserHome</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>reviewClaims</servlet-name>
-        <servlet-class>com.insurance.webapp.Servlets.reviewClaims</servlet-class>
+        <servlet-name>ReviewClaim</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.ReviewClaim</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RejectClaims</servlet-name>
@@ -133,7 +133,7 @@
     <servlet-mapping>
         <servlet-name>MemberEditPassword</servlet-name>
         <url-pattern>/userJsp/MemberEditPassword</url-pattern>
-    </servlet-mapping>   
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PendingApprovals</servlet-name>
         <url-pattern>/adminJsp/PendingApprovals</url-pattern>
@@ -151,8 +151,8 @@
         <url-pattern>/adminJsp/SuspendMember</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reviewClaims</servlet-name>
-        <url-pattern>/adminJsp/reviewClaims</url-pattern>
+        <servlet-name>ReviewClaim</servlet-name>
+        <url-pattern>/adminJsp/ReviewClaim</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RejectClaims</servlet-name>
@@ -174,15 +174,15 @@
         <servlet-name>ClaimEligible</servlet-name>
         <url-pattern>/userJsp/ClaimEligible</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewClaim</servlet-name>
+        <url-pattern>/adminJsp/ReviewClaim</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
     <error-page>
         <error-code>404</error-code>
         <location>/userJsp/error.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/userJsp/error500.jsp</location>
     </error-page>
 </web-app>
