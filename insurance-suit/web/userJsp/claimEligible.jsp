@@ -1,5 +1,5 @@
 <%-- 
-    Document   : makeClaim
+    Document   : Claim Eligiblity
     Created on : Mar 22, 2019, 12:02:46 AM
     Author     : crazydude
 --%>
@@ -63,11 +63,10 @@
                             <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
                         <li>
-<<<<<<< HEAD:insurance-suit/web/userJsp/claimEligible.jsp
                             <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
-=======
+                        </li>
+                        <li>
                             <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
->>>>>>> Shivorn-SearchMembers_configureFee:insurance-suit/web/adminJsp/reviewClaims.jsp
                         </li>
 
 

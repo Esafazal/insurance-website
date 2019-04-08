@@ -10,14 +10,12 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import okhttp3.OkHttpClient;
 
 /**
  *
@@ -33,27 +31,26 @@ public class ClaimEligible extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         int memberID = dao.getMemberID(username);
 
-//        try {
-//            HttpResponse<String> uniResponse = Unirest.get("http://localhost:8088/rest/member/" + memberID)
-//                    .header("cache-control", "no-cache")
-//                    .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
-//                    .asString();
-//            OkHttpClient client = new OkHttpClient();
-//            
-//            String res = uniResponse.getBody();
+        try {
+            HttpResponse<String> uniResponse = Unirest.get("http://192.168.10.41:8088/rest/member/" + memberID)
+                    .header("cache-control", "no-cache")
+                    .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
+                    .asString();
+            
+            String res = uniResponse.getBody();
 
-//            if (res.equals("true")) {
+            if (res.equals("true")) {
                 String vehicleNumber = dao.getVehicle(memberID);
                 request.setAttribute("vehicleNO", vehicleNumber);
                 request.getRequestDispatcher("/userJsp/makeClaim.jsp").forward(request, response);
-//            } else {
-//                String errorMessage="You are not eligible to make a claim as of now, Sorry!";
-//                request.setAttribute("error", errorMessage);
-//                request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
-////            }
-//        } catch (UnirestException ex) {
-//            Logger.getLogger(ClaimEligible.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+            } else {
+                String errorMessage="You are not eligible to make a claim as of now, Sorry!";
+                request.setAttribute("error", errorMessage);
+                request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
+            }
+        } catch (UnirestException ex) {
+            Logger.getLogger(ClaimEligible.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

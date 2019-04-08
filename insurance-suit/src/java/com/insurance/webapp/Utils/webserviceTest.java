@@ -10,7 +10,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import okhttp3.OkHttpClient;
 
 /**
  *
@@ -25,7 +24,7 @@ public class webserviceTest {
                 .header("cache-control", "no-cache")
                 .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
                 .asString();
-        OkHttpClient client = new OkHttpClient();
+        
         String res = uniResponse.getBody();
         
         if (res.equals("true")) {
