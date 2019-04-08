@@ -18,7 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -65,24 +64,23 @@ public class MemberEditPassword extends HttpServlet {
             String newmdpassword = DatatypeConverter.printHexBinary(digest);
 
             int rows = dao.editMemberPassword(newmdpassword, memberID);
-
-            String message = null;
-
-            if (rows == 0) {
-                message = "Couldn't change password. Something went wrong!";
-
-                System.out.println("");
-            } else {
-                message = "Password changed Successfully!";
-            }
+            
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
+            
+            String success = "Password was chnanged successfully!";
+            request.setAttribute("done", success);
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 
         } else {
-//            JOptionPane.showMessageDialog(null, "Cant change password huththo", "Error", JOptionPane.ERROR_MESSAGE);
-           getServletContext().getRequestDispatcher("/userJsp/passwordError.jsp").forward(request, response);
-//            response.sendRedirect("/userJsp/userProfile.jsp");
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
+            
+            String errorMessage = "Current password is incorrect!";
+            request.setAttribute("passworderror", errorMessage);
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 
         }
-//        getServletContext().getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
 
     }
 

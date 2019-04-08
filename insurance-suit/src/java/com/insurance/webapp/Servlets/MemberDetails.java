@@ -38,7 +38,7 @@ public class MemberDetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //if the adin presses reject vlaim buttton, the request is forwarded to tthis servlet
         String memberID = request.getParameter("reject");
         QueryDao dao = new QueryDao();
         dao.RejectClaim(Integer.parseInt(memberID));
