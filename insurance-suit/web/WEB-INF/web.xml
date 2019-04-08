@@ -22,7 +22,6 @@
         <param-name>pass</param-name>
         <param-value>1esafazal1</param-value>
     </context-param>
-<<<<<<< HEAD
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>com.insurance.webapp.Filters.AuthenticationFilter</filter-class>
@@ -31,22 +30,15 @@
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/insurance-suit</url-pattern>
     </filter-mapping>
-=======
-    <!--     <welcome-file-list>
-        <welcome-file>registration.jsp</welcome-file>
-    </welcome-file-list>-->
-    <!--smtp settings ends here-->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Login</servlet-class>
     </servlet>
->>>>>>> Shivorn-SearchMembers_configureFee
     <servlet>
         <servlet-name>Register</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.Register</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>AdminLogin</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.AdminLogin</servlet-class>
     </servlet>
@@ -114,7 +106,7 @@
         <servlet-name>MemberDetails</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.MemberDetails</servlet-class>
     </servlet>
-=======
+    <servlet>
         <servlet-name>ShowMembers</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.ShowMembers</servlet-class>
     </servlet>
@@ -130,7 +122,6 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/userJsp/Register</url-pattern>
     </servlet-mapping>
->>>>>>> Shivorn-SearchMembers_configureFee
     <servlet-mapping>
         <servlet-name>UserHome</servlet-name>
         <url-pattern>/userJsp/UserHome</url-pattern>
