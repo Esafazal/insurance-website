@@ -12,6 +12,9 @@ import com.insurance.webapp.Utils.DateUtil;
 import com.insurance.webapp.Utils.EmailUtility;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -23,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -68,6 +72,16 @@ public class Register extends HttpServlet {
         String phone_no = request.getParameter("phoneno");
         String username = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS);
         String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
+
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        byte[] digest = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        String mdpassword = DatatypeConverter.printHexBinary(digest);
+
         //vehicle details
         String vehicle_number = request.getParameter("vehicle_number");
         String vehicle_type = request.getParameter("vehicle_type");
@@ -88,36 +102,6 @@ public class Register extends HttpServlet {
 
         if (!match) {
             //member
-            member.setFirst_name(firstName);
-            member.setLast_name(lastName);
-            member.setAddress(address);
-            member.setDob(dob);
-            member.setNic(nic);
-            member.setDate_of_registration(date_of_registration);
-            member.setEmail(email);
-            member.setPhone_no(phone_no);
-            member.setUsername(username);
-            member.setPassword(password);
-            
-            int rows = dao.registerMember(member);
-            //vehice
-            int memberID = dao.getMemberID(username);
-
-            member.setVehicle_type(vehicle_type);
-            member.setVehicle_number(vehicle_number);
-            member.setVehicle_model(vehicle_model);
-            member.setVehicle_condition(vehicle_condition);
-            member.setMember_id(memberID);
-            
-            dao.registeVehicle(member);
-
-            String message = null;
-
-            if (rows == 0) {
-                message = "Couldn't Register. Something went wrong!";
-            } else {
-                message = "Registered Successfully";
-            }
 
             String subject = "Drivers Association Srilanka Registration";
             String content = "Hi, " + lastName + ".\n\nWe warmly welcome you to our association to have you protected."
@@ -129,12 +113,42 @@ public class Register extends HttpServlet {
             try {
                 EmailUtility.sendEmail(host, port, user, pass, email, subject, content);
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            } finally {
+                member.setFirst_name(firstName);
+                member.setLast_name(lastName);
+                member.setAddress(address);
+                member.setDob(dob);
+                member.setNic(nic);
+                member.setDate_of_registration(date_of_registration);
+                member.setEmail(email);
+                member.setPhone_no(phone_no);
+                member.setUsername(username);
+                member.setPassword(mdpassword);
+
+                int rows = dao.registerMember(member);
+                //vehice
+                int memberID = dao.getMemberID(username);
+
+                member.setVehicle_type(vehicle_type);
+                member.setVehicle_number(vehicle_number);
+                member.setVehicle_model(vehicle_model);
+                member.setVehicle_condition(vehicle_condition);
+                member.setMember_id(memberID);
+
+                dao.registeVehicle(member);
+
+                String message = null;
+
+                if (rows == 0) {
+                    message = "Couldn't Register. Something went wrong!";
+                } else {
+                    message = "Registered Successfully";
+                }
+
                 request.setAttribute("email", email);
                 getServletContext().getRequestDispatcher("/userJsp/success.jsp").forward(request, response);
 
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
 
         } else {

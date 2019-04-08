@@ -1,17 +1,16 @@
 <%-- 
-    Document   : dashboard
-    Created on : Mar 21, 2019, 6:18:14 PM
-    Author     : crazydude
---%>
-
+    Document   : home
+    Created on : Mar 21, 2019, 6:11:48 PM
+    Author     : Nadee 
+--%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Driver's Association</title>
+        <title>Review Claim</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -46,82 +45,72 @@
                             <img src="../css/assets/img/find_user.png" class="user-image img-responsive"/>
                         </li>
 
-
                         <li>
-                            <a class="active-menu" href=""> Dashboard</a>
+                            <a  href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
+                            <a  href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
+                            <a class="active-menu" href="">Review Claims</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
+                            <a href="../adminJsp/searchMember.jsp"> Search Member</a>
                         </li>
-                        <li>
-                            <a href="<%= response.encodeURL("SetConfigureFee") %>"> Configure Fee</a>
-                        </li>
-
-
-
-
                     </ul>
-
                 </div>
-
             </nav>  
             <!-- /. NAV SIDE  -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Dashboard</h2>
-
+                            <h2>Review Claims </h2>
+                            
+                            <div class="panel-body">
+                                <c:if test="${requestScope.claims != null}">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Claim Date</th>
+                                                <th>Claim Amount</th>
+                                                <th>Claim Note</th>
+                                                <th>Incident Date</th>
+                                                <th>Quotation From</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            <form action="ReviewClaim" method="POST">
+                                        <tbody>
+                                            <c:forEach items="${requestScope.claims}" var="claim" varStatus="loop">
+                                            <tr class="odd gradeX">
+                                                <td>${claim.first_name} ${claim.last_name}</td>
+                                                <td>${claim.claim_date}</td>
+                                                <td>${claim.claim_amount}</td>
+                                                <td class="center">${claim.claim_description}</td>
+                                                <td class="center">${claim.incident_date}</td>
+                                                <td class="center">${claim.quotation_place}</td>
+                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Approve</button> <br>
+                                                     <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
+                                                
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                            </form>
+                                    </table>
+                                </div>
+                               </c:if>
+                            </div>
+                         
+                            
                         </div>
                     </div>
-                    <!-- /. ROW  -->
+
                     <hr />
-                     <div class="col-md-4 col-sm-6 col-xs-6">                   
-                    <div class="panel panel-primary text-center no-boder bg-color-green">
-                        <div class="panel-body">
-                            <i class="fa fa-edit fa-5x"></i>
-                            <h3>${approvalCount} Registrations</h3>
-                        </div>
-                        <div class="panel-footer back-footer-green">
-                           Pending
-                        </div>    
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-6"> 
-                    <div class="panel panel-primary text-center no-boder bg-color-red">
-                        <div class="panel-body">
-                            <i class="fa fa-crash fa-5x"></i>
-                            <h3>${claimCount} Claims</h3>
-                        </div>
-                        <div class="panel-footer back-footer-red">
-                            Pending
-                            
-                        </div>
-                    </div>                         
-                        </div>
-                    <div class="col-md-4 col-sm-6 col-xs-6"> 
-                    <div class="panel panel-primary text-center no-boder bg-color-blue">
-                        <div class="panel-body">
-                            <i class="fa fa-money fa-5x"></i>
-                            <h3>${paymentCount} Payments</h3>
-                        </div>
-                        <div class="panel-footer back-footer-blue">
-                            Pending
-                            
-                        </div>
-                    </div>                         
-                        </div>
-<!--      
-
                 </div>
                 <!-- /. PAGE INNER  -->
             </div>

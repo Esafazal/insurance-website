@@ -17,6 +17,12 @@
             <div class="imgcontainer">
                 <img src="../css/img/login.png" alt="Avatar" class="avatar">
             </div>
+            <c:if test="${requestScope.error!=null}">
+                <div class="alert alert-info alert-dismissable">
+                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
+                    <a href="#" class="alert-link">${error}</a>.
+                </div>
+            </c:if>
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
@@ -30,7 +36,6 @@
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
-
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" class="cancelbtn" onclick="window.location.href='../index.jsp'">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>

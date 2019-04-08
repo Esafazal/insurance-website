@@ -48,7 +48,7 @@
                     <option value="car">Car</option>
                     <option value="van">Van</option>
                     <option value="bike">motorcycle</option>
-                    <option value="three wheeler">Three Wheeler</option>
+                    <option value="threewheeler">Three Wheeler</option>
                 </select>
 
                 <label for="vehicle number"><b>Vehicle Number</b></label>

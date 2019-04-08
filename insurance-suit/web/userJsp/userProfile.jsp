@@ -47,19 +47,19 @@
 
 
                         <li>
-                            <a href="../userJsp/home.jsp"> Home</a>
+                            <a href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="<%= response.encodeURL("MemberEditDetails")%>" > Profile</a>
+                            <a class="active-menu" href="" > Profile</a>
                         </li>
                         <li>
-                            <a href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
                         </li>
 
 
@@ -98,17 +98,17 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="home">
                                             <form action="MemberDetails" method="get">
-                                                
-                                            <h4><b>Personal Details</b></h4>
-                                            <p><strong>Name :</strong>&nbsp; ${memberList.first_name} ${memberList.last_name}</p>
-                                            <p><strong>Username :</strong>&nbsp; ${memberList.username}</p>
-                                            <p><strong>Address :</strong>&nbsp; ${memberList.address}</p>
-                                            <p><strong>Date of Birth :</strong>&nbsp; ${memberList.dob}</p>
-                                            <p><strong>Date of Registration :</strong>&nbsp; ${memberList.date_of_registration}</p>
-                                            <p><strong>NIC :</strong>&nbsp; ${memberList.nic}</p>
-                                            <p><strong>Email:</strong>&nbsp; ${memberList.email}</p>
-                                            <p><strong>Phone No:</strong>&nbsp; ${memberList.phone_no}</p>
-                                            
+
+                                                <h4><b>Personal Details</b></h4>
+                                                <p><strong>Name :</strong>&nbsp; ${memberList.first_name} ${memberList.last_name}</p>
+                                                <p><strong>Username :</strong>&nbsp; ${memberList.username}</p>
+                                                <p><strong>Address :</strong>&nbsp; ${memberList.address}</p>
+                                                <p><strong>Date of Birth :</strong>&nbsp; ${memberList.dob}</p>
+                                                <p><strong>Date of Registration :</strong>&nbsp; ${memberList.date_of_registration}</p>
+                                                <p><strong>NIC :</strong>&nbsp; ${memberList.nic}</p>
+                                                <p><strong>Email :</strong>&nbsp; ${memberList.email}</p>
+                                                <p><strong>Phone No :</strong>&nbsp; ${memberList.phone_no}</p>
+
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="profile">
@@ -138,7 +138,7 @@
                                                                 <input type="tel" class="form-control" placeholder="Enter New Phone Number" maxlength="10"s name="phoneno"/>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
-
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,17 +153,17 @@
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditPassword" method="POST">
 
-<!--                                                            <div class="form-group">
+                                                            <div class="form-group">
                                                                 <label>Current Password</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter Current Password" name="currentpassword"/>
-                                                            </div>-->
+                                                                <input type="text" class="form-control" placeholder="Enter Current Password" name="cpassword"/>
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label>New Password</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Password" name="newpassword"/>
+                                                                <input type="text" class="form-control" placeholder="Enter New Password" name="npassword"/>
                                                             </div>
 
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
-
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

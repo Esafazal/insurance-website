@@ -8,7 +8,6 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,27 +16,26 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sachi keragala
+ * @author SINGER
  */
-public class RejectMember extends HttpServlet {
+public class Search extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        String firstName = request.getParameter("name");
+        QueryDao dao = new QueryDao();
+        List<Member> members = dao.lookForMembers(firstName);
+
+        request.setAttribute("members", members);
+        request.getRequestDispatcher("/adminJsp/searchMember.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String memberId = request.getParameter("reject");
-        QueryDao Dao = new QueryDao();
-        Dao.ifRejectMember(memberId);
 
-        List<Member> claims = Dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
     }
 
     @Override

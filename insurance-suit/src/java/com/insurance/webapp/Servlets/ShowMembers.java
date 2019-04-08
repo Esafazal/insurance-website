@@ -11,37 +11,42 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sachi keragala
+ * @author SINGER
  */
-public class RejectMember extends HttpServlet {
+@WebServlet(name = "ShowMembers", urlPatterns = {"/ShowMembers"})
+public class ShowMembers extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-    }
+        QueryDao getDao = new QueryDao();
+        List<Member> members = getDao.showMembers();
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        request.setAttribute("members", members);
+        request.getRequestDispatcher("/adminJsp/searchMember.jsp").forward(request, response);
+    
+}
+
+@Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String memberId = request.getParameter("reject");
-        QueryDao Dao = new QueryDao();
-        Dao.ifRejectMember(memberId);
-
-        List<Member> claims = Dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
