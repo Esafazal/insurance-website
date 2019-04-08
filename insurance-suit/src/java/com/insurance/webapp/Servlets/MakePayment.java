@@ -23,14 +23,20 @@ public class MakePayment extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String username = (String) request.getSession().getAttribute("username");
+         String username = (String) request.getSession().getAttribute("username");
         QueryDao Dao = new QueryDao();
         int memberID = Dao.getUserId(username);
         int memberFee = Dao.getPayableAmount(memberID);
-        int annualFee = 25000;
+        String vehicleType = Dao.getVehicleType(memberID);
+        int annualFee = Dao.calculateAnnualFee(vehicleType);
+
+        int count = Dao.memberCountAll(vehicleType);
+
+        int averageAnnualFee = annualFee / count;
+
         request.setAttribute("memberFee", memberFee);
-        request.setAttribute("annualFee", annualFee);
-        request.setAttribute("outstanding", memberFee+annualFee);
+        request.setAttribute("annualFee", averageAnnualFee);
+        request.setAttribute("outstanding", memberFee + averageAnnualFee);
         
         request.getRequestDispatcher("/userJsp/makePayment.jsp").forward(request, response);
     }
