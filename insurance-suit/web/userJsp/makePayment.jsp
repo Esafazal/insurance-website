@@ -5,12 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Free Bootstrap Admin Template : Binary Admin</title>
+        <title>Make Payment</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -19,6 +22,9 @@
         <link href="../css/assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+
+
     </head>
     <body>
         <div id="wrapper">
@@ -47,19 +53,19 @@
 
 
                         <li>
-                            <a  href="../userJsp/home.jsp"> Home</a>
+                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
-                            <a   href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a   href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a class="active-menu" href=""> Make Payment</a>
                         </li>
                         <li>
-                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
                         </li>
 
 
@@ -88,30 +94,23 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form role="form">
+                                            <form action="PaymentGateway" target="_blank" method="GET" role="form">
 
                                                 <div class="form-group">
-                                                    <label>Username</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Number of Claims Done</label> 
-                                                    <input class="form-control" readonly/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total Claim Amount</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Membership Fee</label> 
+                                                    <input disabled type="text" value="${memberFee}" name="memberFee" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Annual Fee</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <input disabled type="text" value="${annualFee}" name="annualFee"  class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Total Outstanding Payment</label> 
-                                                    <input class="form-control" readonly/>
+                                                    <label>Total Outstanding</label> 
+                                                    <input disabled type="text" value="${outstanding}" name="outstanding"  class="form-control" />
                                                 </div>
 
-                                                <button type="button"  class="btn btn-primary" onclick="window.location.href='#'">Pay Amount</button>
+
+                                                <button type="submit" class="btn btn-primary">Pay Amount</button>
 
                                             </form>
                                         </div>
@@ -136,7 +135,6 @@
         <script src="../css/assets/js/jquery.metisMenu.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
-
 
     </body>
 </html>

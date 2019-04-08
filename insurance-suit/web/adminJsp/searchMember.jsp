@@ -1,9 +1,10 @@
 <%-- 
     Document   : searchMember
     Created on : Mar 22, 2019, 12:04:21 AM
-    Author     : crazydude
+    Author     : SINGER
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,7 +48,7 @@
 
 
                         <li>
-                            <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
+                            <a  href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
@@ -56,12 +57,14 @@
                             <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
+                            <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../adminJsp/searchMember.jsp"> Search Member</a>
+                            <a class="active-menu" href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
-
+                        <li>
+                            <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
+                        </li>
 
 
 
@@ -81,29 +84,73 @@
                     </div>
                     <!-- /. ROW  -->
                     <hr />
-                    <div class="form-group input-group">
-                        <input type="text" class="form-control">
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+                            <form action="Search" method="GET">
+                                <div class="form-group input-group col-md-6 ">
+                                    <input type="text" name="name" placeholder="enter name. eg. Shivorn" class="form-control">
                             <span class="input-group-btn">
-                                <button onclick="window.location.href='#'" class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                <button onclick="window.location.href = '#'" name="search" class="btn btn-default" type="submit"><i class="fa fa-search"></i>
                                 </button>
                             </span>
+                           </form>
+                    </div>
+                                <c:if test="${requestScope.members != null}">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>nic</th>
+                                            <th>Registration Date</th>
+                                            <th>email</th>
+                                            <th>phone NO</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                            <c:forEach items="${requestScope.members}" var="member">
+                                        <tr class="odd gradeX">
+                                            <td>${member.first_name} ${member.last_name}</td>
+                                            <td>${member.address} </td>
+                                            <td>${member.nic} </td>
+                                            <td class="center">${member.date_of_registration}</td>
+                                            <td class="center">${member.email}</td>
+                                            <td class="center">${member.phone_no}</td>
+                                            <td class="center">${member.username}</td>
+                                        </tr>
+                                       </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </c:if>
+                        </div>
+                    </div>
+                    <!--                    <div class="form-group input-group">
+                                            <input type="text" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button onclick="window.location.href = '#'" class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                                    </button>
+                                                </span>
+                                        
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+            <!-- /. PAGE WRAPPER  -->
+        </div>
+        <!-- /. WRAPPER  -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+        <script src="../css/assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="../css/assets/js/bootstrap.min.js"></script>
+        <!-- METISMENU SCRIPTS -->
+        <script src="../css/assets/js/jquery.metisMenu.js"></script>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="../css/assets/js/custom.js"></script>
 
-                                </div>
-                                <!-- /. PAGE INNER  -->
-                                </div>
-                                <!-- /. PAGE WRAPPER  -->
-                                </div>
-                                <!-- /. WRAPPER  -->
-                                <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                                <!-- JQUERY SCRIPTS -->
-                                <script src="../css/assets/js/jquery-1.10.2.js"></script>
-                                <!-- BOOTSTRAP SCRIPTS -->
-                                <script src="../css/assets/js/bootstrap.min.js"></script>
-                                <!-- METISMENU SCRIPTS -->
-                                <script src="../css/assets/js/jquery.metisMenu.js"></script>
-                                <!-- CUSTOM SCRIPTS -->
-                                <script src="../css/assets/js/custom.js"></script>
 
-
-                                </body>
-                                </html>
+    </body>
+</html>

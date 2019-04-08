@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class MemberMakeClaim extends HttpServlet {
         int memberID = dao.getMemberID(username);
         String vehicleNumber = dao.getVehicle(memberID);
         request.setAttribute("vehicleNO", vehicleNumber);
-        request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
+        request.getRequestDispatcher("/userJsp/makeClaim.jsp").forward(request, response);
     }
 
     @Override
@@ -81,8 +82,12 @@ public class MemberMakeClaim extends HttpServlet {
             message = "Claim Request Failed";
             System.out.println(message);
         }
-        request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
+        
+        List<Member> status = dao.getClaimStatus(Integer.toString(memberID));
+        request.setAttribute("status", status);
+        request.setAttribute("username", username);
 
+        request.getRequestDispatcher("/userJsp/claimStatus.jsp").forward(request, response);
     }
 
     @Override

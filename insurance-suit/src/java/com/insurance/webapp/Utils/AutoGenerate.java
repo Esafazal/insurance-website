@@ -30,7 +30,6 @@ public class AutoGenerate {
         }
         return result;
     }
-    
 }
 
 //        int len = 10;

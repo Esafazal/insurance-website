@@ -1,16 +1,17 @@
 <%-- 
-    Document   : claimEligible
-    Created on : Mar 24, 2019, 10:30:23 PM
-    Author     : Pathum
+    Document   : Claim Eligiblity
+    Created on : Mar 22, 2019, 12:02:46 AM
+    Author     : crazydude
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Free Bootstrap Admin Template : Binary Admin</title>
+        <title>Claim Eligibility</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -47,19 +48,25 @@
 
 
                         <li>
-                            <a  href="../userJsp/home.jsp"> Home</a>
+                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
-                            <a  href="../userJsp/userProfile.jsp"> Profile</a>
+                            <a  href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
-                            <a  class="active-menu" href="../userJsp/makeClaim.jsp"> Make Claim</a>
+                            <a  class="active-menu" href=""> Make Claim</a>
                         </li>
                         <li>
-                            <a  href="../userJsp/makePayment.jsp"> Make Payment</a>
+                            <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
+                        </li>
+                         <li>
+                            <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
                         <li>
                             <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                        </li>
+                        <li>
+                            <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
                         </li>
 
 
@@ -76,12 +83,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Make Claim</h2>
-
+                            <c:if test="${requestScope.error!=null}">
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <a href="#" class="alert-link">${error}</a>.
+                            </div>
+                            </c:if>
                         </div>
                     </div>
                     <!-- /. ROW  -->
                     <hr />
-                    <div class="row">
+                       <div class="row">
                 <div class="col-md-12">
                     <!-- Form Elements -->
                     <div class="panel panel-default">
@@ -89,39 +101,30 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form role="form" action="MemberMakeClaim" method="POST">
-                                        <div class="form-group">
-                                            <label>Select Vehicle</label> 
-                                            <select class="form-control" name="vehiclenumber" required>
-                                                <option>Select Vehicle</option>
-                                                <option>${vehicleNO}</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date of Incident</label> 
-                                            <input type=date class="form-control" placeholder="Enter Date of Incident" name="incidentdate" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Claim Description</label> 
-                                            <textarea type="text" class="form-control" rows="5" placeholder="Enter Claim Description" name="claimdescription" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Place of Quotation</label> 
-                                            <input type="text" class="form-control" placeholder="Enter Place of Quotation" name="quoationplace" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Claim Amount</label> 
-                                            <input type="text" class="form-control" placeholder="Enter Claim Amount" name="claimamount" required/>
-                                        </div>
+                                    <form role="form" action="ClaimEligible" method="GET">
+                                        <p>Eligibility Criteria</p>
+
+                                        <ul>
+                                            <li>Membership must be minimum 6 months old.</li>
+                                            <li>Claim quota is not exceeded.</li>
+                                            <li>No outstanding payments.</li>
+                                        </ul> 
                                         
-                                        <button type="submit"  class="btn btn-primary">Request Claim</button>
+                                         <c:if test="${requestScope.error == null}">
+                                        <button type="submit"  class="btn btn-primary">Check Eligibility</button>
+                                        </c:if>
+                                        
+                                        <c:if test="${requestScope.error != null}">
+                                        <fieldset disabled="disabled">
+                                            <button type="submit" class="btn btn-primary">Check Eligibility</button>
+                                        </fieldset></c:if>
                                         </form>
                                 </div>
                                 </div>
                             </div>
                         </div>
                 </div>
-                </div>   
+                </div>
                 </div>
                 <!-- /. PAGE INNER  -->
             </div>

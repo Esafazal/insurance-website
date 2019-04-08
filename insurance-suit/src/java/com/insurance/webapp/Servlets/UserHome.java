@@ -8,41 +8,40 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sachi keragala
+ * @author nadee
  */
-public class RejectMember extends HttpServlet {
+@WebServlet(name = "UserHome", urlPatterns = {"/UserHome"})
+public class UserHome extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String username = (String) request.getSession().getAttribute("username");
+        QueryDao queryDao = new QueryDao();
+        int memberID = queryDao.getUserId(username);
+        int payAmount = queryDao.getPayableAmount(memberID);
+        request.setAttribute("payAmount", payAmount);
+        
+        request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
         
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String memberId = request.getParameter("reject");
-        QueryDao Dao = new QueryDao();
-        Dao.ifRejectMember(memberId);
 
-        List<Member> claims = Dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
+        
+        }
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
-}
+
