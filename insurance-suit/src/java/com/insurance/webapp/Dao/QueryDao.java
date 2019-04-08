@@ -7,13 +7,11 @@ package com.insurance.webapp.Dao;
 
 import com.insurance.webapp.EntityBean.Member;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
 import java.time.LocalDate;
-=======
->>>>>>> Shivorn-SearchMembers_configureFee
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -62,12 +60,7 @@ public class QueryDao {
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
-<<<<<<< HEAD
             }
-=======
-            };
->>>>>>> Shivorn-SearchMembers_configureFee
-
         } catch (SQLException sQLException) {
             sQLException.printStackTrace();
         }
@@ -75,7 +68,6 @@ public class QueryDao {
         return rowsAffected;
     }
 
-<<<<<<< HEAD
     public int registeVehicle(Member member) {
         int rowsAffected = 0;
         try {
@@ -169,17 +161,12 @@ public class QueryDao {
     }
 
     public Boolean MemberSignIn(String username, String password) {
-=======
-    public Admin adminSignIn(String username, String password) {
 
         String DbUsername, DbPassword;
->>>>>>> Shivorn-SearchMembers_configureFee
         boolean match = false;
 
         try {
             Connection connection = DBConnection.getConnection();
-
-<<<<<<< HEAD
             String query = "SELECT * FROM Member WHERE username=? AND password=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -223,34 +210,11 @@ public class QueryDao {
                 member.setPhone_no(resultSet.getString("phone_no"));
                 member.setUsername(resultSet.getString("username"));
 
-=======
-            String query = "SELECT * FROM `Admin` WHERE username = ? AND password = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-
-            ResultSet resultSet = preparedStatement.getResultSet();
-
-            while (resultSet.next()) {
-
-                DbUsername = resultSet.getString(username);
-                DbPassword = resultSet.getString(password);
-
-                if (DbUsername.equals(username) && DbPassword.equals(password)) {
-
-                    match = true;
-                } else {
-                    System.out.println("MATCH " + match);
-                }
->>>>>>> Shivorn-SearchMembers_configureFee
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
         return member;
     }
 
@@ -502,11 +466,14 @@ public class QueryDao {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, memberID);
             preparedStatement.setInt(2, amount);
+
             if (preparedStatement.execute()) {
                 rowsAffected++;
             }
-=======
-        return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rowsAffected;
     }
 
     public Member showMemberDetails(String userID) {
@@ -524,10 +491,8 @@ public class QueryDao {
             Connection connection = DBConnection.getConnection();
 
             String query = "SELECT * FROM `member` ";
-//            String query = "SELECT * FROM Member LIKE first_name=? OR  last_name=?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setString(1, firsname);
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -547,13 +512,11 @@ public class QueryDao {
 
             }
             rs.close();
->>>>>>> Shivorn-SearchMembers_configureFee
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-        return rowsAffected;
+        return member;
     }
 
     public int getMembershipFee(String vehicleType) {
@@ -787,8 +750,8 @@ public class QueryDao {
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
-=======
-        return member;
+        }
+        return rowsAffected;
     }
 
     public List<Member> lookForMembers(String firstname) {
@@ -824,7 +787,6 @@ public class QueryDao {
 
     }
 
-
     public int updateAllMembershipFee(int car, int van, int bike, int threewheeler) {
 
         int rowsAffected = 0;
@@ -856,7 +818,6 @@ public class QueryDao {
 
         } catch (SQLException sQLException) {
             sQLException.printStackTrace();
->>>>>>> Shivorn-SearchMembers_configureFee
         }
         return rowsAffected;
     }
