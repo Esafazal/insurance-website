@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/Register.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberEditPassword.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/makePayment.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Dao/QueryDao.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberDetails.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/MemberEditDetails.java</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/web/userJsp/userProfile.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Insurance%20Project/insurance-suit/src/java/com/insurance/webapp/Servlets/CalculateAnnualFee.java</file>
+            <file>file:/C:/Users/acer/Documents/InsuranceProject/insurance-suit/src/java/com/insurance/webapp/Dao/QueryDao.java</file>
+            <file>file:/C:/Users/acer/Documents/InsuranceProject/insurance-suit/src/java/com/insurance/webapp/Servlets/MakePayment.java</file>
         </group>
     </open-files>
 </project-private>
