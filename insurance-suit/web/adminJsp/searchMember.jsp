@@ -89,7 +89,7 @@
                         <div class="panel-body">
                             <form action="Search" method="GET">
                                 <div class="form-group input-group col-md-6 ">
-                                    <input type="text" name="name" placeholder="enter first/last name. eg. Shivorn" class="form-control">
+                                    <input type="text" name="name" placeholder="enter name. eg. Shivorn" class="form-control">
                             <span class="input-group-btn">
                                 <button onclick="window.location.href = '#'" name="search" class="btn btn-default" type="submit"><i class="fa fa-search"></i>
                                 </button>

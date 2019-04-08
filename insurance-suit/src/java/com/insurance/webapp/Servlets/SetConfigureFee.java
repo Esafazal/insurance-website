@@ -6,10 +6,7 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
-import com.insurance.webapp.EntityBean.Admin;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +26,6 @@ public class SetConfigureFee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        response.sendRedirect("/adminJsp/configureFee.jsp");
         request.getRequestDispatcher("/adminJsp/configureFee.jsp").forward(request, response);
     }
 
@@ -42,29 +38,18 @@ public class SetConfigureFee extends HttpServlet {
         String bike = request.getParameter("bike");
         String threewheeler = request.getParameter("threewheeler");
 
+        String success = null, fail = null;
         QueryDao dao = new QueryDao();
-//       if(car != null){
-//           dao.updateMembershipFeeCar(Integer.parseInt(car));
-//       }
-//       else if(van != null){
-//           dao.updateMembershipFeeVan(Integer.parseInt(van));
-//       }
-//       else if(bike != null){
-//             dao.updateMembershipFeeBike(Integer.parseInt(bike));
-//       }
-//       else if(threewheeler != null){
-//           dao.updateMembershipFeeThreewheeler(Integer.parseInt(threewheeler));
-//       }
-//       else{
-//           request.setAttribute("error2","Didn't perform any updates!");
-//           request.getRequestDispatcher("/adminJsp/configureFee.jsp").forward(request, response);
-//       }
-        dao.updateAllMembershipFee(Integer.parseInt(car), Integer.parseInt(van), 
-                Integer.parseInt(bike), Integer.parseInt(threewheeler));
-        String success = "Updated Successfully";
+        
+        if (!car.equals("") && !van.equals("") && !bike.equals("") && !threewheeler.equals("")) {
+            dao.updateAllMembershipFee(car, van, bike, threewheeler);
+            success = "Updated Successfully";
+        } else {
+            fail = "Cannot update a single field only!";
+        }
 
         request.setAttribute("done", success);
-        request.setAttribute("error2","Didn't perform any updates!");
+        request.setAttribute("error2", fail);
         request.getRequestDispatcher("/adminJsp/configureFee.jsp").forward(request, response);
 
     }
