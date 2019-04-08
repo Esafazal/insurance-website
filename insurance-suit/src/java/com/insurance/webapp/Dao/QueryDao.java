@@ -218,14 +218,14 @@ public class QueryDao {
         return member;
     }
 
-    public int editMemberDetails(Member member, String username) {
+    public int editMemberDetails(Member member, int memberID) {
 
         int rowsAffected = 0;
 
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "UPDATE Member SET address = ?, email = ?, phone_no = ?, username = ? WHERE username = ?";
+            String query = "UPDATE Member SET address = ?, email = ?, phone_no = ?, username = ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -233,7 +233,7 @@ public class QueryDao {
             preparedStatement.setString(2, member.getEmail());
             preparedStatement.setString(3, member.getPhone_no());
             preparedStatement.setString(4, member.getUsername());
-            preparedStatement.setString(5, username);
+            preparedStatement.setInt(5, memberID);
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -819,6 +819,30 @@ public class QueryDao {
             sQLException.printStackTrace();
         }
         return rowsAffected;
+    }
+    
+    public boolean checkUsername(String username) {
+
+        boolean match = false;
+
+        try {
+            Connection connection = DBConnection.getConnection();
+
+            String query = "SELECT * FROM Member WHERE username=? ";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                match = true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return match;
     }
     public int calculateAnnualFee(String vehicleType) {
         int sum = 0;

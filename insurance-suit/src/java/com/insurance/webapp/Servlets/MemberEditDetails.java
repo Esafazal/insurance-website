@@ -24,43 +24,48 @@ public class MemberEditDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.sendRedirect("/userJsp/userProfile.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Member member = new Member();
 
         String username = request.getParameter("username");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String phone_no = request.getParameter("phoneno");
 
-        member.setUsername(username);
-        member.setAddress(address);
-        member.setEmail(email);
-        member.setPhone_no(phone_no);
-
-        String sesName = (String) request.getSession().getAttribute("username");
         QueryDao dao = new QueryDao();
-        int rows = dao.editMemberDetails(member, sesName);
+        boolean user = dao.checkUsername(username);
+        String sesName = (String) request.getSession().getAttribute("username");
+        int memberID = dao.getMemberID(username);
 
-        String message = null;
+        if (user) {
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
 
-        if (rows == 0) {
-            message = "Couldn't update Details. Something went wrong!";
-            
-            System.out.println("");
+            String errorMessage = "Username already exists!";
+            request.setAttribute("usererror", errorMessage);
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+
         } else {
-            message = "Updated Successfully!";
+
+            Member member = new Member();
+            member.setUsername(username);
+            member.setAddress(address);
+            member.setEmail(email);
+            member.setPhone_no(phone_no);
+
+            int rows = dao.editMemberDetails(member, memberID);
+            Member memberList = dao.getMemberDetails(memberID);
+            request.setAttribute("memberList", memberList);
+
+            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
         }
-        getServletContext().getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
 
     }
-    
-    
 
     @Override
     public String getServletInfo() {
