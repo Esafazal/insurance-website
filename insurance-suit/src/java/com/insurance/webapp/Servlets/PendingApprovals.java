@@ -36,7 +36,7 @@ public class PendingApprovals extends HttpServlet {
         
         String memberID = request.getParameter("accept");
         QueryDao dao = new QueryDao();
-        String type = dao.getVehicleType(memberID);
+        String type = dao.getVehicleType(Integer.parseInt(memberID));
         int amount = dao.getMembershipFee(type);
         dao.addMemberPayment(memberID, amount);
         dao.ifAcceptMember(memberID);

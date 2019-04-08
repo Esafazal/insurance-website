@@ -77,7 +77,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Claim Request Status</h2>
-                            <c:if test="${requestScope.status!=null}">
+                            <c:if test="${requestScope.status != null}">
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -98,7 +98,7 @@
                                                 <td>${username} </td>
                                                 <td>${status.claim_date}</td>
                                                 <td>${status.claim_amount}</td>
-                                                <td class="center">${status.description}</td>
+                                                <td class="center">${status.claim_description}</td>
                                                 <td class="center">${status.incident_date}</td>
                                                 <td class="center">${status.quotation_place}</td>
                                                 <td> <button type="submit" name="cancel" value="${status.member_id}" class="btn btn-danger btn-xs">cancel</button> <br></td>
