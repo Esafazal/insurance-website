@@ -6,8 +6,10 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
+import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,9 @@ public class RejectMember extends HttpServlet {
         QueryDao Dao = new QueryDao();
         Dao.ifRejectMember(memberId);
 
-        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
+        List<Member> claims = Dao.getNewClaims();
+        request.setAttribute("claims", claims);
+        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
     }
 
     @Override
