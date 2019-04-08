@@ -349,11 +349,6 @@ public class QueryDao {
         }
         return vehicleNumber;
     }
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-=======
->>>>>>> origin/esa/pathum_branchMerge
 
     public int getPendingApprovals() {
         int count = 0;
@@ -715,7 +710,6 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-<<<<<<< HEAD
 
     public int calculateAnnualFee(String vehicleType) {
         int sum = 0;
@@ -781,8 +775,4 @@ public class QueryDao {
 
     }
     
-    
-
-=======
->>>>>>> origin/esa/pathum_branchMerge
 }
