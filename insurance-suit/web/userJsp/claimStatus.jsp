@@ -78,50 +78,54 @@
                         <div class="col-md-12">
                             <h2>Claim Request Status</h2>
                             <c:if test="${requestScope.status != null}">
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead
-                                            <tr>
-                                                <th>Username</th>
-                                                <th>Claim Date</th>
-                                                <th>Claim Amount</th>
-                                                <th>Description</th>
-                                                <th>Incident Date</th>
-                                                <th>Quotation Place</th>
-                                            </tr>
-                                            <form action="ClaimStatus" method="POST">
-                                        <tbody>
-                                            <!--issues starts from here i feel-->
-                                            <c:forEach items="${requestScope.status}" var="status" varStatus="loop">
-                                            <tr class="odd gradeX">
-                                                <td>${username} </td>
-                                                <td>${status.claim_date}</td>
-                                                <td>${status.claim_amount}</td>
-                                                <td class="center">${status.claim_description}</td>
-                                                <td class="center">${status.incident_date}</td>
-                                                <td class="center">${status.quotation_place}</td>
-                                                <td> <button type="submit" name="cancel" value="${status.member_id}" class="btn btn-danger btn-xs">cancel</button> <br></td>
-                                                
-                                            </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                            </form>
-                                    </table>
-                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead
+                                                <tr>
+                                                    <th>Username</th>
+                                                    <th>Claim Date</th>
+                                                    <th>Claim Amount</th>
+                                                    <th>Description</th>
+                                                    <th>Incident Date</th>
+                                                    <th>Quotation Place</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
 
-                            </div>
-                         </c:if>
-                      </div>
+                                                </tr>
+                                                <form action="ClaimStatus" method="POST">
+                                                    <tbody>
+                                                        <!--issues starts from here i feel-->
+                                                        <c:forEach items="${requestScope.status}" var="status" varStatus="loop">
+                                                            <tr class="odd gradeX">
+                                                                <td>${username} </td>
+                                                                <td>${status.claim_date}</td>
+                                                                <td>${status.claim_amount}</td>
+                                                                <td class="center">${status.claim_description}</td>
+                                                                <td class="center">${status.incident_date}</td>
+                                                                <td class="center">${status.quotation_place}</td>
+                                                                <td class="center">${status.status}</td>
+                                                                <td> <button type="submit" name="cancel" value="${status.member_id}" class="btn btn-danger btn-xs">cancel</button> <br></td>
+
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </form>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </c:if>
+                        </div>
+
+                    </div>
+                    <!-- /. ROW  -->
+                    <hr />
 
                 </div>
-                <!-- /. ROW  -->
-                <hr />
-
+                <!-- /. PAGE INNER  -->
             </div>
-            <!-- /. PAGE INNER  -->
-        </div>
-        <!-- /. PAGE WRAPPER  -->
+            <!-- /. PAGE WRAPPER  -->
         </div>
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
