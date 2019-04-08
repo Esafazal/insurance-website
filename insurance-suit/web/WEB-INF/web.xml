@@ -173,13 +173,10 @@
     <servlet-mapping>
         <servlet-name>ClaimEligible</servlet-name>
         <url-pattern>/userJsp/ClaimEligible</url-pattern>
-<<<<<<< HEAD
-=======
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReviewClaim</servlet-name>
         <url-pattern>/adminJsp/ReviewClaim</url-pattern>
->>>>>>> origin/esa/pathum_branchMerge
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

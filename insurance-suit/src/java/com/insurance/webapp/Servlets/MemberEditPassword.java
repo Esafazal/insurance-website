@@ -68,7 +68,9 @@ public class MemberEditPassword extends HttpServlet {
             
             Member memberList = dao.getMemberDetails(memberID);
             request.setAttribute("memberList", memberList);
-
+            
+            String success = "Password was chnanged successfully!";
+            request.setAttribute("done", success);
             request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
 
         } else {

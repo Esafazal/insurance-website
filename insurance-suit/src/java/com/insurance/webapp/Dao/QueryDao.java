@@ -710,8 +710,7 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     
     public boolean checkUsername(String username) {
 
@@ -737,10 +736,6 @@ public class QueryDao {
         return match;
     }
     
-=======
->>>>>>> origin/esa/pathum_branchMerge
-=======
-
     public int calculateAnnualFee(String vehicleType) {
         int sum = 0;
         try {
@@ -805,5 +800,4 @@ public class QueryDao {
 
     }
     
->>>>>>> origin/esa/pathum_branchMerge
 }
