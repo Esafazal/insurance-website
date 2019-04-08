@@ -754,7 +754,6 @@ public class QueryDao {
         return rowsAffected;
     }
 
-<<<<<<< HEAD
     public List<Member> lookForMembers(String firstname) {
         List<Member> member = new ArrayList<>();
         try {
@@ -821,7 +820,6 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-=======
     public int calculateAnnualFee(String vehicleType) {
         int sum = 0;
         try {
@@ -885,6 +883,4 @@ public class QueryDao {
         return membercount;
 
     }
-    
->>>>>>> esa/pathum_branchMerge
 }
