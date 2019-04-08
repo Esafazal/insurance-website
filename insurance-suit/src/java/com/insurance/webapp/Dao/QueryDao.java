@@ -253,7 +253,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "UPDATE member SET password= ? WHERE member_id = ?";
+            String query = "UPDATE Member SET password= ? WHERE member_id = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
