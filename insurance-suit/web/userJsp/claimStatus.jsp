@@ -54,7 +54,7 @@
                             <a  href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
                         </li>
                         <li>
-                            <a  href=""> Make Claim</a>
+                            <a  href="../userJsp/claimEligible.jsp"> Make Claim</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>

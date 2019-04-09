@@ -59,16 +59,9 @@
                         <li>
                             <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
-                         <li>
-                            <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
-                        </li>
                         <li>
                             <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
-                        </li>
-                        <li>
-                            <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
-                        </li>
-
+                        </li> 
 
 
 

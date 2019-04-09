@@ -32,7 +32,7 @@ public class ClaimEligible extends HttpServlet {
         int memberID = dao.getMemberID(username);
 
         try {
-            HttpResponse<String> uniResponse = Unirest.get("http://192.168.10.41:8088/rest/member/" + memberID)
+            HttpResponse<String> uniResponse = Unirest.get("http://192.168.1.7:8088/rest/member/" + memberID)
                     .header("cache-control", "no-cache")
                     .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
                     .asString();
