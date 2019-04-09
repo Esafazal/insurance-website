@@ -50,7 +50,7 @@
                             <a href="<%= response.encodeURL("UserHome")%>"> Home</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="<%= response.encodeURL("MemberEditDetails")%>" > Profile</a>
+                            <a class="active-menu" href="" > Profile</a>
                         </li>
                         <li>
                             <a href="../userJsp/claimEligible.jsp"> Make Claim</a>
@@ -121,6 +121,13 @@
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditDetails" method="POST">
 
+                                                            <c:if test="${requestScope.usererror != null}">
+                                                                <div class="alert alert-info alert-dismissable">
+                                                                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
+                                                                    <a class="alert-link">${usererror}</a>
+                                                                </div>
+                                                            </c:if>
+
                                                             <div class="form-group">
                                                                 <label>Username</label> 
                                                                 <input class="form-control" placeholder="Enter New Username" name="username"/>
@@ -152,6 +159,16 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditPassword" method="POST">
+                                                            <c:if test="${requestScope.passworderror != null}">
+                                                                <!--<div class="alert alert-info alert-dismissable">-->
+                                                               <a href="#" class="alert-link">${passworderror}</a>
+                                                            <!--</div>-->
+                                                            </c:if>
+                                                            <c:if test="${requestScope.done != null}">
+                                                            <!--<div class="alert alert-info alert-dismissable">-->
+                                                               <a class="alert-link">${done}</a>
+                                                            <!--</div>-->
+                                                        </c:if>
 
                                                             <div class="form-group">
                                                                 <label>Current Password</label> 
