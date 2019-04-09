@@ -20,7 +20,7 @@ public class webserviceTest {
     public static void main(String[] args) throws IOException, UnirestException {
         
         
-        HttpResponse<String> uniResponse = Unirest.get("http://localhost:8088/rest/member/1")
+        HttpResponse<String> uniResponse = Unirest.get("http://192.168.1.7:8088/rest/member/1")
                 .header("cache-control", "no-cache")
                 .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
                 .asString();
