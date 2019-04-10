@@ -60,10 +60,8 @@
                             <a  href="<%= response.encodeURL("MakePayment")%>"> Make Payment</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
-                        </li>
-
-
+                            <a href="../userJsp/claimStatus.jsp"> Claim Status</a>
+                        </li> 
 
 
 

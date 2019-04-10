@@ -60,8 +60,7 @@
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
-                        </li>
-
+                        </li>   
 
 
 
