@@ -848,7 +848,7 @@ public class QueryDao {
         int sum = 0;
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "SELECT SUM(claim_amount) AS sum FROM claim c ,vehicle v, member m\n"
+            String query = "SELECT SUM(claim_amount) AS sum FROM Claim c ,Vehicle v, Member m\n"
                     + "WHERE c.member_id = v.member_id AND c.member_id = m.member_id AND v.vehicle_type = ? \n"
                     + "AND m.date_of_registration <= (now() - interval 12 month)\n"
                     + "AND c.status = 'approved'";
@@ -891,7 +891,7 @@ public class QueryDao {
         int membercount = 0;
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "SELECT COUNT(*) AS rowcount FROM claim c ,vehicle v, member m "
+            String query = "SELECT COUNT(*) AS rowcount FROM Claim c ,Vehicle v, Member m "
                     + "WHERE c.member_id = v.member_id AND c.member_id = m.member_id AND m.date_of_registration <= (now() - interval 12 month) "
                     + "AND v.vehicle_type = ? AND c.status = 'approved'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
