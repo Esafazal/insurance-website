@@ -121,11 +121,7 @@
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditDetails" method="POST">
 
-                                                            <c:if test="${requestScope.usererror != null}">
-                                                                <div class="alert alert-info alert-dismissable">
-                                                                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
-                                                                    <a class="alert-link">${usererror}</a>
-                                                                </div>
+                                                      
                                                             </c:if>
 
                                                             <div class="form-group">
@@ -159,16 +155,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditPassword" method="POST">
-                                                            <c:if test="${requestScope.passworderror != null}">
-                                                                <!--<div class="alert alert-info alert-dismissable">-->
-                                                               <a href="#" class="alert-link">${passworderror}</a>
-                                                            <!--</div>-->
-                                                            </c:if>
-                                                            <c:if test="${requestScope.done != null}">
-                                                            <!--<div class="alert alert-info alert-dismissable">-->
-                                                               <a class="alert-link">${done}</a>
-                                                            <!--</div>-->
-                                                        </c:if>
+                                                           
 
                                                             <div class="form-group">
                                                                 <label>Current Password</label> 

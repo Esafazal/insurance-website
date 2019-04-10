@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Admin</a> 
+                    <a class="navbar-brand" href="#">Admin</a> 
                 </div>
 
                 <div style="color: white;
@@ -50,22 +50,22 @@
 
 
                         <li>
-                            <a  href="../adminJsp/dashboard.jsp"> Dashboard</a>
+                            <a href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/paymentStatus.jsp"> Payment Status</a>
+                            <a href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a   href="../adminJsp/pendingApprovals.jsp"> Pending Approvals</a>
+                            <a href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a  href="../adminJsp/reviewClaims.jsp">Review Claims</a>
+                            <a href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="../adminJsp/configureFee.jsp"> Configure Fee</a>
+                            <a class="active-menu" href="<%= response.encodeURL("SetConfigureFee")%>"> Configure Fee</a>
                         </li>
 
 
@@ -98,7 +98,7 @@
                     <!-- /. ROW  -->
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <form role="form" action="SetConfigureFee" method="POST">
 
                                     <div class="form-group">

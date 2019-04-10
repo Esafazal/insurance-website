@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Admin</a> 
+                    <a class="navbar-brand" href="#">Admin</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -55,7 +55,7 @@
                             <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a class="active-menu" href=""> Pending Approvals</a>
+                            <a class="active-menu" href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
                             <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
@@ -64,7 +64,7 @@
                             <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
                         </li>
                         <li>
-                            <a href="../adminJsp/configureFee.jsp"> Configure Fee</a>
+                            <a href="<%= response.encodeURL("SetConfigureFee")%>"> Configure Fee</a>
                         </li>
 
 

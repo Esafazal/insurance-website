@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Admin</a> 
+                    <a class="navbar-brand" href="#">Admin</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -55,10 +55,13 @@
                             <a  href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a class="active-menu" href="">Review Claims</a>
+                            <a class="active-menu" href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
-                            <a href="../adminJsp/searchMember.jsp"> Search Member</a>
+                            <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
+                        </li>
+                        <li>
+                            <a href="<%= response.encodeURL("SetConfigureFee")%>"> Configure Fee</a>
                         </li>
                     </ul>
                 </div>
@@ -69,44 +72,44 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Review Claims </h2>
-                            
+
                             <div class="panel-body">
                                 <c:if test="${requestScope.claims != null}">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Claim Date</th>
-                                                <th>Claim Amount</th>
-                                                <th>Claim Note</th>
-                                                <th>Incident Date</th>
-                                                <th>Quotation From</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <form action="ReviewClaim" method="POST">
-                                        <tbody>
-                                            <c:forEach items="${requestScope.claims}" var="claim" varStatus="loop">
-                                            <tr class="odd gradeX">
-                                                <td>${claim.first_name} ${claim.last_name}</td>
-                                                <td>${claim.claim_date}</td>
-                                                <td>${claim.claim_amount}</td>
-                                                <td class="center">${claim.claim_description}</td>
-                                                <td class="center">${claim.incident_date}</td>
-                                                <td class="center">${claim.quotation_place}</td>
-                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Approve</button> <br>
-                                                     <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
-                                                
-                                            </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                            </form>
-                                    </table>
-                                </div>
-                               </c:if>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Claim Date</th>
+                                                    <th>Claim Amount</th>
+                                                    <th>Claim Note</th>
+                                                    <th>Incident Date</th>
+                                                    <th>Quotation From</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                <form action="ReviewClaim" method="POST">
+                                                    <tbody>
+                                                        <c:forEach items="${requestScope.claims}" var="claim" varStatus="loop">
+                                                            <tr class="odd gradeX">
+                                                                <td>${claim.first_name} ${claim.last_name}</td>
+                                                                <td>${claim.claim_date}</td>
+                                                                <td>${claim.claim_amount}</td>
+                                                                <td class="center">${claim.claim_description}</td>
+                                                                <td class="center">${claim.incident_date}</td>
+                                                                <td class="center">${claim.quotation_place}</td>
+                                                                <td> <button type="submit" name="accept" value="${claim.member_id}" class="btn btn-success btn-xs">Approve</button> <br>
+                                                                        <button type="submit" name="reject" formaction="RejectMember" value="${claim.member_id}" class="btn btn-danger btn-xs">Reject</button> </td>
+
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </form>
+                                        </table>
+                                    </div>
+                                </c:if>
                             </div>
-                         
-                            
+
+
                         </div>
                     </div>
 
