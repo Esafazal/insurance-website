@@ -1,13 +1,10 @@
 <%-- 
-    Document   : makePayment
-    Created on : Mar 22, 2019, 12:03:42 AM
-    Author     : crazydude
+    Document   : annualMakePayment
+    Created on : Apr 16, 2019, 10:03:44 PM
+    Author     : acer
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -51,25 +48,9 @@
                             <img src="../css/assets/img/find_user.png" class="user-image img-responsive"/>
                         </li>
 
-
-                        <li>
-                            <a  href="<%= response.encodeURL("UserHome")%>"> Home</a>
-                        </li>
-                        <li>
-                            <a href="<%= response.encodeURL("MemberDetails")%>"> Profile</a>
-                        </li>
-                        <li>
-                            <a   href="../userJsp/claimEligible.jsp"> Make Claim</a>
-                        </li>
                         <li>
                             <a class="active-menu" href=""> Make Payment</a>
                         </li>
-                        <li>
-                            <a href="<%= response.encodeURL("ClaimStatus")%>"> Claim Status</a>
-                        </li>
-
-
-
 
                     </ul>
 
@@ -82,6 +63,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Make Payment</h2>
+                            <c:if test="${requestScope.error!=null}">
+                                <div class="alert alert-info alert-dismissable">
+                                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
+                                    <a href="#" class="alert-link">${error}</a>.
+                                </div>
+                            </c:if>
                         </div>
                     </div>
                     <!-- /. ROW  -->
