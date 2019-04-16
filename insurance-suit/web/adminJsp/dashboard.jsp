@@ -16,6 +16,8 @@
         <link href="../css/assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- MORRIS CHART STYLES-->
+        <link href="../css/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
         <link href="../css/assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
@@ -31,7 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Admin</a> 
+                    <a class="navbar-brand" href="index.html">Admin</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -48,16 +50,16 @@
 
 
                         <li>
-                            <a class="active-menu" href="<%= response.encodeURL("SuspendMember")%>"> Dashboard</a>
+                            <a class="active-menu" href=""> Dashboard</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
+                            <a  href="<%= response.encodeURL("PaymentStatus")%>"> Payment Status</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
+                            <a   href="<%= response.encodeURL("PendingApprovals")%>"> Pending Approvals</a>
                         </li>
                         <li>
-                            <a href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
+                            <a  href="<%= response.encodeURL("ReviewClaim")%>">Review Claims</a>
                         </li>
                         <li>
                             <a href="<%= response.encodeURL("ShowMembers")%>"> Search Member</a>
@@ -120,6 +122,7 @@
                         </div>
                     </div>                         
                         </div>
+                    
 <!--      
 
                 </div>
@@ -135,6 +138,9 @@
         <script src="../css/assets/js/bootstrap.min.js"></script>
         <!-- METISMENU SCRIPTS -->
         <script src="../css/assets/js/jquery.metisMenu.js"></script>
+        <!-- MORRIS CHART SCRIPTS -->
+        <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+        <script src="assets/js/morris/morris.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../css/assets/js/custom.js"></script>
 

@@ -2,8 +2,8 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>insurance-suit</display-name>
     <context-param>
-        <param-name>dbURL</param-name>
-        <param-value>jdbc:mysql://localhost:3306/insurance_website</param-value>
+        <param-name>IP</param-name>
+        <param-value>192.168.1.7</param-value>
     </context-param>
     <!-- SMTP settings -->
     <context-param>
@@ -85,6 +85,10 @@
     <servlet>
         <servlet-name>ClaimEligible</servlet-name>
         <servlet-class>com.insurance.webapp.Servlets.ClaimEligible</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>com.insurance.webapp.Servlets.Logout</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MemberLogin</servlet-name>
@@ -205,6 +209,10 @@
     <servlet-mapping>
         <servlet-name>ReviewClaim</servlet-name>
         <url-pattern>/adminJsp/ReviewClaim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/userJsp/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

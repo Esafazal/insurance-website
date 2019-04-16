@@ -46,14 +46,13 @@
                <div class="col-md-12">
                   <h1>
                      Registration Successful.<br>
-                     We've Emailed your Username and Password.
+                     Your Registration has been sent for Review.<br>
+                     Once Confirmed, You will receive an Email with your Username and Password.
                   </h1>
-                   <h4>${email}</h4>
+                   <h4>To ${email}</h4>
                </div>
             </div>
             </div>
-         </div>
-         </div>
       </section>
       <!-- script -->
       <script src="../css/js/jquery.js"></script>

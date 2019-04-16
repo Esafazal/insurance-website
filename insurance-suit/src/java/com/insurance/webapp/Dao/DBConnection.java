@@ -3,16 +3,17 @@ package com.insurance.webapp.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.servlet.ServletContext;
 
 /**
  *
  * @author crazydude
  */
 public class DBConnection {
-
+    
     public static Connection getConnection() {
+        
         Connection connection = null;
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("MySQL JDBC Registered!");

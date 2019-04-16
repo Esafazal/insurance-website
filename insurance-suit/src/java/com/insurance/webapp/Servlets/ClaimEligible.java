@@ -12,6 +12,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author crazydude
  */
 public class ClaimEligible extends HttpServlet {
-
+    private String IP;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,9 +31,11 @@ public class ClaimEligible extends HttpServlet {
         QueryDao dao = new QueryDao();
         String username = (String) request.getSession().getAttribute("username");
         int memberID = dao.getMemberID(username);
+        ServletContext context = getServletContext();
+        IP = context.getInitParameter("IP");
 
         try {
-            HttpResponse<String> uniResponse = Unirest.get("http://192.168.1.7:8088/rest/member/" + memberID)
+            HttpResponse<String> uniResponse = Unirest.get("http://"+IP+":8088/rest/member/" + memberID)
                     .header("cache-control", "no-cache")
                     .header("Postman-Token", "4841fb87-2341-452a-9f8f-fea2a01e137d")
                     .asString();

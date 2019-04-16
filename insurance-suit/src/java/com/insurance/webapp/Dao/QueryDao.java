@@ -30,20 +30,9 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "INSERT INTO `Member`\n"
-                    + "("
-                    + "`first_name`,\n"
-                    + "`last_name`,\n"
-                    + "`address`,\n"
-                    + "`dob`,\n"
-                    + "`nic`,\n"
-                    + "`date_of_registration`,\n"
-                    + "`email`,\n"
-                    + "`phone_no`,\n"
-                    + "`username`,\n"
-                    + "`password`)"
-                    + "VALUES\n"
-                    + "(?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Member (first_name, last_name, address, dob, nic,"
+                    + " date_of_registration, email, phone_no, username) \n"
+                    + "VALUES (?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -56,7 +45,6 @@ public class QueryDao {
             preparedStatement.setString(7, member.getEmail());
             preparedStatement.setString(8, member.getPhone_no());
             preparedStatement.setString(9, member.getUsername());
-            preparedStatement.setString(10, member.getPassword());
 
             if (preparedStatement.execute()) {
                 rowsAffected++;
@@ -67,7 +55,7 @@ public class QueryDao {
 
         return rowsAffected;
     }
-
+   
     public int registeVehicle(Member member) {
         int rowsAffected = 0;
         try {
@@ -209,6 +197,7 @@ public class QueryDao {
                 member.setEmail(resultSet.getString("email"));
                 member.setPhone_no(resultSet.getString("phone_no"));
                 member.setUsername(resultSet.getString("username"));
+                member.setStatus(resultSet.getString("status"));
 
             }
 
@@ -386,7 +375,7 @@ public class QueryDao {
         int count = 0;
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "SELECT COUNT(*) AS rowcount FROM payment WHERE status='pending';";
+            String query = "SELECT COUNT(*) AS rowcount FROM payment WHERE status='not_paid'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -441,13 +430,13 @@ public class QueryDao {
         return rowsAffected;
     }
 
-    public int ifRejectMember(String memberID) {
+    public int ifRejectMember(int memberID) {
         int rowsAffected = 0;
         try {
             Connection connection = DBConnection.getConnection();
             String query = "UPDATE Claim SET status='rejected' WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, memberID);
+            preparedStatement.setInt(1, memberID);
             if (preparedStatement.execute()) {
                 rowsAffected++;
             }
@@ -759,7 +748,7 @@ public class QueryDao {
         try {
             Connection connection = DBConnection.getConnection();
 
-            String query = "SELECT * FROM Member WHERE first_name LIKE '"+firstname+"%'";
+            String query = "SELECT * FROM Member WHERE first_name LIKE '" + firstname + "%'";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -820,7 +809,7 @@ public class QueryDao {
         }
         return rowsAffected;
     }
-    
+
     public boolean checkUsername(String username) {
 
         boolean match = false;
@@ -844,6 +833,7 @@ public class QueryDao {
         }
         return match;
     }
+
     public int calculateAnnualFee(String vehicleType) {
         int sum = 0;
         try {
@@ -886,7 +876,7 @@ public class QueryDao {
         return membercount;
 
     }
-    
+
     public int memberCountAll(String vehicleType) {
         int membercount = 0;
         try {
@@ -906,5 +896,44 @@ public class QueryDao {
         }
         return membercount;
 
+    }
+
+    public Boolean getPaymentStatusMember(int memberID) {
+        boolean status = false;
+        try {
+            Connection connection = DBConnection.getConnection();
+
+            String query = "SELECT * FROM Member m, payment p WHERE m.status='accepted' \n"
+                    + "AND m.date_of_registration <= (now() - interval 7 day) \n"
+                    + "AND m.member_id = p.member_id AND  p.status = 'not_paid' AND m.member_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, memberID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                status = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
+
+    public int updateMemberCredentials(int memberID, String password) {
+        int rowsAffected = 0;
+        try {
+            Connection connection = DBConnection.getConnection();
+            String query = "UPDATE Member SET password = ? WHERE member_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, memberID);
+            
+            if (preparedStatement.execute()) {
+                rowsAffected++;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rowsAffected;
     }
 }

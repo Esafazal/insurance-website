@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author crazydude
  */
-@WebServlet(name = "AdminLogin", urlPatterns = {"/AdminLogin"})
+
 public class AdminLogin extends HttpServlet {
 
     @Override

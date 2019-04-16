@@ -26,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -34,20 +35,6 @@ import javax.xml.bind.DatatypeConverter;
  */
 @WebServlet(name = "Register", urlPatterns = {"/Register"})
 public class Register extends HttpServlet {
-
-    private String host;
-    private String port;
-    private String user;
-    private String pass;
-
-    public void init() {
-        // reads SMTP server setting from web.xml file
-        ServletContext context = getServletContext();
-        host = context.getInitParameter("host");
-        port = context.getInitParameter("port");
-        user = context.getInitParameter("user");
-        pass = context.getInitParameter("pass");
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,17 +58,6 @@ public class Register extends HttpServlet {
         String email = request.getParameter("email");
         String phone_no = request.getParameter("phoneno");
         String username = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS);
-        String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
-
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        byte[] digest = md.digest(password.getBytes(StandardCharsets.UTF_8));
-        String mdpassword = DatatypeConverter.printHexBinary(digest);
-
         //vehicle details
         String vehicle_number = request.getParameter("vehicle_number");
         String vehicle_type = request.getParameter("vehicle_type");
@@ -101,18 +77,6 @@ public class Register extends HttpServlet {
         boolean match = dao.isDuplicateVehicle(vehicle_number);
 
         if (!match) {
-            //member
-
-            String subject = "Drivers Association Srilanka Registration";
-            String content = "Hi, " + lastName + ".\n\nWe warmly welcome you to our association to have you protected."
-                    + " Please note that the following credentials can be used to login to your account."
-                    + " Further more, please change the username and password since it was system generated."
-                    + " Thank You \n\n" + "Username: " + username + "\n" + "Password: " + password + "\n\n"
-                    + "Kind Regards, \n\n" + "Team Group B.";
-
-            try {
-                EmailUtility.sendEmail(host, port, user, pass, email, subject, content);
-
                 member.setFirst_name(firstName);
                 member.setLast_name(lastName);
                 member.setAddress(address);
@@ -122,7 +86,6 @@ public class Register extends HttpServlet {
                 member.setEmail(email);
                 member.setPhone_no(phone_no);
                 member.setUsername(username);
-                member.setPassword(mdpassword);
 
                 int rows = dao.registerMember(member);
                 //vehice
@@ -135,21 +98,8 @@ public class Register extends HttpServlet {
                 member.setMember_id(memberID);
 
                 dao.registeVehicle(member);
-
-                String message = null;
-
-                if (rows == 0) {
-                    message = "Couldn't Register. Something went wrong!";
-                } else {
-                    message = "Registered Successfully";
-                }
-
                 request.setAttribute("email", email);
                 getServletContext().getRequestDispatcher("/userJsp/success.jsp").forward(request, response);
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
 
         } else {
             PrintWriter out = response.getWriter();

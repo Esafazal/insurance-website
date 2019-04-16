@@ -6,10 +6,14 @@
 package com.insurance.webapp.Servlets;
 
 import com.insurance.webapp.Dao.QueryDao;
+import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -41,7 +45,7 @@ public class MemberLogin extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        //new password hashing to validate user
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -50,29 +54,63 @@ public class MemberLogin extends HttpServlet {
         }
         byte[] digest = md.digest(password.getBytes(StandardCharsets.UTF_8));
         String mdpassword = DatatypeConverter.printHexBinary(digest);
-
+        //
         QueryDao queryDao = new QueryDao();
+        int memberID = queryDao.getMemberID(username);
+        Member member = queryDao.getMemberDetails(memberID);
         boolean match = queryDao.MemberSignIn(username, mdpassword);
+        //check if user is suspended`   
+        if (!member.getStatus().equals("suspended")) {
+            boolean payStatus = queryDao.getPaymentStatusMember(memberID);
+            //check if payment hasn't been made for more than a week
+            if (!payStatus) {
+                //check if user is older than a year, inorder to renew membership
+                LocalDate now = LocalDate.now();
+                Date date = (Date) member.getDate_of_registration();
+                LocalDate regDate = date.toLocalDate();
+                if (!regDate.isBefore(now.minusMonths(12))) {
+                    //check if username and password matches
+                    if (match) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username", username);
+                        session.setMaxInactiveInterval(60 * 20);
+                        request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
+                    } else {
 
-        if (match) {
+                        String errorMessage = "Invalid Credentials, please login again!";
+                        request.setAttribute("error", errorMessage);
+                        request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
+                    }
 
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setMaxInactiveInterval(120);
+                } else {
+                    if (match) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username", username);
+                        session.setMaxInactiveInterval(60 * 20);
+                        String errorMessage = "Your Account has expired, please renew account!";
+                        request.setAttribute("error", errorMessage);
+                        MakePayment fee = new MakePayment();
+                        fee.doGet(request, response);
+                    }
+                }
 
+            } else {
+                queryDao.ifRejectMember(memberID);
+                String errorMessage = "Your account has been suspended due to lack of payment.";
+                request.setAttribute("error", errorMessage);
+                request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
+            }
 
-            request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
-        } 
-        else{
-                
-            String errorMessage = "Invalid Credentials, please login again!";
+        } else {
+
+            String errorMessage = "Your Account access has been denied. Please contact administrator!";
             request.setAttribute("error", errorMessage);
             request.getRequestDispatcher("/userJsp/memberLogin.jsp").forward(request, response);
         }
-}
+    }
 
-@Override
-        public String getServletInfo() {
+    @Override
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
