@@ -35,7 +35,7 @@
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
-                     font-size: 16px;"><script> document.write(new Date().toLocaleDateString());</script>&nbsp;<a href="<%= response.encodeURL("Logout") %>" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+                     font-size: 16px;"><script> document.write(new Date().toLocaleDateString());</script>&nbsp;<a href="<%= response.encodeURL("Logout")%>" class="btn btn-danger square-btn-adjust">Logout</a> </div>
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
@@ -112,21 +112,21 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="profile">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h2>Edit Details</h2>
-                                                <c:if test="${requestScope.usererror != null}">
-                                                    <div class="alert alert-info">
-                                                        <a class="alert-link">${usererror}</a>
-                                                    </div>
-                                                </c:if>
-                                                <c:if test="${requestScope.done != null}">
-                                                    <div class="alert alert-info">
-                                                        <a class="alert-link">${done}</a>.
-                                                    </div>
-                                                </c:if>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h2>Edit Details</h2>
+                                                    <c:if test="${requestScope.usererror != null}">
+                                                        <div class="alert alert-info">
+                                                            <a class="alert-link">${usererror}</a>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${requestScope.done != null}">
+                                                        <div class="alert alert-info">
+                                                            <a class="alert-link">${done}</a>.
+                                                        </div>
+                                                    </c:if>
+                                                </div>
                                             </div>
-                                        </div>
                                             <!-- Form Elements -->
 
                                             <div class="panel-body">
@@ -136,19 +136,19 @@
 
                                                             <div class="form-group">
                                                                 <label>Username</label> 
-                                                                <input class="form-control" placeholder="Enter New Username" name="username"/>
+                                                                <input class="form-control" value="${memberList.username}" name="username"/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Address</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Address" name="address"/>
+                                                                <input type="text" class="form-control" value="${memberList.address}" name="address"/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Email</label> 
-                                                                <input type="text" class="form-control" placeholder="Enter New Email" name="email"/>
+                                                                <input type="text" class="form-control" value="${memberList.email}" name="email"/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Phone</label> 
-                                                                <input type="tel" class="form-control" placeholder="Enter New Phone Number" maxlength="10"s name="phoneno"/>
+                                                                <input type="tel" class="form-control" value="${memberList.phone_no}" maxlength="10"s name="phoneno"/>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Save Changes</button>
                                                         </form>

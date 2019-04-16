@@ -24,15 +24,20 @@ public class MemberEditDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String username = (String) request.getSession().getAttribute("username");
+        QueryDao queryDao = new QueryDao();
+        int memberID = queryDao.getMemberID(username);
+        Member memberList = queryDao.getMemberDetails(memberID);
 
-        response.sendRedirect("/userJsp/userProfile.jsp");
+        request.setAttribute("memberList", memberList);
+        request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String sesName = (String) request.getSession().getAttribute("username");
-        
+
         String username = request.getParameter("username");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
@@ -41,9 +46,9 @@ public class MemberEditDetails extends HttpServlet {
         QueryDao dao = new QueryDao();
         boolean user = dao.checkUsername(username);
         int memberID = dao.getMemberID(sesName);
-
+        Member memberList = dao.getMemberDetails(memberID);
         if (user) {
-            Member memberList = dao.getMemberDetails(memberID);
+            
             request.setAttribute("memberList", memberList);
 
             String errorMessage = "Username already exists!";
@@ -58,11 +63,11 @@ public class MemberEditDetails extends HttpServlet {
             member.setEmail(email);
             member.setPhone_no(phone_no);
             int rows = dao.editMemberDetails(member, memberID);
-            Member memberList = dao.getMemberDetails(memberID);
             request.setAttribute("memberList", memberList);
             String done = "Successfully updated user profile!";
             request.setAttribute("done", done);
-            request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
+//            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            response.sendRedirect("../index.jsp");
         }
 
     }
