@@ -3,7 +3,7 @@
     Created on : Mar 24, 2019, 2:45:27 PM
     Author     : DELL
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -112,21 +112,27 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="profile">
-                                            <h4>Edit Details</h4>
-
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>Edit Details</h2>
+                                                <c:if test="${requestScope.usererror != null}">
+                                                    <div class="alert alert-info">
+                                                        <a class="alert-link">${usererror}</a>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${requestScope.done != null}">
+                                                    <div class="alert alert-info">
+                                                        <a class="alert-link">${done}</a>.
+                                                    </div>
+                                                </c:if>
+                                            </div>
+                                        </div>
                                             <!-- Form Elements -->
 
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditDetails" method="POST">
-
-                                                            <c:if test="${requestScope.usererror != null}">
-                                                                <div class="alert alert-info alert-dismissable">
-                                                                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
-                                                                    <a class="alert-link">${usererror}</a>
-                                                                </div>
-                                                            </c:if>
 
                                                             <div class="form-group">
                                                                 <label>Username</label> 
@@ -152,24 +158,27 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="messages">
-                                            <h4>Change Password</h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h2>Change Password</h2>
+                                                    <c:if test="${requestScope.done != null}">
+                                                        <div class="alert alert-info">
+                                                            <a class="alert-link">${done}</a>.
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${requestScope.passworderror != null}">
+                                                        <div class="alert alert-info">
+                                                            <a class="alert-link">${passworderror}</a>
+                                                        </div>
+                                                    </c:if>
+                                                </div>
+                                            </div>
                                             <!-- Form Elements -->
 
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <form role="form" action="MemberEditPassword" method="POST">
-                                                            <c:if test="${requestScope.passworderror != null}">
-                                                                <!--<div class="alert alert-info alert-dismissable">-->
-                                                               <a href="#" class="alert-link">${passworderror}</a>
-                                                            <!--</div>-->
-                                                            </c:if>
-                                                            <c:if test="${requestScope.done != null}">
-                                                            <!--<div class="alert alert-info alert-dismissable">-->
-                                                               <a class="alert-link">${done}</a>
-                                                            <!--</div>-->
-                                                        </c:if>
-
                                                             <div class="form-group">
                                                                 <label>Current Password</label> 
                                                                 <input type="text" class="form-control" placeholder="Enter Current Password" name="cpassword"/>

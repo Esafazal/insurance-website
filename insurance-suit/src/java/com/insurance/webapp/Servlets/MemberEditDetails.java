@@ -31,7 +31,8 @@ public class MemberEditDetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String sesName = (String) request.getSession().getAttribute("username");
+        
         String username = request.getParameter("username");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
@@ -39,8 +40,7 @@ public class MemberEditDetails extends HttpServlet {
 
         QueryDao dao = new QueryDao();
         boolean user = dao.checkUsername(username);
-        String sesName = (String) request.getSession().getAttribute("username");
-        int memberID = dao.getMemberID(username);
+        int memberID = dao.getMemberID(sesName);
 
         if (user) {
             Member memberList = dao.getMemberDetails(memberID);
@@ -57,11 +57,11 @@ public class MemberEditDetails extends HttpServlet {
             member.setAddress(address);
             member.setEmail(email);
             member.setPhone_no(phone_no);
-
             int rows = dao.editMemberDetails(member, memberID);
             Member memberList = dao.getMemberDetails(memberID);
             request.setAttribute("memberList", memberList);
-
+            String done = "Successfully updated user profile!";
+            request.setAttribute("done", done);
             request.getRequestDispatcher("/userJsp/userProfile.jsp").forward(request, response);
         }
 

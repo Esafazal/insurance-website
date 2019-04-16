@@ -89,7 +89,7 @@
                             </c:if>
                             <c:if test="${requestScope.error2 != null}">
                                 <div class="alert alert-info">
-                                <a class="alert-link">${error2}</a>.
+                                <a class="alert-link">${error2}</a>
                                 </div>
                             </c:if>
                         </div>
