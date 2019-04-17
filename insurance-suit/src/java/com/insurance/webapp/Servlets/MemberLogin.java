@@ -90,7 +90,25 @@ public class MemberLogin extends HttpServlet {
                         String errorMessage = "Your Account has expired, please renew account!";
                         request.setAttribute("error", errorMessage);
                         MakePayment fee = new MakePayment();
-                        fee.doGet(request, response);
+                        int memberFee = queryDao.getPayableAmount(memberID);
+                        String vehicleType = queryDao.getVehicleType(memberID);
+                        int annualFee = queryDao.calculateAnnualFee(vehicleType);
+
+                        int count = queryDao.memberCountAll(vehicleType);
+                        int averageAnnualFee = 0;
+                        if (regDate.isBefore(now.minusMonths(12))) {
+
+                            if (count != 0) {
+                                averageAnnualFee = annualFee / count;
+                            } else {
+                                averageAnnualFee = annualFee;
+                            }
+                        }
+
+                        request.setAttribute("memberFee", memberFee);
+                        request.setAttribute("annualFee", averageAnnualFee);
+                        request.setAttribute("outstanding", memberFee + averageAnnualFee);
+                        request.getRequestDispatcher("/userJsp/annualMakePayment.jsp").forward(request, response);
                     }
                 }
 
