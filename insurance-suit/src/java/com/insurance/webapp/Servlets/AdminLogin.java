@@ -42,7 +42,7 @@ public class AdminLogin extends HttpServlet {
             //creation a session for the admin
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            session.setMaxInactiveInterval(120);
+            session.setMaxInactiveInterval(60*20);
             //getting pending member registrations, claims and payments
             QueryDao dao = new QueryDao();
             int approvalCount = dao.getPendingApprovals();
