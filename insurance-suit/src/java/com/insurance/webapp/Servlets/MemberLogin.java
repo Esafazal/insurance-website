@@ -74,7 +74,12 @@ public class MemberLogin extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         session.setMaxInactiveInterval(60 * 20);
+                        //get membershipfee NADEE
+                        int amount = queryDao.getPayableAmount(memberID);
+                        request.setAttribute("amount", amount);
+                        //ends here
                         request.getRequestDispatcher("/userJsp/home.jsp").forward(request, response);
+                        
                     } else {
 
                         String errorMessage = "Invalid Credentials, please login again!";

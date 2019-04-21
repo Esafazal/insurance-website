@@ -17,9 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author crazydude
+ * @author Nadee
  */
-@WebServlet(name = "ReviewClaim", urlPatterns = {"/ReviewClaim"})
 public class ReviewClaim extends HttpServlet {
 
     @Override
@@ -37,7 +36,7 @@ public class ReviewClaim extends HttpServlet {
             throws ServletException, IOException {
 
         String memberID = request.getParameter("accept");
-        System.out.println("MEMBER IDDDDDDDDDDDDDDDD"+memberID);
+        System.out.println("MEMBER ID"+memberID);
         QueryDao dao = new QueryDao();
         dao.ApproveClaim(memberID);
 
