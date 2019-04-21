@@ -8,6 +8,7 @@ package com.insurance.webapp.Servlets;
 import com.insurance.webapp.Dao.QueryDao;
 import com.insurance.webapp.EntityBean.Member;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,10 +65,13 @@ public class MemberEditDetails extends HttpServlet {
             member.setPhone_no(phone_no);
             int rows = dao.editMemberDetails(member, memberID);
             request.setAttribute("memberList", memberList);
-            String done = "Successfully updated user profile!";
-            request.setAttribute("done", done);
+//            String done = "Successfully updated user profile!";
+//            request.setAttribute("done", done);
+            PrintWriter out = response.getWriter();
+            out.println("Successfully updated user profile, Please login again!");
 //            request.getRequestDispatcher("/index.jsp").forward(request, response);
-            response.sendRedirect("../index.jsp");
+            response.setHeader("Refresh", "5;url=../index.jsp");
+//            response.sendRedirect("");
         }
 
     }
