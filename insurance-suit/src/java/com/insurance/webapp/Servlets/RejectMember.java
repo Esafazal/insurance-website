@@ -35,9 +35,9 @@ public class RejectMember extends HttpServlet {
         QueryDao Dao = new QueryDao();
         Dao.ifRejectMember(Integer.parseInt(memberId));
 
-        List<Member> claims = Dao.getNewClaims();
-        request.setAttribute("claims", claims);
-        request.getRequestDispatcher("/adminJsp/reviewClaim.jsp").forward(request, response);
+        List<Member> member = Dao.getNewRegistrations();
+        request.setAttribute("member", member);
+        request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);
     }
 
     @Override

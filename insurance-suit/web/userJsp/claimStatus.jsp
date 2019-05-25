@@ -104,7 +104,7 @@
                                                                 <td class="center">${status.claim_description}</td>
                                                                 <td class="center">${status.incident_date}</td>
                                                                 <td class="center">${status.quotation_place}</td>
-                                                                <td class="center">${status.status}</td>
+                                                                <strong><td class="center"> ${status.status}</td></strong>
                                                                 <td> <button type="submit" name="cancel" value="${status.member_id}" class="btn btn-danger btn-xs">cancel</button> <br></td>
 
                                                             </tr>

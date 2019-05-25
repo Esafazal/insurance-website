@@ -57,19 +57,14 @@ public class PendingApprovals extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //sachin
         String memberID = request.getParameter("accept");
-        //
         QueryDao dao = new QueryDao();
-        //
         String type = dao.getVehicleType(Integer.parseInt(memberID));
-        //
         int amount = dao.getMembershipFee(type);
-        //
         dao.addMemberPayment(memberID, amount);
-        //
         dao.ifAcceptMember(memberID);
-        //
+        //ends here
         Member member = dao.getMemberDetails(Integer.parseInt(memberID));
         //
         String password = AutoGenerate.generateKey(10, AutoGenerate.ALPHA_CAPS + AutoGenerate.ALPHA + AutoGenerate.NUMERIC);
@@ -97,7 +92,7 @@ public class PendingApprovals extends HttpServlet {
         } catch (MessagingException ex) {
             Logger.getLogger(PendingApprovals.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        //sachin
         List<Member> memberList = dao.getNewRegistrations();
         request.setAttribute("member", memberList);
         request.getRequestDispatcher("/adminJsp/pendingApprovals.jsp").forward(request, response);

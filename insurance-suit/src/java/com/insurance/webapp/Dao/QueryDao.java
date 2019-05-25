@@ -434,7 +434,7 @@ public class QueryDao {
         int rowsAffected = 0;
         try {
             Connection connection = DBConnection.getConnection();
-            String query = "UPDATE Claim SET status='rejected' WHERE member_id=?";
+            String query = "UPDATE Member SET status='rejected' WHERE member_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, memberID);
             if (preparedStatement.execute()) {

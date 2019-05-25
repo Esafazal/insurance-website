@@ -48,7 +48,6 @@
                             <img src="../css/assets/img/find_user.png" class="user-image img-responsive"/>
                         </li>
 
-
                         <li>
                             <a class="active-menu" href=""> Dashboard</a>
                         </li>
