@@ -95,7 +95,6 @@
                                                 </tr>
                                                 <form action="ClaimStatus" method="POST">
                                                     <tbody>
-                                                        <!--issues starts from here i feel-->
                                                         <c:forEach items="${requestScope.status}" var="status" varStatus="loop">
                                                             <tr class="odd gradeX">
                                                                 <td>${username} </td>

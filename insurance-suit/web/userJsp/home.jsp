@@ -111,7 +111,7 @@
                                 under the Regulation of Association Industry Act No 43 of 2000. ISAL is an Drivers Association  
                                 affiliated to Sanasa movement.</p>
 
-                            <h2 style="color:green;"><b>Outstanding Balance : ${payAmount}</b></h2>                           
+                            <h2 style="color:green;"><b>Outstanding Balance : ${amount}</b></h2>                           
 
                     </div>  
 
