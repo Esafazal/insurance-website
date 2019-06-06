@@ -29,10 +29,10 @@ public class webserviceTest {
         
         if (res.equals("true")) {
 
-            JOptionPane.showMessageDialog(null, "You are eligible motherfucker", "Successful", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are eligible ", "Successful", JOptionPane.INFORMATION_MESSAGE);
 //                request.getRequestDispatcher("/userJsp/makeClaim.jsp").forward(request, response);
         } else {
-            JOptionPane.showMessageDialog(null, "Your are not eligible motherfucker", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Your are not eligible ", "Error", JOptionPane.ERROR_MESSAGE);
 //                request.getRequestDispatcher("/userJsp/claimEligible.jsp").forward(request, response);
         }
     }
